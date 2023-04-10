@@ -114,6 +114,74 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Powers"",
+            ""id"": ""8e83c501-a844-4320-a641-c172d4985d18"",
+            ""actions"": [
+                {
+                    ""name"": ""Spell 1"",
+                    ""type"": ""Button"",
+                    ""id"": ""d90f87b8-8692-4fe3-8337-009d1bd462d2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spell 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""25a6d762-144a-4c22-a463-b410f863264b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spell 3"",
+                    ""type"": ""Button"",
+                    ""id"": ""3892a9a1-4886-4250-a58e-3917cdb7f0c9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2375ae53-dc56-4e3c-9b3b-e27689fb1a29"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f5bccf2-879b-4149-8b0f-e337c3482b9d"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9bfd6068-ca1f-499d-8b7f-79600aa3f953"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell 3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -122,6 +190,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        // Powers
+        m_Powers = asset.FindActionMap("Powers", throwIfNotFound: true);
+        m_Powers_Spell1 = m_Powers.FindAction("Spell 1", throwIfNotFound: true);
+        m_Powers_Spell2 = m_Powers.FindAction("Spell 2", throwIfNotFound: true);
+        m_Powers_Spell3 = m_Powers.FindAction("Spell 3", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -233,9 +306,77 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Powers
+    private readonly InputActionMap m_Powers;
+    private List<IPowersActions> m_PowersActionsCallbackInterfaces = new List<IPowersActions>();
+    private readonly InputAction m_Powers_Spell1;
+    private readonly InputAction m_Powers_Spell2;
+    private readonly InputAction m_Powers_Spell3;
+    public struct PowersActions
+    {
+        private @PlayerInput m_Wrapper;
+        public PowersActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Spell1 => m_Wrapper.m_Powers_Spell1;
+        public InputAction @Spell2 => m_Wrapper.m_Powers_Spell2;
+        public InputAction @Spell3 => m_Wrapper.m_Powers_Spell3;
+        public InputActionMap Get() { return m_Wrapper.m_Powers; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PowersActions set) { return set.Get(); }
+        public void AddCallbacks(IPowersActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PowersActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PowersActionsCallbackInterfaces.Add(instance);
+            @Spell1.started += instance.OnSpell1;
+            @Spell1.performed += instance.OnSpell1;
+            @Spell1.canceled += instance.OnSpell1;
+            @Spell2.started += instance.OnSpell2;
+            @Spell2.performed += instance.OnSpell2;
+            @Spell2.canceled += instance.OnSpell2;
+            @Spell3.started += instance.OnSpell3;
+            @Spell3.performed += instance.OnSpell3;
+            @Spell3.canceled += instance.OnSpell3;
+        }
+
+        private void UnregisterCallbacks(IPowersActions instance)
+        {
+            @Spell1.started -= instance.OnSpell1;
+            @Spell1.performed -= instance.OnSpell1;
+            @Spell1.canceled -= instance.OnSpell1;
+            @Spell2.started -= instance.OnSpell2;
+            @Spell2.performed -= instance.OnSpell2;
+            @Spell2.canceled -= instance.OnSpell2;
+            @Spell3.started -= instance.OnSpell3;
+            @Spell3.performed -= instance.OnSpell3;
+            @Spell3.canceled -= instance.OnSpell3;
+        }
+
+        public void RemoveCallbacks(IPowersActions instance)
+        {
+            if (m_Wrapper.m_PowersActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPowersActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PowersActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PowersActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PowersActions @Powers => new PowersActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+    }
+    public interface IPowersActions
+    {
+        void OnSpell1(InputAction.CallbackContext context);
+        void OnSpell2(InputAction.CallbackContext context);
+        void OnSpell3(InputAction.CallbackContext context);
     }
 }

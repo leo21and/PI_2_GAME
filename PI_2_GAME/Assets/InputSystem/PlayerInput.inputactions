@@ -92,6 +92,74 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Powers",
+            "id": "8e83c501-a844-4320-a641-c172d4985d18",
+            "actions": [
+                {
+                    "name": "Spell 1",
+                    "type": "Button",
+                    "id": "d90f87b8-8692-4fe3-8337-009d1bd462d2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Spell 2",
+                    "type": "Button",
+                    "id": "25a6d762-144a-4c22-a463-b410f863264b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Spell 3",
+                    "type": "Button",
+                    "id": "3892a9a1-4886-4250-a58e-3917cdb7f0c9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2375ae53-dc56-4e3c-9b3b-e27689fb1a29",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Spell 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4f5bccf2-879b-4149-8b0f-e337c3482b9d",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Spell 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9bfd6068-ca1f-499d-8b7f-79600aa3f953",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Spell 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
