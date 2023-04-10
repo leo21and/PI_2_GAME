@@ -33,9 +33,10 @@ public class Vignette : ImageEffectShaderBase
 
    public void OnDamage()
    {
+      //isto e para ser substituido por current life aquando de fazer a regen , ainda esta em hard code
       if (playerDamage.playerLife == 1000)
       {
-        // exp = 0;
+         exp = 0;
       }
       else if (playerDamage.playerLife < 1000 && playerDamage.playerLife > 990)
       {
