@@ -1333,6 +1333,60 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
   m_PVRTiledBaking: 0
+--- !u!1 &1126285457 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3979415657296422219, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
+  m_PrefabInstance: {fileID: 3979415657445771322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1126285462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126285457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 161cbbbb8e175ed4cb5ab566990e01a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectShader: {fileID: 4800000, guid: ae68c0aa55ccda348b9063d5f6571b89, type: 3}
+  offset: {x: 0, y: 0}
+  exp: 0
+  vignetteColor: {r: 0.735849, g: 0.4269313, b: 0.68324316, a: 0}
+  playerDamage: {fileID: 1126285463}
+--- !u!114 &1126285463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126285457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea565ce5f518dc48b57e7d15426a0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLife: 1000
+  flowers:
+  - {fileID: 904940535}
+  - {fileID: 992947964}
+  - {fileID: 1850432274}
+  - {fileID: 1229900898}
+  - {fileID: 1947163613}
+  - {fileID: 620636670}
+  - {fileID: 788599909}
+  - {fileID: 747781595}
+  - {fileID: 81432427}
+  - {fileID: 542467111}
+  - {fileID: 653569152}
+  - {fileID: 339184361}
+  - {fileID: 1519375490}
+  - {fileID: 1501293442}
+  - {fileID: 1985516842}
+  damage: 1
+  player: {fileID: 919132148634051467}
+  startTakingLife: 0
 --- !u!1 &1229900898
 GameObject:
   m_ObjectHideFlags: 0

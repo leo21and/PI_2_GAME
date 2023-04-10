@@ -11,10 +11,7 @@ public class PlayerDamage : MonoBehaviour
     public GameObject player;
     public bool startTakingLife;
     private int flowerNumInRange;
-
     
-
-   
     
 
     // Start is called before the first frame update

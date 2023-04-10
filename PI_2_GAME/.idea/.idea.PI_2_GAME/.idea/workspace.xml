@@ -11,6 +11,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FPCamera.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FlowersToxic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerDamage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Shaders/ImageEffectShaderBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Shaders/Vignette.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -85,6 +87,10 @@
       <workItem from="1681124713282" duration="75000" />
       <workItem from="1681124982083" duration="1554000" />
       <workItem from="1681126914939" duration="567000" />
+      <workItem from="1681142057831" duration="1155000" />
+      <workItem from="1681143258183" duration="985000" />
+      <workItem from="1681144470084" duration="339000" />
+      <workItem from="1681144829655" duration="3358000" />
     </task>
     <servers />
   </component>
