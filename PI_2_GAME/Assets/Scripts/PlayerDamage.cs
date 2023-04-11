@@ -5,12 +5,16 @@ using UnityEngine;
 public class PlayerDamage : MonoBehaviour
 { 
     [SerializeField] public int playerLife;
+    public int currentHealth;
+    [SerializeField] private int regenHealth;
     
     public List<GameObject> flowers = new List<GameObject>();
     public int damage = 1;
     public GameObject player;
     public bool startTakingLife;
     private int flowerNumInRange;
+
+    private PlayerInput playerInput;
     
     
 
@@ -19,6 +23,12 @@ public class PlayerDamage : MonoBehaviour
     {
         startTakingLife = false;
 
+        currentHealth = playerLife;
+
+        playerInput = new PlayerInput();
+
+        StartCoroutine(regenPlayerHealth());
+
     }
 
     // Update is called once per frame
@@ -26,7 +36,8 @@ public class PlayerDamage : MonoBehaviour
     {
         Damage();
         
-
+       
+        
     }
 
     //substituido por raycast provavelemnte numa class para todos os raycasts onde deves incluir isto e uma referencia a class das Flowerstoxic
@@ -41,7 +52,6 @@ public class PlayerDamage : MonoBehaviour
 
     private void Damage()
     {
-       
         foreach (GameObject flower in flowers)
        {
            float dist = Vector3.Distance(player.transform.position, flower.transform.position); 
@@ -60,9 +70,16 @@ public class PlayerDamage : MonoBehaviour
                }
                
                
-               if (!startTakingLife && flowerNumInRange > 0)
+               if (!startTakingLife && flowerNumInRange > 0 && currentHealth > 0)
                {
-                  StartCoroutine(TakeLife()); 
+                   StartCoroutine(TakeLife()); 
+               }
+               else if (currentHealth <= 0)
+               {
+                   //IMPLEMENTAR MORTE
+                   
+                   playerInput.Player.Disable();
+                   playerInput.Powers.Disable(); //quando morre fazer sempre disable ao input
                }
               
            }
@@ -79,9 +96,12 @@ public class PlayerDamage : MonoBehaviour
 
         //default damage a 1 mudar se quisermos no inspector
         int total = damage * flowerNumInRange;        
-        playerLife -= total; 
+        currentHealth -= total; 
+        //Meter som de dano ou animação
+        Debug.Log(currentHealth + "current"); 
         
-        Debug.Log(total + "finaldamage"); 
+        //Debug.Log(total + "finaldamage"); 
+       
         
         startTakingLife = false;
         flowerNumInRange = 0;
@@ -92,4 +112,32 @@ public class PlayerDamage : MonoBehaviour
  
         }
     }
+
+    IEnumerator regenPlayerHealth()
+    {
+        while (true)
+        {
+            if (currentHealth < playerLife)
+            {
+                if (currentHealth + regenHealth > playerLife)
+                {
+                    currentHealth = playerLife;
+                }
+                else
+                {
+                    currentHealth += regenHealth;
+                    Debug.Log(currentHealth + "renovada"); 
+                }
+
+                yield return new WaitForSeconds(2); //2 ou 1.tal, ver dp no balance
+            }
+            else
+            {
+                yield return null;
+            }
+        }
+        
+    }
+    
+    
 }

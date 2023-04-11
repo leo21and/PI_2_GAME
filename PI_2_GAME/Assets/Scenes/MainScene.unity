@@ -1354,8 +1354,8 @@ MonoBehaviour:
   offset: {x: 0, y: 0}
   exp: 0
   vignetteColor: {r: 0.735849, g: 0.4269313, b: 0.68324316, a: 0}
-  playerDamage: {fileID: 1126285463}
---- !u!114 &1126285463
+  playerDamage: {fileID: 1126285468}
+--- !u!114 &1126285468
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1368,6 +1368,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLife: 1000
+  currentHealth: 0
+  regenHealth: 1
   flowers:
   - {fileID: 904940535}
   - {fileID: 992947964}
@@ -1384,7 +1386,7 @@ MonoBehaviour:
   - {fileID: 1519375490}
   - {fileID: 1501293442}
   - {fileID: 1985516842}
-  damage: 1
+  damage: 2
   player: {fileID: 919132148634051467}
   startTakingLife: 0
 --- !u!1 &1229900898
@@ -2175,6 +2177,14 @@ PrefabInstance:
     - target: {fileID: 3509148576492548363, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979415656903382759, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979415656903382759, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
+      propertyPath: regenHealth
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3979415656903382759, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
       propertyPath: flowers.Array.data[0]
