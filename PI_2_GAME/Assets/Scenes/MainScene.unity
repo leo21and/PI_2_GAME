@@ -1354,39 +1354,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0}
   exp: 0
   vignetteColor: {r: 0.735849, g: 0.4269313, b: 0.68324316, a: 0}
-  playerDamage: {fileID: 1126285463}
---- !u!114 &1126285463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1126285457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ea565ce5f518dc48b57e7d15426a0fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerLife: 1000
-  flowers:
-  - {fileID: 904940535}
-  - {fileID: 992947964}
-  - {fileID: 1850432274}
-  - {fileID: 1229900898}
-  - {fileID: 1947163613}
-  - {fileID: 620636670}
-  - {fileID: 788599909}
-  - {fileID: 747781595}
-  - {fileID: 81432427}
-  - {fileID: 542467111}
-  - {fileID: 653569152}
-  - {fileID: 339184361}
-  - {fileID: 1519375490}
-  - {fileID: 1501293442}
-  - {fileID: 1985516842}
-  damage: 1
-  player: {fileID: 919132148634051467}
-  startTakingLife: 0
+  playerDamage: {fileID: 5866666021363180374}
 --- !u!1 &1229900898
 GameObject:
   m_ObjectHideFlags: 0
@@ -2177,6 +2145,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3979415656903382759, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979415656903382759, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
+      propertyPath: regenHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979415656903382759, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
       propertyPath: flowers.Array.data[0]
       value: 
       objectReference: {fileID: 904940535}
@@ -2266,6 +2242,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3509148576492548363, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
   m_PrefabInstance: {fileID: 3979415657445771322}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5866666021363180374 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3979415656903382759, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
+  m_PrefabInstance: {fileID: 3979415657445771322}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148634051467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea565ce5f518dc48b57e7d15426a0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8434462085612017795
 PrefabInstance:
   m_ObjectHideFlags: 0

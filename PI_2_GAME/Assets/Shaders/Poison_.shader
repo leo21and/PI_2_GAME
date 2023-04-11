@@ -42,15 +42,19 @@ Shader "Hidden/Poison_"
             float4 _Color;
             float _OffsetX;
             float _OffsetY;
+           // float _SceneRatio;
 			
 
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
                   
-                    float radial = sin(i.uv.x + _OffsetX) * cos(i.uv.y + _OffsetY);
-                    radial = pow(radial, _Exponential);
-                    return lerp(_Color, col, radial);
+                float radial = sin(i.uv.x + _OffsetX ) * cos(i.uv.y + _OffsetY);
+                    
+                radial = pow(radial, _Exponential);
+
+             
+                return lerp(_Color, col, radial);
             }
             ENDCG
         }
