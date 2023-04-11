@@ -10,6 +10,8 @@ public class Vignette : ImageEffectShaderBase
    public float exp;
    public Color vignetteColor;
    public PlayerDamage playerDamage;
+
+   
    
    private void OnRenderImage(RenderTexture src, RenderTexture dest)
    {
@@ -17,6 +19,7 @@ public class Vignette : ImageEffectShaderBase
       m_effectMaterial.SetFloat("_OffsetY", offset.y);
       m_effectMaterial.SetFloat("_Exponential", exp);
       m_effectMaterial.SetColor("_Color", vignetteColor);
+    
       
       Graphics.Blit(src, dest, m_effectMaterial); 
    }
