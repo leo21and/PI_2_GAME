@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 1253365200108141530}
   - component: {fileID: 1253365200109271322}
   - component: {fileID: 1253365200111527897}
-  - component: {fileID: 7372940419667312184}
+  - component: {fileID: 325688142264962575}
   m_Layer: 0
   m_Name: Bush01_LOD0
   m_TagString: Untagged
@@ -209,8 +209,8 @@ LightProbeProxyVolume:
   m_RefreshMode: 0
   m_QualityMode: 0
   m_DataFormat: 1
---- !u!64 &7372940419667312184
-MeshCollider:
+--- !u!65 &325688142264962575
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -219,10 +219,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: c93a5fb30f5956343a31433f79f362af, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 13.886776, y: 14.277656, z: 13.440036}
+  m_Center: {x: -0.22838667, y: 6.677789, z: -0.24980977}
 --- !u!1 &1253365200111527898
 GameObject:
   m_ObjectHideFlags: 0
