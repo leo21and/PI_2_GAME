@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private PlayerDamage pDamage;
     [SerializeField] private CollisionsAnimalsSilvas cas;
+
+    [SerializeField] private GameObject text;
     
 
     private void Awake()
@@ -41,7 +44,8 @@ public class PlayerController : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
         camera = FindObjectOfType<Camera>();
-        //flowerCount = GetComponent<FlowersToxic>().flowerSavedCount;
+        
+        
     }
     
     private void OnEnable()
@@ -123,33 +127,59 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Lock1"))
         {
+            text.SetActive(true);
+            StartCoroutine(Text());
+            
             Debug.Log("entrou");
+
             if (pDamage.countF == 1 && cas.countAnimais == 1 && cas.countSilvas == 1) 
             {
+                text.SetActive(false);
                 Destroy(collision.gameObject);
             }
         }
         else if (collision.gameObject.CompareTag("Lock2"))
         {
+            text.SetActive(true);
+            StartCoroutine(Text());
+            
             if (pDamage.countF == 5 && cas.countAnimais == 3 && cas.countSilvas == 3) //1 anterior+ 4 novas
             {
+                text.SetActive(false); 
                 Destroy(collision.gameObject);
             }
         }
         else if (collision.gameObject.CompareTag("Lock3"))
         {
+            text.SetActive(true);
+            StartCoroutine(Text());
+            
             if (pDamage.countF == 14 && cas.countAnimais == 6 && cas.countSilvas == 6)
             {
+                text.SetActive(false); 
                 Destroy(collision.gameObject);
             }
         }
         else if (collision.gameObject.tag == "Lock4")
         {
+            text.SetActive(true);
+            StartCoroutine(Text());
+            
             if (pDamage.countF == 26) //test
             {
+                text.SetActive(false); 
                 Destroy(collision.gameObject);
             }
         }
         
+    }
+
+    IEnumerator Text()
+    {
+        Debug.Log("iii");
+         
+        yield return new WaitForSeconds(1.2f);
+        text.SetActive(false);
+
     }
 }
