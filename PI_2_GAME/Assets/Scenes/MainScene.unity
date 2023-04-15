@@ -4293,6 +4293,10 @@ PrefabInstance:
       propertyPath: flowers.Array.data[14]
       value: 
       objectReference: {fileID: 1985516842}
+    - target: {fileID: 3979415657296422223, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
+      propertyPath: sensivity
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4321433250210229169, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
       propertyPath: m_Name
       value: Player
