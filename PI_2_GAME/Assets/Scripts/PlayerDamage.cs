@@ -15,6 +15,8 @@ public class PlayerDamage : MonoBehaviour
     private int flowerNumInRange;
 
     private PlayerInput playerInput;
+
+    public int countF;
     
     
 
@@ -46,7 +48,11 @@ public class PlayerDamage : MonoBehaviour
         if (other.gameObject.tag == "Toxic")
         {
             other.GetComponent<FlowersToxic>().flowerHeal = true;
+            other.GetComponent<FlowersToxic>().flowerSavedCount = 1;
+            countF++;
             
+            Debug.Log( other.GetComponent<FlowersToxic>().flowerSavedCount);
+
         }
     }
 

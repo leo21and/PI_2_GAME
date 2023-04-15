@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
 
     private Camera camera;
 
+    [SerializeField] private PlayerDamage pDamage;
+   // private int flowerCount;
+
     private void Awake()
     {
         playerInput = new PlayerInput(); 
@@ -35,7 +38,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
-        camera = FindObjectOfType<Camera>(); 
+        camera = FindObjectOfType<Camera>();
+        //flowerCount = GetComponent<FlowersToxic>().flowerSavedCount;
     }
     
     private void OnEnable()
@@ -108,6 +112,33 @@ public class PlayerController : MonoBehaviour
         cc.Move(horizontalMovement * speed * Time.deltaTime); 
       
         playerAnimator.SetFloat("Velocity", currentVelocity);
+        
+    }
+    
+    //UnlockAreas
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Lock1"))
+        {
+            Debug.Log("entrou");
+            if (pDamage.countF == 1) //&animais&silvas
+            {
+                Destroy(collision.gameObject);
+            }
+        }
+        else if (collision.gameObject.tag == "Lock2")
+        {
+           
+        }
+        else if (collision.gameObject.tag == "Lock3")
+        {
+            
+        }
+        else if (collision.gameObject.tag == "Lock4")
+        {
+            
+        }
         
     }
 }

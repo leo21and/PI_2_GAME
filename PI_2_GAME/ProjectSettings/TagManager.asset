@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Toxic
+  - Animais
+  - Silvas
+  - Lock1
+  - Lock2
+  - Lock3
+  - Lock4
   layers:
   - Default
   - TransparentFX
