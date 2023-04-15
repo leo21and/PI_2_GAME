@@ -23,6 +23,7 @@ public class BlackWizardAttack : MonoBehaviour
     // Number of plants each spawn
     public int numPlants;
 
+   
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +58,7 @@ public class BlackWizardAttack : MonoBehaviour
 
     public void SpawnObject(GameObject plant)
     {
+
         for (int i = 1; i <= numPlants; i++) {
             Vector3 newPosition = WhiteWizard.transform.position + spawnOffset;
             switch (i)
