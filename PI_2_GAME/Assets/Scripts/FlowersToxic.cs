@@ -8,7 +8,7 @@ public class FlowersToxic : MonoBehaviour
 
     public bool countedFlower;
 
-    public int flowerSavedCount;
+    
     
     // Start is called before the first frame update
     void Start()

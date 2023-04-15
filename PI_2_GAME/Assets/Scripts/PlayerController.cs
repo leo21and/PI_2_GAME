@@ -26,12 +26,14 @@ public class PlayerController : MonoBehaviour
     private Camera camera;
 
     [SerializeField] private PlayerDamage pDamage;
-   // private int flowerCount;
+    [SerializeField] private CollisionsAnimalsSilvas cas;
+    
 
     private void Awake()
     {
         playerInput = new PlayerInput(); 
         playerInput.Player.Jump.performed += OnJumpPressed;
+      
     }
 
     // Start is called before the first frame update
@@ -122,22 +124,31 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Lock1"))
         {
             Debug.Log("entrou");
-            if (pDamage.countF == 1) //&animais&silvas
+            if (pDamage.countF == 1 && cas.countAnimais == 1 && cas.countSilvas == 1) 
             {
                 Destroy(collision.gameObject);
             }
         }
-        else if (collision.gameObject.tag == "Lock2")
+        else if (collision.gameObject.CompareTag("Lock2"))
         {
-           
+            if (pDamage.countF == 5 && cas.countAnimais == 3 && cas.countSilvas == 3) //1 anterior+ 4 novas
+            {
+                Destroy(collision.gameObject);
+            }
         }
-        else if (collision.gameObject.tag == "Lock3")
+        else if (collision.gameObject.CompareTag("Lock3"))
         {
-            
+            if (pDamage.countF == 14 && cas.countAnimais == 6 && cas.countSilvas == 6)
+            {
+                Destroy(collision.gameObject);
+            }
         }
         else if (collision.gameObject.tag == "Lock4")
         {
-            
+            if (pDamage.countF == 26) //test
+            {
+                Destroy(collision.gameObject);
+            }
         }
         
     }

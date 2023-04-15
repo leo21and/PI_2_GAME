@@ -45,13 +45,13 @@ public class PlayerDamage : MonoBehaviour
     //substituido por raycast provavelemnte numa class para todos os raycasts onde deves incluir isto e uma referencia a class das Flowerstoxic
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Toxic")
+        if (other.gameObject.tag == "Toxic" && other.GetComponent<FlowersToxic>().flowerHeal == false)
         {
             other.GetComponent<FlowersToxic>().flowerHeal = true;
-            other.GetComponent<FlowersToxic>().flowerSavedCount = 1;
             countF++;
-            
-            Debug.Log( other.GetComponent<FlowersToxic>().flowerSavedCount);
+
+
+            Debug.Log(countF);
 
         }
     }
