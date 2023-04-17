@@ -12,6 +12,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CollisionsAnimalsSilvas.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FPCamera.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FlowersToxic.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menu/PauseMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerDamage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/ImageEffectShaderBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/Vignette.cs" root0="FORCE_HIGHLIGHTING" />
@@ -97,6 +98,9 @@
       <workItem from="1681229138844" duration="3988000" />
       <workItem from="1681564936564" duration="11278000" />
       <workItem from="1681723359679" duration="5869000" />
+      <workItem from="1681739807281" duration="7912000" />
+      <workItem from="1681748808208" duration="15000" />
+      <workItem from="1681749357567" duration="1897000" />
     </task>
     <servers />
   </component>

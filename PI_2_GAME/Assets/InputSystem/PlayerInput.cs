@@ -182,6 +182,34 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PAUSE"",
+            ""id"": ""64005390-b087-45f4-ab65-b75ee5c5048c"",
+            ""actions"": [
+                {
+                    ""name"": ""pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""095f09c5-da1a-4fac-8947-8e3b0777dc0d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2571e5ea-4211-4ca4-aeb0-458ae907f687"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -195,6 +223,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Powers_Spell1 = m_Powers.FindAction("Spell 1", throwIfNotFound: true);
         m_Powers_Spell2 = m_Powers.FindAction("Spell 2", throwIfNotFound: true);
         m_Powers_Spell3 = m_Powers.FindAction("Spell 3", throwIfNotFound: true);
+        // PAUSE
+        m_PAUSE = asset.FindActionMap("PAUSE", throwIfNotFound: true);
+        m_PAUSE_pause = m_PAUSE.FindAction("pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -368,6 +399,52 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public PowersActions @Powers => new PowersActions(this);
+
+    // PAUSE
+    private readonly InputActionMap m_PAUSE;
+    private List<IPAUSEActions> m_PAUSEActionsCallbackInterfaces = new List<IPAUSEActions>();
+    private readonly InputAction m_PAUSE_pause;
+    public struct PAUSEActions
+    {
+        private @PlayerInput m_Wrapper;
+        public PAUSEActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @pause => m_Wrapper.m_PAUSE_pause;
+        public InputActionMap Get() { return m_Wrapper.m_PAUSE; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PAUSEActions set) { return set.Get(); }
+        public void AddCallbacks(IPAUSEActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PAUSEActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PAUSEActionsCallbackInterfaces.Add(instance);
+            @pause.started += instance.OnPause;
+            @pause.performed += instance.OnPause;
+            @pause.canceled += instance.OnPause;
+        }
+
+        private void UnregisterCallbacks(IPAUSEActions instance)
+        {
+            @pause.started -= instance.OnPause;
+            @pause.performed -= instance.OnPause;
+            @pause.canceled -= instance.OnPause;
+        }
+
+        public void RemoveCallbacks(IPAUSEActions instance)
+        {
+            if (m_Wrapper.m_PAUSEActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPAUSEActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PAUSEActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PAUSEActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PAUSEActions @PAUSE => new PAUSEActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -378,5 +455,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnSpell1(InputAction.CallbackContext context);
         void OnSpell2(InputAction.CallbackContext context);
         void OnSpell3(InputAction.CallbackContext context);
+    }
+    public interface IPAUSEActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }

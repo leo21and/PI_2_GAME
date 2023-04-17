@@ -37,4 +37,6 @@ public class FPCamera : MonoBehaviour
         
         player.Rotate(Vector3.up * mouseX);
     }
+
+   
 }

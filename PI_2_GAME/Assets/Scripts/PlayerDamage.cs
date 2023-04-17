@@ -21,6 +21,8 @@ public class PlayerDamage : MonoBehaviour
     public CharacterController playercc;
     private Animator playeranimator;
     private int deathTime;
+
+    public GameObject gameOverMenu;
     
     
 
@@ -95,15 +97,16 @@ public class PlayerDamage : MonoBehaviour
                   // {
                        playerInput.Player.Disable();
                        playerInput.Powers.Disable();
+                       playerInput.PAUSE.Disable();
 
-                       if (deathTime <= 2)
+                       if (deathTime < 2)
                        { 
                            GoBackToLastLock();  
                        }
                        else
                        {
-                           gameObject.transform.position = new Vector3(0.79f, 0f, 15f);
-                           //mudar para aprecer o meu de restart 
+                           gameOverMenu.SetActive(true);
+                           currentHealth = playerLife;
                        }
                        
                   // }
@@ -191,6 +194,7 @@ public class PlayerDamage : MonoBehaviour
         currentHealth = playerLife;
         playerInput.Player.Enable();
         playerInput.Powers.Enable();
+        playerInput.PAUSE.Enable();
         deathTime++;
         Debug.Log(deathTime);
     }
