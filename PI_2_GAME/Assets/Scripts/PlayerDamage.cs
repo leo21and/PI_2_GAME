@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class PlayerDamage : MonoBehaviour
@@ -17,6 +18,9 @@ public class PlayerDamage : MonoBehaviour
     private PlayerInput playerInput;
 
     public int countF;
+    public CharacterController playercc;
+    private Animator playeranimator;
+    private int deathTime;
     
     
 
@@ -28,6 +32,8 @@ public class PlayerDamage : MonoBehaviour
         currentHealth = playerLife;
 
         playerInput = new PlayerInput();
+
+        playeranimator = GetComponent<Animator>();
 
         StartCoroutine(regenPlayerHealth());
 
@@ -74,20 +80,35 @@ public class PlayerDamage : MonoBehaviour
                    flower.GetComponent<FlowersToxic>().countedFlower = true;
 
                }
-               
-               
                if (!startTakingLife && flowerNumInRange > 0 && currentHealth > 0)
                {
                    StartCoroutine(TakeLife()); 
                }
-               else if (currentHealth <= 0)
+               else if (currentHealth <= 908) //mudar para zero
                {
                    //IMPLEMENTAR MORTE
+                   playeranimator.SetTrigger("IsDeath");
+
+
+                 //  if (playeranimator.GetCurrentAnimatorStateInfo(0).IsName("Death") &&
+                 //      (playeranimator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1))
+                  // {
+                       playerInput.Player.Disable();
+                       playerInput.Powers.Disable();
+
+                       if (deathTime <= 2)
+                       { 
+                           GoBackToLastLock();  
+                       }
+                       else
+                       {
+                           gameObject.transform.position = new Vector3(0.79f, 0f, 15f);
+                           //mudar para aprecer o meu de restart 
+                       }
+                       
+                  // }
                    
-                   playerInput.Player.Disable();
-                   playerInput.Powers.Disable(); //quando morre fazer sempre disable ao input
                }
-              
            }
        }
         
@@ -142,7 +163,36 @@ public class PlayerDamage : MonoBehaviour
                 yield return null;
             }
         }
+    }
+
+    public void GoBackToLastLock()
+    {
+        playercc.enabled = false;
         
+        
+        if(GameObject.Find("FourthLock") == null)
+        {
+            gameObject.transform.position = new Vector3(0.79f, 0f, 310f);
+        }
+        else if (GameObject.Find("ThirdLock") == null)
+        {
+            gameObject.transform.position = new Vector3(0.79f, 0f, 207f);
+        }
+        else if (GameObject.Find("SecondLock") == null)
+        {
+            gameObject.transform.position = new Vector3(0.79f, 0f, 92.4f);
+        }
+        else if (GameObject.Find("FirstLock") == null)
+        {
+            gameObject.transform.position = new Vector3(0.79f, 0f, 36.9f);
+        }
+
+        playercc.enabled = true;
+        currentHealth = playerLife;
+        playerInput.Player.Enable();
+        playerInput.Powers.Enable();
+        deathTime++;
+        Debug.Log(deathTime);
     }
     
     

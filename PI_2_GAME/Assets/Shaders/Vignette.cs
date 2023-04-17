@@ -27,6 +27,7 @@ public class Vignette : ImageEffectShaderBase
    public void Start()
    {
       offset = new Vector2(1f, -0.5f);
+      vignetteColor = Color.magenta;
    }
 
    public void Update()
@@ -49,15 +50,21 @@ public class Vignette : ImageEffectShaderBase
       else if ( playerDamage.currentHealth < playerDamage.playerLife - 10 && playerDamage.currentHealth > playerDamage.playerLife - 30)
       {
          exp = 0.5f;
+         vignetteColor = Color.magenta;
       }
       else if (playerDamage.currentHealth < playerDamage.playerLife - 30 && playerDamage.currentHealth > playerDamage.playerLife - 60)
       {
          exp = 0.9f;
+         vignetteColor = Color.magenta;
       }
       else if (playerDamage.currentHealth < playerDamage.playerLife - 60 && playerDamage.currentHealth > playerDamage.playerLife - 100)
       {
          exp = 1.2f;
+         vignetteColor = Color.red; //red a aparecer na ultima perda de vida
       }
+      
+      //acrescentar outra fase de perda de vida
+    
       //else está morto  e mudar a cor para vermelho ou preto
       //por som no toxic aqui
       //provavel mexer na intensidade
