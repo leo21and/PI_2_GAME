@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private Camera camera;
 
     [SerializeField] private PlayerDamage pDamage;
-    [SerializeField] private CollisionsAnimalsSilvas cas;
+    [SerializeField] private Collisions cas;
 
     [SerializeField] private GameObject text;
     
@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
             
             Debug.Log("entrou");
 
-            if (pDamage.countF == 1 && cas.countAnimais == 1 && cas.countSilvas == 1) 
+            if (cas.countF == 1 && cas.countAnimais == 1 && cas.countSilvas == 1) 
             {
                 text.SetActive(false);
                 Destroy(collision.gameObject);
@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
             text.SetActive(true);
             StartCoroutine(Text());
             
-            if (pDamage.countF == 5 && cas.countAnimais == 3 && cas.countSilvas == 3) //1 anterior+ 4 novas
+            if (cas.countF == 5 && cas.countAnimais == 3 && cas.countSilvas == 3) //1 anterior+ 4 novas
             {
                 text.SetActive(false); 
                 Destroy(collision.gameObject);
@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
             text.SetActive(true);
             StartCoroutine(Text());
             
-            if (pDamage.countF == 14 && cas.countAnimais == 6 && cas.countSilvas == 6)
+            if (cas.countF == 14 && cas.countAnimais == 6 && cas.countSilvas == 6)
             {
                 text.SetActive(false); 
                 Destroy(collision.gameObject);
@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
             text.SetActive(true);
             StartCoroutine(Text());
             
-            if (pDamage.countF == 26) //test
+            if (cas.countF == 26) //test
             {
                 text.SetActive(false); 
                 Destroy(collision.gameObject);

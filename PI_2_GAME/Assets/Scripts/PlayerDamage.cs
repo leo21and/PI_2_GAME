@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
@@ -17,19 +18,20 @@ public class PlayerDamage : MonoBehaviour
 
     private PlayerInput playerInput;
 
-    public int countF;
+    
     public CharacterController playercc;
     private Animator playeranimator;
     private int deathTime;
 
     public GameObject gameOverMenu;
-    
-    
+
+    public bool death;
 
     // Start is called before the first frame update
     void Start()
     {
         startTakingLife = false;
+        death = false;
 
         currentHealth = playerLife;
 
@@ -39,78 +41,48 @@ public class PlayerDamage : MonoBehaviour
 
         StartCoroutine(regenPlayerHealth());
 
+       
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        
         Damage();
         
        
         
     }
-
-    //substituido por raycast provavelemnte numa class para todos os raycasts onde deves incluir isto e uma referencia a class das Flowerstoxic
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Toxic" && other.GetComponent<FlowersToxic>().flowerHeal == false)
-        {
-            other.GetComponent<FlowersToxic>().flowerHeal = true;
-            countF++;
-
-
-            Debug.Log(countF);
-
-        }
-    }
+    
 
     private void Damage()
+    
     {
         foreach (GameObject flower in flowers)
        {
-           float dist = Vector3.Distance(player.transform.position, flower.transform.position); 
-           //maybe substituir os dois ifs por && -> let's see se nao e preciso implementar mais nada
-                    
+           float dist = Vector3.Distance(player.transform.position, flower.transform.position);
+
            if ( dist < 5 && flower.GetComponent<FlowersToxic>().flowerHeal == false)
            {
-               //Debug.Log("entrou2" + playerLife);
 
-               
                if (flower.GetComponent<FlowersToxic>().countedFlower == false)
                {
                    flowerNumInRange++;
                    flower.GetComponent<FlowersToxic>().countedFlower = true;
 
                }
-               if (!startTakingLife && flowerNumInRange > 0 && currentHealth > 0)
+               if (!startTakingLife && flowerNumInRange > 0 && currentHealth > 0) //&&currenthealth > 0
                {
                    StartCoroutine(TakeLife()); 
                }
-               else if (currentHealth <= 908) //mudar para zero
+               
+               else if (currentHealth <= 908 && !death) //mudar para zero
                {
-                   //IMPLEMENTAR MORTE
-                   playeranimator.SetTrigger("IsDeath");
 
+                   StartCoroutine(PrefomerAnim());
 
-                 //  if (playeranimator.GetCurrentAnimatorStateInfo(0).IsName("Death") &&
-                 //      (playeranimator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1))
-                  // {
-                       playerInput.Player.Disable();
-                       playerInput.Powers.Disable();
-                       playerInput.PAUSE.Disable();
-
-                       if (deathTime < 2)
-                       { 
-                           GoBackToLastLock();  
-                       }
-                       else
-                       {
-                           gameOverMenu.SetActive(true);
-                           currentHealth = playerLife;
-                       }
-                       
-                  // }
-                   
                }
            }
        }
@@ -121,18 +93,18 @@ public class PlayerDamage : MonoBehaviour
     IEnumerator TakeLife()
     {
         startTakingLife = true;
-        
+
         yield return new WaitForSeconds(1f);
 
         //default damage a 1 mudar se quisermos no inspector
+
+        
         int total = damage * flowerNumInRange;        
         currentHealth -= total; 
         //Meter som de dano ou animação
-        Debug.Log(currentHealth + "current"); 
-        
-        //Debug.Log(total + "finaldamage"); 
-       
-        
+        Debug.Log(currentHealth + "current");
+
+
         startTakingLife = false;
         flowerNumInRange = 0;
 
@@ -198,6 +170,34 @@ public class PlayerDamage : MonoBehaviour
         deathTime++;
         Debug.Log(deathTime);
     }
-    
-    
+
+
+    IEnumerator PrefomerAnim()
+    {
+        death = true;
+        playeranimator.SetTrigger("IsDeath");
+        
+
+        yield return new WaitForSeconds(5);
+        
+        playerInput.Player.Disable();
+        playerInput.Powers.Disable();
+        playerInput.PAUSE.Disable();
+               
+        if (deathTime < 2)
+        { 
+            GoBackToLastLock();  
+        }
+        else
+        {
+            gameOverMenu.SetActive(true);
+            currentHealth = playerLife;
+        }
+
+        death = false;
+
+
+
+    }
+  
 }
