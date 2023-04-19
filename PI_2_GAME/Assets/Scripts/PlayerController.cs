@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    
+
     private PlayerInput playerInput;
     public float speed;
     private Vector2 move;
@@ -30,13 +30,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Collisions cas;
 
     [SerializeField] private GameObject text;
-    
+
+    [SerializeField] private Spell spellToCast;
+    [SerializeField] private float maxPower = 100f;
+    [SerializeField] private float currentPower;
+    [SerializeField] private float powerRechargeRate = 2f;
+    [SerializeField] private float timeToWaitForRecharge = 1f;
+    private float currentPowerRechargeTimer;
+    [SerializeField] private float timeBetweenCasts = 0.25f;
+    private float currentCastTimer;
+    private bool castingMagic = false;
+
 
     private void Awake()
     {
         playerInput = new PlayerInput(); 
         playerInput.Player.Jump.performed += OnJumpPressed;
-      
+        currentPower = maxPower;
+
     }
 
     // Start is called before the first frame update
@@ -51,11 +62,13 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         playerInput.Player.Enable(); 
+        playerInput.Powers.Enable(); 
     }
 
     private void OnDisable()
     {
         playerInput.Player.Disable(); 
+        playerInput.Powers.Disable(); 
     }
 
     public void OnJumpPressed(InputAction.CallbackContext context)
@@ -98,6 +111,71 @@ public class PlayerController : MonoBehaviour
         
         Move();
         Jump();
+        Spells();
+    }
+
+    void Spells()
+    {
+        bool isSpellCastHeldDown = playerInput.Powers.Spell1.ReadValue<float>() > 0.1;
+        bool isSpell2CastHeldDown = playerInput.Powers.Spell2.ReadValue<float>() > 0.1;
+        bool isSpell3CastHeldDown = playerInput.Powers.Spell3.ReadValue<float>() > 0.1;
+        bool hasEnoughPower = currentPower - spellToCast.SpellToCast.PowerCost >= 0f;
+
+        if (!castingMagic && isSpellCastHeldDown && hasEnoughPower)
+        {
+            castingMagic = true;
+            currentPower -= spellToCast.SpellToCast.PowerCost;
+            currentCastTimer = 0;
+            currentPowerRechargeTimer = 0;
+            cas.CastSpell();
+        }
+
+        if (!castingMagic && isSpell2CastHeldDown && hasEnoughPower)
+        {
+            castingMagic = true;
+            currentPower -= spellToCast.SpellToCast.PowerCost;
+            currentCastTimer = 0;
+            currentPowerRechargeTimer = 0;
+            cas.CastSpell2();
+        }
+
+        if (!castingMagic && isSpell3CastHeldDown && hasEnoughPower)
+        {
+            castingMagic = true;
+            currentPower -= spellToCast.SpellToCast.PowerCost;
+            currentCastTimer = 0;
+            currentPowerRechargeTimer = 0;
+            cas.CastSpell3();
+        }
+
+        if (castingMagic)
+        {
+            currentCastTimer += Time.deltaTime;
+
+            if (currentCastTimer > timeBetweenCasts)
+            {
+                castingMagic = false;
+            }
+        }
+
+        if (currentPower < maxPower && !castingMagic && (!isSpellCastHeldDown || !isSpell2CastHeldDown || !isSpell3CastHeldDown))
+        {
+
+            currentPowerRechargeTimer += Time.deltaTime;
+
+            if (currentPowerRechargeTimer > timeToWaitForRecharge)
+            {
+
+                currentPower += powerRechargeRate * Time.deltaTime;
+
+                if (currentPower > maxPower)
+                {
+                    currentPower = maxPower;
+                }
+
+            }
+
+        }
     }
     
     

@@ -1136,6 +1136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLife: 1000
+  currentHealth: 0
+  regenHealth: 0
   flowers:
   - {fileID: 0}
   - {fileID: 0}
@@ -1155,6 +1157,9 @@ MonoBehaviour:
   damage: 1
   player: {fileID: 4321433250210229169}
   startTakingLife: 0
+  playercc: {fileID: 0}
+  gameOverMenu: {fileID: 0}
+  death: 0
 --- !u!114 &3979415656903382756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1176,6 +1181,9 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  pDamage: {fileID: 0}
+  cas: {fileID: 0}
+  text: {fileID: 0}
 --- !u!1 &4330894511995402220
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SocialPlatforms;
 
 
 public class Collisions : MonoBehaviour
@@ -28,7 +29,136 @@ public class Collisions : MonoBehaviour
     [SerializeField] private TMP_Text flower_text;
     [SerializeField] private TMP_Text animal_text;
     [SerializeField] private TMP_Text silva_text;
-    
+
+    public Camera cam;
+    public float range = 100f;
+    public float impactForce = 30f;
+    public GameObject impactEffect, impactEffect2, impactEffect3;
+
+    [SerializeField] private Spell spellToCast;
+    [SerializeField] private Transform castPoint;
+
+    public void CastSpell()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
+        {
+
+            //Instantiate(spellToCast, castPoint.position, castPoint.rotation);
+
+            if (hit.collider.gameObject.tag == "Animais" && hit.collider.GetComponent<Animais>().animalSaved == false)
+            {
+                hit.collider.GetComponent<Animais>().animalSaved = true;
+                countAnimais++;
+                CurrentLevel();
+                AnimalCollected.SetActive(true);
+                isWaitingA = true;
+            }
+
+            
+        }
+
+        if (hit.rigidbody != null)
+        {
+            hit.rigidbody.AddForce(-hit.normal * impactForce);
+        }
+
+        GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+        Destroy(impactGO, 2f);
+
+    }
+
+    public void CastSpell2()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
+        {
+
+            //Instantiate(spellToCast, castPoint.position, castPoint.rotation);
+
+            if (hit.collider.gameObject.tag == "Silvas" && hit.collider.GetComponent<Silvas>().silvaClean == false)
+            {
+                hit.collider.GetComponent<Silvas>().silvaClean = true;
+                countSilvas++;
+                CurrentLevel();
+                SilvaCollected.SetActive(true);
+                isWaitingS = true;
+            }
+
+
+        }
+
+        if (hit.rigidbody != null)
+        {
+            hit.rigidbody.AddForce(-hit.normal * impactForce);
+        }
+
+        GameObject impactGO = Instantiate(impactEffect2, hit.point, Quaternion.LookRotation(hit.normal));
+        Destroy(impactGO, 2f);
+
+    }
+
+    public void CastSpell3()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
+        {
+
+            //Instantiate(spellToCast, castPoint.position, castPoint.rotation);
+
+            if (hit.collider.gameObject.tag == "Toxic" && hit.collider.GetComponent<FlowersToxic>().flowerHeal == false)
+            {
+                hit.collider.GetComponent<FlowersToxic>().flowerHeal = true;
+                countF++;
+                CurrentLevel();
+                FlowerCollected.SetActive(true);
+                isWaitingF = true;
+            }
+
+
+        }
+
+        if (hit.rigidbody != null)
+        {
+            hit.rigidbody.AddForce(-hit.normal * impactForce);
+        }
+
+        GameObject impactGO = Instantiate(impactEffect3, hit.point, Quaternion.LookRotation(hit.normal));
+        Destroy(impactGO, 2f);
+
+    }
+
+    public void CurrentLevel()
+    {
+        if (GameObject.Find("FirstLock") != null)
+        {
+            flower_text.text = countF.ToString() + "/1";
+            animal_text.text = countAnimais.ToString() + "/1";
+            silva_text.text = countSilvas.ToString() + "/1";
+
+            Debug.Log("entrou aqui");
+        }
+        else if (GameObject.Find("SecondLock") != null)
+        {
+            flower_text.text = countF.ToString() + "/5";
+            animal_text.text = countAnimais.ToString() + "/3";
+            silva_text.text = countSilvas.ToString() + "/3";
+        }
+        else if (GameObject.Find("ThirdLock") != null)
+        {
+            flower_text.text = countF.ToString() + "/14";
+            animal_text.text = countAnimais.ToString() + "/6";
+            silva_text.text = countSilvas.ToString() + "/6";
+        }
+        else if (GameObject.Find("FourthLock") != null)
+        {
+            flower_text.text = countF.ToString() + "/24";
+            animal_text.text = countAnimais.ToString() + "/1";
+            silva_text.text = countSilvas.ToString() + "/1";
+        }
+
+    }
+
     private void Update()
     {
         if (isWaitingA)
@@ -67,71 +197,7 @@ public class Collisions : MonoBehaviour
     }
     
     
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Animais" && other.GetComponent<Animais>().animalSaved == false)
-        {
-            other.GetComponent<Animais>().animalSaved = true;
-            countAnimais++;
-            CurrentLevel();
-            AnimalCollected.SetActive(true);
-            isWaitingA = true;
-        }
 
-        if (other.gameObject.tag == "Silvas" && other.GetComponent<Silvas>().silvaClean == false)
-        {
-            other.GetComponent<Silvas>().silvaClean = true;
-            countSilvas++;
-            CurrentLevel();
-            SilvaCollected.SetActive(true);
-            isWaitingS = true;
-        }
-        
-        if (other.gameObject.tag == "Toxic" && other.GetComponent<FlowersToxic>().flowerHeal == false)
-        { 
-            other.GetComponent<FlowersToxic>().flowerHeal = true;
-            countF++;
-            CurrentLevel();
-            FlowerCollected.SetActive(true);
-            isWaitingF = true;
-
-
-            Debug.Log(countF);
-
-        }
-        
-    }
-    
-    public void CurrentLevel()
-    {
-        if (GameObject.Find("FirstLock") != null)
-        {
-            flower_text.text = countF.ToString() + "/1"; 
-            animal_text.text = countAnimais.ToString() + "/1"; 
-            silva_text.text = countSilvas.ToString() + "/1"; 
-            
-            Debug.Log("entrou aqui");
-        }
-         else if (GameObject.Find("SecondLock") != null)
-         {
-             flower_text.text = countF.ToString() + "/5"; 
-             animal_text.text = countAnimais.ToString() + "/3"; 
-             silva_text.text = countSilvas.ToString() + "/3";  
-         }
-         else if (GameObject.Find("ThirdLock") != null)
-         {
-             flower_text.text = countF.ToString() + "/14"; 
-             animal_text.text = countAnimais.ToString() + "/6"; 
-             silva_text.text = countSilvas.ToString() + "/6";  
-         }
-         else if(GameObject.Find("FourthLock") != null)
-         {
-             flower_text.text = countF.ToString() + "/24"; 
-             animal_text.text = countAnimais.ToString() + "/1"; 
-             silva_text.text = countSilvas.ToString() + "/1"; 
-         }
-
-    }
 
     
 }
