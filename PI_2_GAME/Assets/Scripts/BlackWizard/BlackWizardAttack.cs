@@ -23,12 +23,14 @@ public class BlackWizardAttack : MonoBehaviour
     // Number of plants each spawn
     public int numPlants;
 
-   
+    // VFX Effects
+    [SerializeField] GameObject Vfx;
 
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("WizardAttack", spawnTime, spawnDelay);
+        Vfx.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,17 +44,22 @@ public class BlackWizardAttack : MonoBehaviour
     {
 
         float distance = Vector3.Distance(WhiteWizard.position, BlackWizard.position);
-        if (distance <= 35 && distance >= 26)
+        if (distance <= 75 && distance >= 56)
         {
             SpawnObject(plant1Prefab);
+            WizardLightning();
+            SendThunder();
         }
-        else if (distance <= 25 && distance >= 16)
+        else if (distance <= 55 && distance >= 36)
         {
             SpawnObject(plant2Prefab);
+            WizardLightning();
         }
-        else if (distance <= 15)
+        else if (distance <= 35)
         {
             SpawnObject(plant3Prefab);
+            WizardLightning();
+  
         }
     }
 
@@ -81,4 +88,25 @@ public class BlackWizardAttack : MonoBehaviour
 
 
     }
+    void WizardLightning()
+    {
+        GameObject raio = Instantiate(Vfx, transform.position, transform.rotation);
+        raio.SetActive(true);
+        Destroy(raio, 1.00f);
+
+
+    }
+
+    void SendThunder()
+    {
+        Vector3 position = WhiteWizard.transform.position + new Vector3(0,40,0);
+        Quaternion rot = Quaternion.Euler(90, 0, 0);
+        Debug.Log(position);
+        GameObject raio = Instantiate(Vfx, position, rot);
+        raio.SetActive(true);
+        Destroy(raio, 1.00f);
+        
+        
+    }
+
 }
