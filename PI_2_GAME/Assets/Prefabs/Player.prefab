@@ -1184,6 +1184,11 @@ MonoBehaviour:
   pDamage: {fileID: 0}
   cas: {fileID: 0}
   text: {fileID: 0}
+  maxPower: 100
+  currentPower: 0
+  powerRechargeRate: 2
+  timeToWaitForRecharge: 1
+  timeBetweenCasts: 0.25
 --- !u!1 &4330894511995402220
 GameObject:
   m_ObjectHideFlags: 0

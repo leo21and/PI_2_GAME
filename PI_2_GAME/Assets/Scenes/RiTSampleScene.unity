@@ -1221,6 +1221,18 @@ PrefabInstance:
       propertyPath: WhiteWizard
       value: 
       objectReference: {fileID: 1089668984}
+    - target: {fileID: 3763753566243836424, guid: ac6c647e22d7f0448a5dcd616e2c9736, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 162
+      objectReference: {fileID: 0}
+    - target: {fileID: 3763753566243836424, guid: ac6c647e22d7f0448a5dcd616e2c9736, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -65.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3763753566243836424, guid: ac6c647e22d7f0448a5dcd616e2c9736, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 74.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac6c647e22d7f0448a5dcd616e2c9736, type: 3}
 --- !u!1001 &8434462085612017795
