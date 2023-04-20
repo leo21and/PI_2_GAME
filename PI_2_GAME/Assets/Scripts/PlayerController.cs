@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject text;
 
-    private Spell spellToCast; //Ser
+    [SerializeField] private Spell spellToCast; //Ser
     [SerializeField] private float maxPower = 100f;
     [SerializeField] private float currentPower;
     [SerializeField] private float powerRechargeRate = 2f;
@@ -116,66 +116,66 @@ public class PlayerController : MonoBehaviour
 
     void Spells()
      {
-    //     bool isSpellCastHeldDown = playerInput.Powers.Spell1.ReadValue<float>() > 0.1;
-    //     bool isSpell2CastHeldDown = playerInput.Powers.Spell2.ReadValue<float>() > 0.1;
-    //     bool isSpell3CastHeldDown = playerInput.Powers.Spell3.ReadValue<float>() > 0.1;
-    //     bool hasEnoughPower = currentPower - spellToCast.SpellToCast.PowerCost >= 0f;
-    //
-    //     if (!castingMagic && isSpellCastHeldDown && hasEnoughPower)
-    //     {
-    //         castingMagic = true;
-    //         currentPower -= spellToCast.SpellToCast.PowerCost;
-    //         currentCastTimer = 0;
-    //         currentPowerRechargeTimer = 0;
-    //         cas.CastSpell();
-    //     }
-    //
-    //     if (!castingMagic && isSpell2CastHeldDown && hasEnoughPower)
-    //     {
-    //         castingMagic = true;
-    //         currentPower -= spellToCast.SpellToCast.PowerCost;
-    //         currentCastTimer = 0;
-    //         currentPowerRechargeTimer = 0;
-    //         cas.CastSpell2();
-    //     }
-    //
-    //     if (!castingMagic && isSpell3CastHeldDown && hasEnoughPower)
-    //     {
-    //         castingMagic = true;
-    //         currentPower -= spellToCast.SpellToCast.PowerCost;
-    //         currentCastTimer = 0;
-    //         currentPowerRechargeTimer = 0;
-    //         cas.CastSpell3();
-    //     }
-    //
-    //     if (castingMagic)
-    //     {
-    //         currentCastTimer += Time.deltaTime;
-    //
-    //         if (currentCastTimer > timeBetweenCasts)
-    //         {
-    //             castingMagic = false;
-    //         }
-    //     }
-    //
-    //     if (currentPower < maxPower && !castingMagic && (!isSpellCastHeldDown || !isSpell2CastHeldDown || !isSpell3CastHeldDown))
-    //     {
-    //
-    //         currentPowerRechargeTimer += Time.deltaTime;
-    //
-    //         if (currentPowerRechargeTimer > timeToWaitForRecharge)
-    //         {
-    //
-    //             currentPower += powerRechargeRate * Time.deltaTime;
-    //
-    //             if (currentPower > maxPower)
-    //             {
-    //                 currentPower = maxPower;
-    //             }
-    //
-    //         }
-    //
-     //   }
+      bool isSpellCastHeldDown = playerInput.Powers.Spell1.ReadValue<float>() > 0.1;
+      bool isSpell2CastHeldDown = playerInput.Powers.Spell2.ReadValue<float>() > 0.1;
+      bool isSpell3CastHeldDown = playerInput.Powers.Spell3.ReadValue<float>() > 0.1;
+      bool hasEnoughPower = currentPower - spellToCast.SpellToCast.PowerCost >= 0f;
+    
+      if (!castingMagic && isSpellCastHeldDown && hasEnoughPower)
+      {
+          castingMagic = true;
+          currentPower -= spellToCast.SpellToCast.PowerCost;
+          currentCastTimer = 0;
+          currentPowerRechargeTimer = 0;
+          cas.CastSpell();
+      }
+    
+      if (!castingMagic && isSpell2CastHeldDown && hasEnoughPower)
+      {
+          castingMagic = true;
+          currentPower -= spellToCast.SpellToCast.PowerCost;
+          currentCastTimer = 0;
+          currentPowerRechargeTimer = 0;
+          cas.CastSpell2();
+      }
+    
+      if (!castingMagic && isSpell3CastHeldDown && hasEnoughPower)
+      {
+          castingMagic = true;
+          currentPower -= spellToCast.SpellToCast.PowerCost;
+          currentCastTimer = 0;
+          currentPowerRechargeTimer = 0;
+          cas.CastSpell3();
+      }
+    
+      if (castingMagic)
+      {
+          currentCastTimer += Time.deltaTime;
+    
+          if (currentCastTimer > timeBetweenCasts)
+          {
+              castingMagic = false;
+          }
+      }
+    
+      if (currentPower < maxPower && !castingMagic && (!isSpellCastHeldDown || !isSpell2CastHeldDown || !isSpell3CastHeldDown))
+      {
+    
+          currentPowerRechargeTimer += Time.deltaTime;
+    
+          if (currentPowerRechargeTimer > timeToWaitForRecharge)
+          {
+    
+              currentPower += powerRechargeRate * Time.deltaTime;
+    
+              if (currentPower > maxPower)
+              {
+                  currentPower = maxPower;
+              }
+    
+          }
+    
+     }
     }
     
     
