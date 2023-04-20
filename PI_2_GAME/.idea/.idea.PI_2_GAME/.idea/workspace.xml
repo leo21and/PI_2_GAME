@@ -16,6 +16,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerDamage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/ImageEffectShaderBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shaders/Vignette.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.shadergraph@12.1.10/Editor/Drawing/Blackboard/SGBlackboardCategory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualeffectgraph@12.1.10/Editor/Core/VFXLibrary.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -105,6 +107,7 @@
       <workItem from="1681752132883" duration="331000" />
       <workItem from="1681827327570" duration="17386000" />
       <workItem from="1681903140276" duration="976000" />
+      <workItem from="1682000727159" duration="1637000" />
     </task>
     <servers />
   </component>
