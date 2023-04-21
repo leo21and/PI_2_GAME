@@ -10481,6 +10481,7 @@ MonoBehaviour:
   meshRenderer: {fileID: 840255094}
   dissolveRate: 0.0125
   refreshRate: 0.025
+  dissolve: 0
 --- !u!1 &309829776
 GameObject:
   m_ObjectHideFlags: 0
@@ -10529,6 +10530,7 @@ MonoBehaviour:
   meshRenderer: {fileID: 462856982}
   dissolveRate: 0.0125
   refreshRate: 0.025
+  dissolve: 0
 --- !u!1 &330221941
 GameObject:
   m_ObjectHideFlags: 0
@@ -20569,6 +20571,7 @@ MonoBehaviour:
   meshRenderer: {fileID: 1789219974}
   dissolveRate: 0.0125
   refreshRate: 0.025
+  dissolve: 0
 --- !u!1 &377489833
 GameObject:
   m_ObjectHideFlags: 0
@@ -36124,6 +36127,7 @@ MonoBehaviour:
   meshRenderer: {fileID: 1758232689}
   dissolveRate: 0.0125
   refreshRate: 0.025
+  dissolve: 0
 --- !u!1 &585645408
 GameObject:
   m_ObjectHideFlags: 0
@@ -42721,6 +42725,7 @@ MonoBehaviour:
   meshRenderer: {fileID: 744646348}
   dissolveRate: 0.0125
   refreshRate: 0.025
+  dissolve: 0
 --- !u!1 &867544453
 GameObject:
   m_ObjectHideFlags: 0
@@ -55009,6 +55014,7 @@ MonoBehaviour:
   meshRenderer: {fileID: 1911559768}
   dissolveRate: 0.0125
   refreshRate: 0.025
+  dissolve: 0
 --- !u!1 &1382986917
 GameObject:
   m_ObjectHideFlags: 0

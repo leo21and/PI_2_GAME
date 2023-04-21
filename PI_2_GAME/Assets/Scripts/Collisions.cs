@@ -38,6 +38,9 @@ public class Collisions : MonoBehaviour
     [SerializeField] private Spell spellToCast;
     [SerializeField] private Transform castPoint;
 
+  
+    
+
     public void CastSpell()
     {
         RaycastHit hit;
@@ -46,7 +49,7 @@ public class Collisions : MonoBehaviour
 
             //Instantiate(spellToCast, castPoint.position, castPoint.rotation);
 
-            if (hit.collider.gameObject.tag == "Animais" && hit.collider.GetComponent<Animais>().animalSaved == false)
+            if (hit.collider.tag == "Animais" && hit.collider.GetComponent<Animais>().animalSaved == false)
             {
                 hit.collider.GetComponent<Animais>().animalSaved = true;
                 countAnimais++;
@@ -55,12 +58,6 @@ public class Collisions : MonoBehaviour
                 isWaitingA = true;
             }
 
-            
-        }
-
-        if (hit.rigidbody != null)
-        {
-            hit.rigidbody.AddForce(-hit.normal * impactForce);
         }
 
         GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
@@ -73,26 +70,24 @@ public class Collisions : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
-
-            //Instantiate(spellToCast, castPoint.position, castPoint.rotation);
-
-            if (hit.collider.gameObject.tag == "Silvas" && hit.collider.GetComponent<Silvas>().silvaClean == false)
+        
+        
+        
+            if (hit.collider.tag == "Silvas" && hit.collider.GetComponent<Silvas>().silvaClean == false)
             {
                 hit.collider.GetComponent<Silvas>().silvaClean = true;
+                
+             
                 countSilvas++;
                 CurrentLevel();
                 SilvaCollected.SetActive(true);
                 isWaitingS = true;
             }
-
-
+        
+        
         }
 
-        if (hit.rigidbody != null)
-        {
-            hit.rigidbody.AddForce(-hit.normal * impactForce);
-        }
-
+       
         GameObject impactGO = Instantiate(impactEffect2, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impactGO, 2f);
 
@@ -106,7 +101,7 @@ public class Collisions : MonoBehaviour
 
             //Instantiate(spellToCast, castPoint.position, castPoint.rotation);
 
-            if (hit.collider.gameObject.tag == "Toxic" && hit.collider.GetComponent<FlowersToxic>().flowerHeal == false)
+            if (hit.collider.tag == "Toxic" && hit.collider.GetComponent<FlowersToxic>().flowerHeal == false)
             {
                 hit.collider.GetComponent<FlowersToxic>().flowerHeal = true;
                 countF++;
@@ -118,15 +113,13 @@ public class Collisions : MonoBehaviour
 
         }
 
-        if (hit.rigidbody != null)
-        {
-            hit.rigidbody.AddForce(-hit.normal * impactForce);
-        }
-
+       
         GameObject impactGO = Instantiate(impactEffect3, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impactGO, 2f);
 
     }
+
+ 
 
     public void CurrentLevel()
     {
