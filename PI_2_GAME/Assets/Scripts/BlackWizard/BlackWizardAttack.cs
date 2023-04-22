@@ -54,12 +54,13 @@ public class BlackWizardAttack : MonoBehaviour
         {
             SpawnObject(plant2Prefab);
             WizardLightning();
+            SendThunder();
         }
         else if (distance <= 35)
         {
             SpawnObject(plant3Prefab);
             WizardLightning();
-  
+            SendThunder();
         }
     }
 
@@ -93,8 +94,6 @@ public class BlackWizardAttack : MonoBehaviour
         GameObject raio = Instantiate(Vfx, transform.position, transform.rotation);
         raio.SetActive(true);
         Destroy(raio, 1.00f);
-
-
     }
 
     void SendThunder()
