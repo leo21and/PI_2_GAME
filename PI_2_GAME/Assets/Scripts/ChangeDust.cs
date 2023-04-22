@@ -37,7 +37,8 @@ public class ChangeDust : MonoBehaviour
 
         var main = dust.main;
         main.startColor = new Color(0, 255,192, 70);
-        
+
+    
         yield return new WaitForSeconds(5);
         
         toxicDust.SetActive(false);
