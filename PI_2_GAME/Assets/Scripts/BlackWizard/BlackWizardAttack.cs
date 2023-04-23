@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class BlackWizardAttack : MonoBehaviour
 {
+    private Animator mAnimator;
+
     // Characters
+    [Header ("Characters Prefabs")]
     public Transform WhiteWizard;
     public Transform BlackWizard;
 
-    // Plants
+    [Header("Attack Prefabs")]
     public GameObject plant1Prefab;
     public GameObject plant2Prefab;
     public GameObject plant3Prefab;
+    [SerializeField] GameObject Thunder;
+    [SerializeField] GameObject UpBeam;
 
+    [Header("Attack Level 1")]
+    public float distance1;
+    public bool sendPlant1;
+    public bool sendThunder1;
+
+    [Header("Attack Level 2")]
+    public float distance2;
+    public bool sendPlant2;
+    public bool sendThunder2;
+
+    [Header("Attack Level 3")]
+    public float distance3;
+    public bool sendPlant3;
+    public bool sendThunder3;
+
+    [Header("Geral")]
     // Spawn Position
     public Vector3 spawnOffset;
 
@@ -23,14 +44,18 @@ public class BlackWizardAttack : MonoBehaviour
     // Number of plants each spawn
     public int numPlants;
 
-    // VFX Effects
-    [SerializeField] GameObject Vfx;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        //
+        mAnimator = GetComponent<Animator>();
+
+
+        // Check if player is in the area
         InvokeRepeating("WizardAttack", spawnTime, spawnDelay);
-        Vfx.SetActive(false);
+        Thunder.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,23 +69,56 @@ public class BlackWizardAttack : MonoBehaviour
     {
 
         float distance = Vector3.Distance(WhiteWizard.position, BlackWizard.position);
-        if (distance <= 75 && distance >= 56)
+        if (distance <= distance1 && distance >= (distance2+1))
         {
-            SpawnObject(plant1Prefab);
-            WizardLightning();
-            SendThunder();
+            if (sendPlant1)
+            {
+                mAnimator.SetTrigger("TrPlant");
+                Invoke("", 4);
+                SpawnObject(plant1Prefab);
+            }
+            if (sendThunder1)
+            {
+                mAnimator.SetTrigger("TrThunder");
+                Invoke("WizardLightning", 1);
+                Invoke("SendThunder",2);
+
+            }
+            
         }
-        else if (distance <= 55 && distance >= 36)
+        else if (distance <= distance2 && distance >= (distance3+1))
         {
-            SpawnObject(plant2Prefab);
-            WizardLightning();
-            SendThunder();
+            if (sendPlant2)
+            {
+                mAnimator.SetTrigger("TrPlant");
+                Invoke("", 2);
+                SpawnObject(plant2Prefab);
+            }
+            if (sendThunder2)
+            {
+                mAnimator.SetTrigger("TrThunder");
+                Invoke("WizardLightning", 1);
+                Invoke("SendThunder", 2);
+
+            }
+
         }
-        else if (distance <= 35)
+        else if (distance <= distance3)
         {
-            SpawnObject(plant3Prefab);
-            WizardLightning();
-            SendThunder();
+            if (sendPlant3)
+            {
+                mAnimator.SetTrigger("TrPlant");
+                Invoke("", 4);
+                SpawnObject(plant3Prefab);
+            }
+            if (sendThunder3)
+            {
+                mAnimator.SetTrigger("TrThunder");
+                Invoke("WizardLightning", 1);
+                Invoke("SendThunder", 2);
+
+            }
+
         }
     }
 
@@ -91,7 +149,10 @@ public class BlackWizardAttack : MonoBehaviour
     }
     void WizardLightning()
     {
-        GameObject raio = Instantiate(Vfx, transform.position, transform.rotation);
+        Vector3 position = BlackWizard.transform.position + new Vector3(0, 3, 0);
+        Quaternion rot = Quaternion.Euler(-90, 0, 0);
+        Debug.Log(position);
+        GameObject raio = Instantiate(UpBeam, position, rot);
         raio.SetActive(true);
         Destroy(raio, 1.00f);
     }
@@ -100,12 +161,10 @@ public class BlackWizardAttack : MonoBehaviour
     {
         Vector3 position = WhiteWizard.transform.position + new Vector3(0,40,0);
         Quaternion rot = Quaternion.Euler(90, 0, 0);
-        Debug.Log(position);
-        GameObject raio = Instantiate(Vfx, position, rot);
+        //Debug.Log(position);
+        GameObject raio = Instantiate(Thunder, position, rot);
         raio.SetActive(true);
         Destroy(raio, 1.00f);
-        
-        
     }
 
 }
