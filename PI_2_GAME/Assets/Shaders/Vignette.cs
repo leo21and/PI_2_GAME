@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = Unity.Mathematics.Random;
 
 public class Vignette : ImageEffectShaderBase
 {
@@ -11,6 +13,8 @@ public class Vignette : ImageEffectShaderBase
    public Color vignetteColor;
    public PlayerDamage playerDamage;
 
+   private bool startShake;
+   private int count;
    
    
    private void OnRenderImage(RenderTexture src, RenderTexture dest)
@@ -28,6 +32,7 @@ public class Vignette : ImageEffectShaderBase
    {
       offset = new Vector2(1f, -0.5f);
       vignetteColor = Color.magenta;
+      startShake = false;
    }
 
    public void Update()
@@ -51,11 +56,22 @@ public class Vignette : ImageEffectShaderBase
       {
          exp = 0.5f;
          vignetteColor = Color.magenta;
+
+         if (!startShake && count < 2)
+         {
+            StartCoroutine(Shake(.2f, .2f)); 
+         }
+
       }
       else if (playerDamage.currentHealth < playerDamage.playerLife - 30 && playerDamage.currentHealth > playerDamage.playerLife - 60)
       {
          exp = 0.9f;
          vignetteColor = Color.magenta;
+
+         if (!startShake && count >= 1 && count < 3)
+         {
+            StartCoroutine(Shake(.2f, .2f));  
+         }
       }
       else if (playerDamage.currentHealth < playerDamage.playerLife - 60 && playerDamage.currentHealth > playerDamage.playerLife - 100)
       {
@@ -70,10 +86,39 @@ public class Vignette : ImageEffectShaderBase
       //provavel mexer na intensidade
    }
 
+   
+   public IEnumerator Shake(float duration, float magnitude)
+   {
+      
+      startShake = true;
+
+      Vector3 originalPos = transform.localPosition;
+   
+      float elapsed = 0f;
+
+      while (elapsed < duration)
+      {
+         
+         float x = UnityEngine.Random.Range(-1f, 1f) * magnitude;
+         
+        
+         transform.localPosition = new Vector3(x, originalPos.y, originalPos.z);
+         
+         elapsed += Time.deltaTime;
+
+         
+         yield return null;
+      }
+
+      count++;
+      transform.localPosition = originalPos;
+      
+      Debug.Log(count);
+   
+      startShake = false;
 
 
-
-
+   }
 
 }
 

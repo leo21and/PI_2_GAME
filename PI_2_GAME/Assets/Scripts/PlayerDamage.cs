@@ -26,6 +26,11 @@ public class PlayerDamage : MonoBehaviour
     public GameObject gameOverMenu;
 
     public bool death;
+    [SerializeField] private GameObject cam;
+    [SerializeField] private GameObject maincam;
+    private PlayerController pc;
+
+  
 
     // Start is called before the first frame update
     void Start()
@@ -41,18 +46,21 @@ public class PlayerDamage : MonoBehaviour
 
         StartCoroutine(regenPlayerHealth());
 
-       
+        pc = GetComponent<PlayerController>();
+
+
 
     }
+    
+   
 
     // Update is called once per frame
     void Update()
     {
-
+        
         
         Damage();
         
-       
         
     }
     
@@ -75,12 +83,14 @@ public class PlayerDamage : MonoBehaviour
                }
                if (!startTakingLife && flowerNumInRange > 0 && currentHealth > 0) //&&currenthealth > 0
                {
-                   StartCoroutine(TakeLife()); 
+                   StartCoroutine(TakeLife());
+
+                  
                }
                
-               else if (currentHealth <= 908 && !death) //mudar para zero
+               else if (currentHealth <= 908 && !death) //mudar para zero //908
                {
-
+             
                    StartCoroutine(PrefomerAnim());
 
                }
@@ -104,7 +114,7 @@ public class PlayerDamage : MonoBehaviour
         //Meter som de dano ou animação
         Debug.Log(currentHealth + "current");
 
-
+      
         startTakingLife = false;
         flowerNumInRange = 0;
 
@@ -143,6 +153,7 @@ public class PlayerDamage : MonoBehaviour
     public void GoBackToLastLock()
     {
         playercc.enabled = false;
+        pc.OnEnable(); 
         
         
         if(GameObject.Find("FourthLock") == null)
@@ -164,9 +175,7 @@ public class PlayerDamage : MonoBehaviour
 
         playercc.enabled = true;
         currentHealth = playerLife;
-        playerInput.Player.Enable();
-        playerInput.Powers.Enable();
-        playerInput.PAUSE.Enable();
+        
         deathTime++;
         Debug.Log(deathTime);
     }
@@ -175,14 +184,25 @@ public class PlayerDamage : MonoBehaviour
     IEnumerator PrefomerAnim()
     {
         death = true;
+              
+        pc.OnDisable();
+
+        cam.transform.Rotate(50,0,0 );
+     
+        cam.transform.position = player.transform.position + new Vector3(0,13,-9);
+        
+        maincam.SetActive(false);
+        cam.SetActive(true);
         playeranimator.SetTrigger("IsDeath");
         
 
         yield return new WaitForSeconds(5);
         
-        playerInput.Player.Disable();
-        playerInput.Powers.Disable();
-        playerInput.PAUSE.Disable();
+        cam.SetActive(false);
+        maincam.SetActive(true);
+        cam.transform.Rotate(-50,0,0);
+        
+      
                
         if (deathTime < 2)
         { 
@@ -195,9 +215,9 @@ public class PlayerDamage : MonoBehaviour
         }
 
         death = false;
-
-
-
+        
     }
+
+    
   
 }

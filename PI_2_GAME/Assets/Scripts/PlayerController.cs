@@ -59,16 +59,18 @@ public class PlayerController : MonoBehaviour
         
     }
     
-    private void OnEnable()
+    public void OnEnable()
     {
         playerInput.Player.Enable(); 
         playerInput.Powers.Enable(); 
+        playerInput.PAUSE.Enable();
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         playerInput.Player.Disable(); 
         playerInput.Powers.Disable(); 
+        playerInput.PAUSE.Disable();
     }
 
     public void OnJumpPressed(InputAction.CallbackContext context)
