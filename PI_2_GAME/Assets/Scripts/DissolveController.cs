@@ -35,7 +35,7 @@ public class DissolveController : MonoBehaviour
         //Quando se desfazer
         if (!dissolve && silvas.silvaClean)
         {
-            Debug.Log("entraqui", silvas);
+            
             StartCoroutine(Dissolve());
         }
     }

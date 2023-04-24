@@ -14,7 +14,7 @@ public class Vignette : ImageEffectShaderBase
    public PlayerDamage playerDamage;
 
    private bool startShake;
-   private int count;
+
    
    
    private void OnRenderImage(RenderTexture src, RenderTexture dest)
@@ -38,6 +38,7 @@ public class Vignette : ImageEffectShaderBase
    public void Update()
    {
       OnDamage();
+      StartShake();
    }
 
    public void OnDamage()
@@ -57,21 +58,14 @@ public class Vignette : ImageEffectShaderBase
          exp = 0.5f;
          vignetteColor = Color.magenta;
 
-         if (!startShake && count < 2)
-         {
-            StartCoroutine(Shake(.2f, .2f)); 
-         }
 
+         
       }
       else if (playerDamage.currentHealth < playerDamage.playerLife - 30 && playerDamage.currentHealth > playerDamage.playerLife - 60)
       {
          exp = 0.9f;
          vignetteColor = Color.magenta;
 
-         if (!startShake && count >= 1 && count < 3)
-         {
-            StartCoroutine(Shake(.2f, .2f));  
-         }
       }
       else if (playerDamage.currentHealth < playerDamage.playerLife - 60 && playerDamage.currentHealth > playerDamage.playerLife - 100)
       {
@@ -99,9 +93,9 @@ public class Vignette : ImageEffectShaderBase
       while (elapsed < duration)
       {
          
-         float x = UnityEngine.Random.Range(-1f, 1f) * magnitude;
-         
-        
+         float x = UnityEngine.Random.Range(-2f, 2f) * magnitude;
+
+
          transform.localPosition = new Vector3(x, originalPos.y, originalPos.z);
          
          elapsed += Time.deltaTime;
@@ -110,14 +104,27 @@ public class Vignette : ImageEffectShaderBase
          yield return null;
       }
 
-      count++;
+      
       transform.localPosition = originalPos;
       
-      Debug.Log(count);
+      
    
       startShake = false;
 
 
+   }
+
+   public void StartShake()
+   {
+      if (!startShake && playerDamage.startTakingLife)
+      {
+         if (playerDamage.currentHealth == playerDamage.playerLife - 10 ||
+             playerDamage.currentHealth == playerDamage.playerLife - 30 ||
+             playerDamage.currentHealth == playerDamage.playerLife - 60)
+         {
+            StartCoroutine(Shake(.3f,.2f));
+         }
+      }
    }
 
 }

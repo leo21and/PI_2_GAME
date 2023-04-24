@@ -30,6 +30,8 @@ public class PlayerDamage : MonoBehaviour
     [SerializeField] private GameObject maincam;
     private PlayerController pc;
 
+    
+
   
 
     // Start is called before the first frame update
@@ -138,7 +140,7 @@ public class PlayerDamage : MonoBehaviour
                 else
                 {
                     currentHealth += regenHealth;
-                    Debug.Log(currentHealth + "renovada"); 
+                    //Debug.Log(currentHealth + "renovada"); 
                 }
 
                 yield return new WaitForSeconds(2); //2 ou 1.tal, ver dp no balance
@@ -177,15 +179,17 @@ public class PlayerDamage : MonoBehaviour
         currentHealth = playerLife;
         
         deathTime++;
-        Debug.Log(deathTime);
+        
     }
 
 
     IEnumerator PrefomerAnim()
     {
         death = true;
+        
               
         pc.OnDisable();
+        playeranimator.SetTrigger("IsDeath");
 
         cam.transform.Rotate(50,0,0 );
      
@@ -193,10 +197,12 @@ public class PlayerDamage : MonoBehaviour
         
         maincam.SetActive(false);
         cam.SetActive(true);
-        playeranimator.SetTrigger("IsDeath");
         
+         
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4.6f);
+       
+        
         
         cam.SetActive(false);
         maincam.SetActive(true);

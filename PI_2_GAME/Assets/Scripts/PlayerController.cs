@@ -210,7 +210,6 @@ public class PlayerController : MonoBehaviour
             text.SetActive(true);
             StartCoroutine(Text());
             
-            Debug.Log("entrou");
 
             if (cas.countF == 1 && cas.countAnimais == 1 && cas.countSilvas == 1) 
             {
@@ -256,8 +255,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Text()
     {
-        Debug.Log("iii");
-         
+
         yield return new WaitForSeconds(1.2f);
         text.SetActive(false);
 
