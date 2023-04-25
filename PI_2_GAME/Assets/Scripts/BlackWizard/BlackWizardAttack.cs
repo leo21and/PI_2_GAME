@@ -17,8 +17,8 @@ public class BlackWizardAttack : MonoBehaviour
     public GameObject plant3Prefab;
     private GameObject plant; 
     [SerializeField] GameObject Thunder;
-    [SerializeField] GameObject UpBeam;
-    [SerializeField] GameObject FrontBeam;
+    [SerializeField] ParticleSystem UpBeam;
+    [SerializeField] ParticleSystem FrontBeam;
 
     [Header("Attack Level 1")]
     public float distance1;
@@ -83,7 +83,7 @@ public class BlackWizardAttack : MonoBehaviour
             if (sendThunder1)
             {
                 mAnimator.SetTrigger("TrThunder");
-                Invoke("WizardLightning", 1);
+                Invoke("SendUpBeam", 0.75f);
                 Invoke("SendThunder",2);
 
             }
@@ -102,7 +102,7 @@ public class BlackWizardAttack : MonoBehaviour
             if (sendThunder2)
             {
                 mAnimator.SetTrigger("TrThunder");
-                Invoke("WizardLightning", 1);
+                Invoke("SendUpBeam", 0.75f);
                 Invoke("SendThunder", 2);
 
             }
@@ -120,7 +120,7 @@ public class BlackWizardAttack : MonoBehaviour
             if (sendThunder3)
             {
                 mAnimator.SetTrigger("TrThunder");
-                Invoke("WizardLightning", 1);
+                Invoke("SendUpBeam", 0.75f);
                 Invoke("SendThunder", 2);
 
             }
@@ -139,14 +139,9 @@ public class BlackWizardAttack : MonoBehaviour
 
 
     }
-    void WizardLightning()
+    void SendUpBeam()
     {
-        Vector3 position = BlackWizard.transform.position + new Vector3(0, 3, 0);
-        Quaternion rot = Quaternion.Euler(-90, 0, 0);
-        //Debug.Log(position);
-        GameObject raio = Instantiate(UpBeam, position, rot);
-        raio.SetActive(true);
-        Destroy(raio, 1.00f);
+        UpBeam.Play();
     }
 
     void SendThunder()
@@ -161,12 +156,7 @@ public class BlackWizardAttack : MonoBehaviour
 
     void SendFrontBeam()
     {
-        Vector3 position = BlackWizard.transform.position + new Vector3(0, 3, 0);
-        Quaternion rot = Quaternion.Euler(180, 0, 0);
-        Debug.Log(position);
-        GameObject raio = Instantiate(FrontBeam, position, rot);
-        raio.SetActive(true);
-        Destroy(raio, 1.00f);
+        FrontBeam.Play(); 
     }
 
 }
