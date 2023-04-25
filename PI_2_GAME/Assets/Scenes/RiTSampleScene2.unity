@@ -10925,7 +10925,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &360750131
 GameObject:
@@ -25697,7 +25697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1443809951445792607, guid: 3264b146ff2fc8c468e9751c2ebdf56a, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1443809951445792607, guid: 3264b146ff2fc8c468e9751c2ebdf56a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -62133,7 +62133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 778393715036610442, guid: ac6c647e22d7f0448a5dcd616e2c9736, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.43
+      value: -3.92
       objectReference: {fileID: 0}
     - target: {fileID: 778393715036610442, guid: ac6c647e22d7f0448a5dcd616e2c9736, type: 3}
       propertyPath: m_LocalPosition.y
@@ -62141,7 +62141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 778393715036610442, guid: ac6c647e22d7f0448a5dcd616e2c9736, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 325.22
+      value: 323.34
       objectReference: {fileID: 0}
     - target: {fileID: 778393715036610442, guid: ac6c647e22d7f0448a5dcd616e2c9736, type: 3}
       propertyPath: m_LocalRotation.w
@@ -62212,6 +62212,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1592026213529605786, guid: 56d330740acd61c4f8b406d9f373bc5e, type: 3}
     - target: {fileID: 8891230153794369031, guid: ac6c647e22d7f0448a5dcd616e2c9736, type: 3}
+      propertyPath: FrontBeam
+      value: 
+      objectReference: {fileID: 1592026213529605786, guid: 654c51934623a454c94a5814b017391b, type: 3}
+    - target: {fileID: 8891230153794369031, guid: ac6c647e22d7f0448a5dcd616e2c9736, type: 3}
+      propertyPath: sendPlant1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891230153794369031, guid: ac6c647e22d7f0448a5dcd616e2c9736, type: 3}
       propertyPath: sendPlant2
       value: 1
       objectReference: {fileID: 0}
@@ -62223,9 +62231,13 @@ PrefabInstance:
       propertyPath: WhiteWizard
       value: 
       objectReference: {fileID: 5866666021363180372}
+    - target: {fileID: 8891230153794369031, guid: ac6c647e22d7f0448a5dcd616e2c9736, type: 3}
+      propertyPath: sendThunder1
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9201059190348173577, guid: ac6c647e22d7f0448a5dcd616e2c9736, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9201059190348173577, guid: ac6c647e22d7f0448a5dcd616e2c9736, type: 3}
       propertyPath: m_LocalPosition.y
@@ -62233,7 +62245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9201059190348173577, guid: ac6c647e22d7f0448a5dcd616e2c9736, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.92
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9201059190357704557, guid: ac6c647e22d7f0448a5dcd616e2c9736, type: 3}
       propertyPath: m_Controller

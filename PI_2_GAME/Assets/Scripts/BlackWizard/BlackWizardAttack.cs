@@ -15,8 +15,10 @@ public class BlackWizardAttack : MonoBehaviour
     public GameObject plant1Prefab;
     public GameObject plant2Prefab;
     public GameObject plant3Prefab;
+    private GameObject plant; 
     [SerializeField] GameObject Thunder;
     [SerializeField] GameObject UpBeam;
+    [SerializeField] GameObject FrontBeam;
 
     [Header("Attack Level 1")]
     public float distance1;
@@ -65,7 +67,7 @@ public class BlackWizardAttack : MonoBehaviour
 
     }
 
-    public void WizardAttack()
+    void WizardAttack()
     {
 
         float distance = Vector3.Distance(WhiteWizard.position, BlackWizard.position);
@@ -74,8 +76,9 @@ public class BlackWizardAttack : MonoBehaviour
             if (sendPlant1)
             {
                 mAnimator.SetTrigger("TrPlant");
-                Invoke("", 4);
-                SpawnObject(plant1Prefab);
+                Invoke("SendFrontBeam", 1);
+                plant = plant1Prefab;
+                Invoke("SpawnPlant", 2);
             }
             if (sendThunder1)
             {
@@ -91,8 +94,10 @@ public class BlackWizardAttack : MonoBehaviour
             if (sendPlant2)
             {
                 mAnimator.SetTrigger("TrPlant");
-                Invoke("", 2);
-                SpawnObject(plant2Prefab);
+                Invoke("SendFrontBeam", 1);
+                plant = plant2Prefab;
+                Invoke("SpawnPlant", 2);
+
             }
             if (sendThunder2)
             {
@@ -108,8 +113,9 @@ public class BlackWizardAttack : MonoBehaviour
             if (sendPlant3)
             {
                 mAnimator.SetTrigger("TrPlant");
-                Invoke("", 4);
-                SpawnObject(plant3Prefab);
+                Invoke("SendFrontBeam", 1);
+                plant = plant3Prefab;
+                Invoke("SpawnPlant", 2);
             }
             if (sendThunder3)
             {
@@ -122,9 +128,9 @@ public class BlackWizardAttack : MonoBehaviour
         }
     }
 
-    public void SpawnObject(GameObject plant)
-    {
 
+    void SpawnPlant()
+    {
         for (int i = 1; i <= numPlants; i++) {
             Vector3 newPosition = WhiteWizard.transform.position + spawnOffset;
             switch (i)
@@ -133,11 +139,9 @@ public class BlackWizardAttack : MonoBehaviour
                     Instantiate(plant, newPosition, Quaternion.identity);
                     break;
                 case 2:
-                    newPosition.x = newPosition.x - 3;
                     Instantiate(plant, newPosition, Quaternion.identity);
                     break;
                 case 3:
-                    newPosition.x = newPosition.x + 3;
                     Instantiate(plant, newPosition, Quaternion.identity);
                     break;
             }
@@ -151,7 +155,7 @@ public class BlackWizardAttack : MonoBehaviour
     {
         Vector3 position = BlackWizard.transform.position + new Vector3(0, 3, 0);
         Quaternion rot = Quaternion.Euler(-90, 0, 0);
-        Debug.Log(position);
+        //Debug.Log(position);
         GameObject raio = Instantiate(UpBeam, position, rot);
         raio.SetActive(true);
         Destroy(raio, 1.00f);
@@ -163,6 +167,16 @@ public class BlackWizardAttack : MonoBehaviour
         Quaternion rot = Quaternion.Euler(90, 0, 0);
         //Debug.Log(position);
         GameObject raio = Instantiate(Thunder, position, rot);
+        raio.SetActive(true);
+        Destroy(raio, 1.00f);
+    }
+
+    void SendFrontBeam()
+    {
+        Vector3 position = BlackWizard.transform.position + new Vector3(0, 3, 0);
+        Quaternion rot = Quaternion.Euler(180, 0, 0);
+        Debug.Log(position);
+        GameObject raio = Instantiate(FrontBeam, position, rot);
         raio.SetActive(true);
         Destroy(raio, 1.00f);
     }
