@@ -1040,6 +1040,7 @@ GameObject:
   - component: {fileID: 3979415656903382746}
   - component: {fileID: 3979415656903382759}
   - component: {fileID: 3979415656903382756}
+  - component: {fileID: 7129458955675477668}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1160,6 +1161,8 @@ MonoBehaviour:
   playercc: {fileID: 0}
   gameOverMenu: {fileID: 0}
   death: 0
+  cam: {fileID: 0}
+  maincam: {fileID: 0}
 --- !u!114 &3979415656903382756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1184,11 +1187,28 @@ MonoBehaviour:
   pDamage: {fileID: 0}
   cas: {fileID: 0}
   text: {fileID: 0}
+  spellToCast: []
   maxPower: 100
   currentPower: 0
   powerRechargeRate: 2
   timeToWaitForRecharge: 1
   timeBetweenCasts: 0.25
+  spellText: {fileID: 0}
+  mira: {fileID: 0}
+  currentPowerUI: {fileID: 0}
+--- !u!114 &7129458955675477668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4321433250210229169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839db15615265234590e2641a4f88823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDamageScript: {fileID: 3979415656903382759}
 --- !u!1 &4330894511995402220
 GameObject:
   m_ObjectHideFlags: 0
