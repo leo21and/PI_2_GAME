@@ -114,6 +114,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7992715529498157145}
   - component: {fileID: 7992715529511154937}
+  - component: {fileID: 3425052887392109662}
+  - component: {fileID: 3960258152347804734}
   m_Layer: 0
   m_Name: Plant_LV2
   m_TagString: Untagged
@@ -172,6 +174,33 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7992715529495863999}
   m_Enabled: 1
+--- !u!114 &3425052887392109662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7992715529498131577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5c6ee377ed486e498d0b7cc1a7f1236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flowerHeal: 0
+  countedFlower: 0
+--- !u!114 &3960258152347804734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7992715529498131577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b39dc2ae0d4d5847927d630f5a9d242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toxicDust: {fileID: 6952762651995553286, guid: ba6c13af7118dda4ebc84cc1fa128508, type: 3}
 --- !u!1 &7992715529498131579
 GameObject:
   m_ObjectHideFlags: 0

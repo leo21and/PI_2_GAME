@@ -78,7 +78,7 @@ public class BlackWizardAttack : MonoBehaviour
                 mAnimator.SetTrigger("TrPlant");
                 Invoke("SendFrontBeam", 1);
                 plant = plant1Prefab;
-                Invoke("SpawnPlant", 2);
+                Invoke("SpawnPlant", 1.5f);
             }
             if (sendThunder1)
             {
@@ -96,7 +96,7 @@ public class BlackWizardAttack : MonoBehaviour
                 mAnimator.SetTrigger("TrPlant");
                 Invoke("SendFrontBeam", 1);
                 plant = plant2Prefab;
-                Invoke("SpawnPlant", 2);
+                Invoke("SpawnPlant", 1.5f);
 
             }
             if (sendThunder2)
@@ -115,7 +115,7 @@ public class BlackWizardAttack : MonoBehaviour
                 mAnimator.SetTrigger("TrPlant");
                 Invoke("SendFrontBeam", 1);
                 plant = plant3Prefab;
-                Invoke("SpawnPlant", 2);
+                Invoke("SpawnPlant", 1.5f);
             }
             if (sendThunder3)
             {
@@ -131,22 +131,10 @@ public class BlackWizardAttack : MonoBehaviour
 
     void SpawnPlant()
     {
+        Vector3 newPosition = Player.transform.position + spawnOffset;
         for (int i = 1; i <= numPlants; i++) {
-            Vector3 newPosition = Player.transform.position + spawnOffset;
-            switch (i)
-            {
-                case 1:
-                    Instantiate(plant, newPosition, Quaternion.identity);
-                    break;
-                case 2:
-                    Instantiate(plant, newPosition, Quaternion.identity);
-                    break;
-                case 3:
-                    Instantiate(plant, newPosition, Quaternion.identity);
-                    break;
-            }
-
-
+      
+            Instantiate(plant, newPosition, Quaternion.identity);
         }
 
 

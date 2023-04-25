@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13868681b80a11240990ea9ee34c99d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WhiteWizard: {fileID: 3509148576492548363, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
+  Player: {fileID: 0}
   BlackWizard: {fileID: 0}
   plant1Prefab: {fileID: 1253365200111527898, guid: 69f6b2e7d73e1f74989d8bbeea462cd4, type: 3}
   plant2Prefab: {fileID: 7992715529498131577, guid: fc8ba734744d356479b052be080ed2d0, type: 3}
@@ -111,3 +111,16 @@ MonoBehaviour:
   spawnTime: 2
   spawnDelay: 5
   numPlants: 2
+--- !u!114 &124148561822158393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2575610575682231873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67f722de81a14d44191502e63fdde98c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
