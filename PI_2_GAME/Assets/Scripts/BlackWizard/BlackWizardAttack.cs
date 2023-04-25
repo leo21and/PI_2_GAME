@@ -8,7 +8,7 @@ public class BlackWizardAttack : MonoBehaviour
 
     // Characters
     [Header ("Characters Prefabs")]
-    public Transform WhiteWizard;
+    public Transform Player;
     public Transform BlackWizard;
 
     [Header("Attack Prefabs")]
@@ -70,7 +70,7 @@ public class BlackWizardAttack : MonoBehaviour
     void WizardAttack()
     {
 
-        float distance = Vector3.Distance(WhiteWizard.position, BlackWizard.position);
+        float distance = Vector3.Distance(Player.position, BlackWizard.position);
         if (distance <= distance1 && distance >= (distance2+1))
         {
             if (sendPlant1)
@@ -132,7 +132,7 @@ public class BlackWizardAttack : MonoBehaviour
     void SpawnPlant()
     {
         for (int i = 1; i <= numPlants; i++) {
-            Vector3 newPosition = WhiteWizard.transform.position + spawnOffset;
+            Vector3 newPosition = Player.transform.position + spawnOffset;
             switch (i)
             {
                 case 1:
@@ -163,7 +163,7 @@ public class BlackWizardAttack : MonoBehaviour
 
     void SendThunder()
     {
-        Vector3 position = WhiteWizard.transform.position + new Vector3(0,40,0);
+        Vector3 position = Player.transform.position + new Vector3(0,40,0);
         Quaternion rot = Quaternion.Euler(90, 0, 0);
         //Debug.Log(position);
         GameObject raio = Instantiate(Thunder, position, rot);
