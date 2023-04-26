@@ -81799,9 +81799,9 @@ RectTransform:
   m_Father: {fileID: 1957767034}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 616, y: 338}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -344, y: -137}
   m_SizeDelta: {x: 320, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1799196882
@@ -86917,6 +86917,7 @@ GameObject:
   - component: {fileID: 1922403371}
   - component: {fileID: 1922403370}
   - component: {fileID: 1922403369}
+  - component: {fileID: 1922403372}
   m_Layer: 0
   m_Name: CloudToxic
   m_TagString: Untagged
@@ -86945,7 +86946,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0f954a723c570974c9d98e03ad91f4fa, type: 2}
+  - {fileID: 2100000, guid: 5551b48bfe34d4d428a9b0f4a7c390c8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88278,7 +88279,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -91729,13 +91730,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1922403368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.7, y: 63, z: 218.3}
+  m_LocalPosition: {x: -2.7, y: 78.4, z: 218.3}
   m_LocalScale: {x: 5.567394, y: 5.567394, z: 5.6631527}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1922403372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922403368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 089a402b95d909643a5700603d006fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pc: {fileID: 5866666021363180384}
 --- !u!1 &1922481820
 GameObject:
   m_ObjectHideFlags: 0
@@ -113241,6 +113255,17 @@ CharacterController:
   m_CorrespondingSourceObject: {fileID: 3979415656903382746, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
   m_PrefabInstance: {fileID: 3979415657445771322}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5866666021363180384 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3979415656903382756, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
+  m_PrefabInstance: {fileID: 3979415657445771322}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148634051467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c9cbb7d353b88f428f385074bdd3ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8434462085612017795
 PrefabInstance:
   m_ObjectHideFlags: 0

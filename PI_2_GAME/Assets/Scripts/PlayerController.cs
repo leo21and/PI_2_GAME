@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
     public GameObject mira;
     public Slider currentPowerUI;
 
+    public int zona; 
+
     private void Awake()
     {
         playerInput = new PlayerInput(); 
@@ -278,6 +280,7 @@ public class PlayerController : MonoBehaviour
             if (cas.countF == 1 && cas.countAnimais == 1 && cas.countSilvas == 1) 
             {
                 text.SetActive(false);
+                zona = 2;
                 Destroy(collision.gameObject);
             }
         }
@@ -288,7 +291,8 @@ public class PlayerController : MonoBehaviour
             
             if (cas.countF == 5 && cas.countAnimais == 3 && cas.countSilvas == 3) //1 anterior+ 4 novas
             {
-                text.SetActive(false); 
+                text.SetActive(false);
+                zona = 3;
                 Destroy(collision.gameObject);
             }
         }
@@ -299,7 +303,8 @@ public class PlayerController : MonoBehaviour
             
             if (cas.countF == 14 && cas.countAnimais == 6 && cas.countSilvas == 6)
             {
-                text.SetActive(false); 
+                text.SetActive(false);
+                zona = 4;
                 Destroy(collision.gameObject);
             }
         }
@@ -310,7 +315,8 @@ public class PlayerController : MonoBehaviour
             
             if (cas.countF == 26) //test
             {
-                text.SetActive(false); 
+                text.SetActive(false);
+                zona = 5;
                 Destroy(collision.gameObject);
             }
         }
