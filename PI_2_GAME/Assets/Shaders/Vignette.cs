@@ -67,7 +67,7 @@ public class Vignette : ImageEffectShaderBase
          vignetteColor = Color.magenta;
 
       }
-      else if (playerDamage.currentHealth < playerDamage.playerLife - 60 && playerDamage.currentHealth > playerDamage.playerLife - 100)
+      else if (playerDamage.currentHealth < playerDamage.playerLife - 60 && playerDamage.currentHealth >= playerDamage.playerLife - 92)
       {
          exp = 1.2f;
          vignetteColor = Color.red; //red a aparecer na ultima perda de vida

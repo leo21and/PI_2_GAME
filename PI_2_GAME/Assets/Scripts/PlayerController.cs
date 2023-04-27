@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
                 if (selectedSpell == 0)
                 {
                     cas.CastSpell();
-                    Instantiate(spellToCast[0], castPoint.position, castPoint.rotation);
+                    //Instantiate(spellToCast[0], castPoint.position, castPoint.rotation);
 
 
                 }
