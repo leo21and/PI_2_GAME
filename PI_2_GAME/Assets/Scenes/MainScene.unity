@@ -112895,6 +112895,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5866666021363180374}
     - target: {fileID: 3979415656903382756, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
+      propertyPath: castPoint
+      value: 
+      objectReference: {fileID: 1382986918}
+    - target: {fileID: 3979415656903382756, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
       propertyPath: spellText
       value: 
       objectReference: {fileID: 728528756}
@@ -112917,7 +112921,7 @@ PrefabInstance:
     - target: {fileID: 3979415656903382756, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
       propertyPath: spellToCast.Array.data[0]
       value: 
-      objectReference: {fileID: 763501456788745295, guid: c80b77e8f0c7e2f4e87e8139f5a7eeb9, type: 3}
+      objectReference: {fileID: 4871532804040413959, guid: 01d135b5beef72046a3033e58f907c98, type: 3}
     - target: {fileID: 3979415656903382756, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
       propertyPath: spellToCast.Array.data[1]
       value: 
@@ -113274,6 +113278,8 @@ MonoBehaviour:
   impactEffect3: {fileID: 1234997160946522197, guid: d3b57a11a2e2f5643bc134d49202504f, type: 3}
   spellToCast: {fileID: 763501456788745295, guid: c80b77e8f0c7e2f4e87e8139f5a7eeb9, type: 3}
   castPoint: {fileID: 1382986918}
+  mira: {fileID: 1978466893}
+  currentPowerUI: {fileID: 1799196880}
 --- !u!143 &5866666021363180382 stripped
 CharacterController:
   m_CorrespondingSourceObject: {fileID: 3979415656903382746, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}

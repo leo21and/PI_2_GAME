@@ -1,27 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 
-[RequireComponent(typeof(SphereCollider))]
-[RequireComponent(typeof(Rigidbody))]
 public class Spell : MonoBehaviour
 {
 
     public SpellScriptableObject SpellToCast;
 
-    private SphereCollider myCollider;
-    private Rigidbody myRigidbody;
+
 
 
     private void Awake()
     {
-        myCollider = GetComponent<SphereCollider>();
-        myCollider.isTrigger= true;
-        myCollider.radius = SpellToCast.SpellRadius;
 
-        myRigidbody= GetComponent<Rigidbody>();
-        myRigidbody.isKinematic= true;
 
         Destroy(this.gameObject, SpellToCast.Lifetime);
     }
@@ -29,21 +22,12 @@ public class Spell : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(SpellToCast.Speed > 0)
+
+        if (SpellToCast.Speed > 0)
         {
-            transform.Translate(Vector3.forward * SpellToCast.Speed * Time.deltaTime);
-        }    
+            transform.Translate(transform.forward * SpellToCast.Speed * Time.deltaTime);
+
+        }
     }
 
-   /* private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.CompareTag("Enemy"))
-        {
-            HealthComponent enemyHealth = other.GetComponent<HealthComponent>();
-
-            enemyHealth.takeDamage(SpellToCast.DamageAmount);
-        }
-
-        Destroy(this.gameObject);
-    }*/
 }

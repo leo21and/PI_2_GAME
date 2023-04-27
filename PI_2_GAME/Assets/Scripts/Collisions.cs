@@ -37,17 +37,16 @@ public class Collisions : MonoBehaviour
 
     [SerializeField] private Spell spellToCast;
     [SerializeField] private Transform castPoint;
+    public GameObject mira, currentPowerUI;
 
-  
-    
+
+
 
     public void CastSpell()
     {
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
-
-            //Instantiate(spellToCast, castPoint.position, castPoint.rotation);
 
             if (hit.collider.tag == "Animais" && hit.collider.GetComponent<Animais>().animalSaved == false)
             {
@@ -63,6 +62,10 @@ public class Collisions : MonoBehaviour
         GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impactGO, 2f);
 
+        mira.SetActive(true);
+        currentPowerUI.gameObject.SetActive(true);
+        StartCoroutine(Mira());
+        StartCoroutine(CurrentPowerUI());
     }
 
     public void CastSpell2()
@@ -90,7 +93,10 @@ public class Collisions : MonoBehaviour
        
         GameObject impactGO = Instantiate(impactEffect2, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impactGO, 2f);
-
+        mira.SetActive(true);
+        currentPowerUI.gameObject.SetActive(true);
+        StartCoroutine(Mira());
+        StartCoroutine(CurrentPowerUI());
     }
 
     public void CastSpell3()
@@ -116,7 +122,10 @@ public class Collisions : MonoBehaviour
        
         GameObject impactGO = Instantiate(impactEffect3, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impactGO, 2f);
-
+        mira.SetActive(true);
+        currentPowerUI.gameObject.SetActive(true);
+        StartCoroutine(Mira());
+        StartCoroutine(CurrentPowerUI());
     }
 
  
@@ -188,9 +197,21 @@ public class Collisions : MonoBehaviour
             }
         } 
     }
-    
-    
 
 
-    
+    IEnumerator Mira()
+    {
+        yield return new WaitForSeconds(5f);
+        mira.SetActive(false);
+
+    }
+
+    IEnumerator CurrentPowerUI()
+    {
+        yield return new WaitForSeconds(5f);
+        currentPowerUI.SetActive(false);
+
+    }
+
+
 }

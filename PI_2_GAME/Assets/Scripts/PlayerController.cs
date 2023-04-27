@@ -45,6 +45,9 @@ public class PlayerController : MonoBehaviour
     public TMP_Text spellText;
     public GameObject mira;
     public Slider currentPowerUI;
+    [SerializeField] private Transform castPoint;
+
+
 
     public int zona; 
 
@@ -53,6 +56,7 @@ public class PlayerController : MonoBehaviour
         playerInput = new PlayerInput(); 
         playerInput.Player.Jump.performed += OnJumpPressed;
         currentPower = maxPower;
+        currentPowerUI.maxValue = maxPower;
 
     }
 
@@ -164,8 +168,6 @@ public class PlayerController : MonoBehaviour
 
             if (!castingMagic && isSpellCastHeldDown && hasEnoughPower)
             {
-                mira.SetActive(true);
-                currentPowerUI.gameObject.SetActive(true);
                 castingMagic = true;
                 currentPower -= spellToCast[i].SpellToCast.PowerCost;
                 currentCastTimer = 0;
@@ -175,6 +177,8 @@ public class PlayerController : MonoBehaviour
                 if (selectedSpell == 0)
                 {
                     cas.CastSpell();
+                    Instantiate(spellToCast[0], castPoint.position, castPoint.rotation);
+
 
                 }
                 else if (selectedSpell == 1)
@@ -190,11 +194,7 @@ public class PlayerController : MonoBehaviour
 
             }
 
-            if (!castingMagic && !isSpellCastHeldDown)
-            {
-                StartCoroutine(Mira());
-
-            }
+         
 
 
             if (castingMagic)
@@ -329,13 +329,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1.2f);
         text.SetActive(false);
         
-    }
-
-    IEnumerator Mira()
-    {
-        yield return new WaitForSeconds(3f);
-        mira.SetActive(false);
-
     }
 
     IEnumerator SpellText()
