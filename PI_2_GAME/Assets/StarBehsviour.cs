@@ -12,11 +12,17 @@ public class StarBehsviour : MonoBehaviour
     private Animais _animais;
 
     private bool starsStart;
+
+    private Material starmat;
+
+    
     // Start is called before the first frame update
     void Start()
     {
         _animais = GetComponent<Animais>();
         starsStart = false;
+        starmat = GetComponentInChildren<ParticleSystemRenderer>().material;
+        
     }
 
     // Update is called once per frame
@@ -34,8 +40,13 @@ public class StarBehsviour : MonoBehaviour
     IEnumerator FadeOut()
     {
         starsStart = true;
-       // star.SetActive(true);
-       star.SetActive(true);
+
+        var lightON = _particleSystem.lights;
+
+        lightON.enabled = true;
+        
+        
+        starmat .SetColor("_TintColor", new Color32(255,224,0, 255));
         yield return new WaitForSeconds(fade);
         _particleSystem.Stop();
         starsStart = false;

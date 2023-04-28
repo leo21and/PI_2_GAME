@@ -9,6 +9,7 @@ public class ChangeDust : MonoBehaviour
 
     private ParticleSystem  dust;
     [SerializeField] private GameObject toxicDust;
+    private Material dustmat;
 
     private bool startChange;
     
@@ -17,31 +18,38 @@ public class ChangeDust : MonoBehaviour
     {
         _flowersToxic = GetComponent<FlowersToxic>();
         dust = GetComponentInChildren<ParticleSystem>();
+        dustmat = GetComponentInChildren<ParticleSystemRenderer>().material;
 
         startChange = false;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+  
         if (!startChange && _flowersToxic.flowerHeal)
         {
+            
             StartCoroutine(DustHeal());
         }
     }
 
     IEnumerator DustHeal()
-    {
+    { 
         startChange = true;
       //  dust.startColor = new Color(255, 192,0);
+       
+        var colorOverTime = dust.colorOverLifetime;
+       
+       colorOverTime.enabled = false; 
 
-        var main = dust.main;
-        main.startColor = new Color(0, 255,192, 70);
+        dustmat.SetColor("_TintColor", new Color32 (0, 255, 142, 50));
+  
 
-    
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1f);
         
-        toxicDust.SetActive(false);
+        dust.Stop();
         startChange = false;
     }
 }
