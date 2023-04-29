@@ -154,9 +154,9 @@ public class Collisions : MonoBehaviour
         }
         else if (GameObject.Find("FourthLock") != null)
         {
-            flower_text.text = countF.ToString() + "/24";
-            animal_text.text = countAnimais.ToString() + "/1";
-            silva_text.text = countSilvas.ToString() + "/1";
+            flower_text.text = countF.ToString() + "/20";
+            animal_text.text = countAnimais.ToString() + "/10";
+            silva_text.text = countSilvas.ToString() + "/10";
         }
 
     }

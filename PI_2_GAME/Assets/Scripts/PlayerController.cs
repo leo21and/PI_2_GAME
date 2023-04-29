@@ -313,7 +313,7 @@ public class PlayerController : MonoBehaviour
             text.SetActive(true);
             StartCoroutine(Text());
             
-            if (cas.countF == 26) //test
+            if (cas.countF == 20 && cas.countSilvas == 10 && cas.countAnimais == 10) //test
             {
                 text.SetActive(false);
                 zona = 5;
