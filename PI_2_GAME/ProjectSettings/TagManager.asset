@@ -11,6 +11,7 @@ TagManager:
   - Lock2
   - Lock3
   - Lock4
+  - BlackWizard
   layers:
   - Default
   - TransparentFX

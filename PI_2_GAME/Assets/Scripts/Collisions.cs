@@ -39,7 +39,8 @@ public class Collisions : MonoBehaviour
     [SerializeField] private Transform castPoint;
     public GameObject mira, currentPowerUI;
 
-
+    //BlackWizard
+    public BlackWizardHealth BlackWizard;
 
 
     public void CastSpell()
@@ -75,8 +76,7 @@ public class Collisions : MonoBehaviour
         {
         
         
-        
-            if (hit.collider.tag == "Silvas" && hit.collider.GetComponent<Silvas>().silvaClean == false)
+               if (hit.collider.tag == "Silvas" && hit.collider.GetComponent<Silvas>().silvaClean == false)
             {
                 hit.collider.GetComponent<Silvas>().silvaClean = true;
                 
@@ -86,8 +86,17 @@ public class Collisions : MonoBehaviour
                 SilvaCollected.SetActive(true);
                 isWaitingS = true;
             }
-        
-        
+
+            // Ataque ao Black Wizard
+            if (hit.collider.tag == "BlackWizard")
+            {
+                CurrentLevel();
+                BlackWizard.BlackWizardSpell2Damage();
+           
+                isWaitingS = true;
+            }
+
+
         }
 
        

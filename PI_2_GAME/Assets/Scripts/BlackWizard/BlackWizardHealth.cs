@@ -7,7 +7,8 @@ public class BlackWizardHealth : MonoBehaviour
     [SerializeField] public int blackWizardLife;
     public int currentBlackWizardHealth;
 
-
+    [Header("Spell 2")]
+    public int spell2Damage;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +23,10 @@ public class BlackWizardHealth : MonoBehaviour
 
     }
 
-  
+    public void BlackWizardSpell2Damage()
+    {
+        Debug.Log("Dano no Black Wizard com Spell 2");
+        currentBlackWizardHealth = currentBlackWizardHealth - spell2Damage;
 
-
-
+    }
 }
