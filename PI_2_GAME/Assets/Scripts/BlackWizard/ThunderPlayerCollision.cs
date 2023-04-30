@@ -5,13 +5,13 @@ using UnityEngine;
 public class ThunderPlayerCollision : MonoBehaviour
 {
     public PlayerDamage playerDamage;
+    public int thunderDamage = 50;
 
     private void OnParticleCollision(GameObject other)
     {
 
-        //playerDamage.currentHealth
-        //StartCoroutine(TakeLife());
         Debug.Log("Thunder Collider");
-        
+        playerDamage.currentHealth = playerDamage.currentHealth - thunderDamage;
+
     }
 }
