@@ -38,7 +38,7 @@ public class Collisions : MonoBehaviour
     [SerializeField] public Spell[] spellToCast;
 
     //BlackWizard
-    public BlackWizardHealth BlackWizard;
+    public BlackWizardScript BlackWizard;
 
     public TrailRenderer SpellTrail, Spell2Trail, Spell3Trail;
     RaycastHit hit;
@@ -94,7 +94,8 @@ public class Collisions : MonoBehaviour
             // Ataque ao Black Wizard
             if (hit.collider.tag == "BlackWizard")
             {
-                BlackWizard.BlackWizardSpell2Damage();
+                
+               BlackWizard.BlackWizardSpell2Damage();
            
             }
 

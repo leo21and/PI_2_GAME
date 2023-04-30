@@ -1,33 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BlackWizardHealth : MonoBehaviour
 {
-    [SerializeField] public int blackWizardLife;
-    public int currentBlackWizardHealth;
 
-    [Header("Spell 2")]
-    public int spell2Damage;
-    Collisions collission;
 
-    // Start is called before the first frame update
-    void Start()
+    [Header("Health Bar")]
+    public Slider slider;
+    public Gradient gradient;
+    public Image fill;
+
+
+    public void SetHealth(int health)
     {
-        currentBlackWizardHealth = blackWizardLife;
+        slider.value = health;
+
+        fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetMaxHealth(int health)
     {
-
-
-    }
-
-    public void BlackWizardSpell2Damage()
-    {
-        Debug.Log("Dano no Black Wizard com Spell 2");
-        currentBlackWizardHealth = (currentBlackWizardHealth - spell2Damage);
-
+        slider.maxValue = health;
+        slider.value = health;
+        fill.color = gradient.Evaluate(1f);
     }
 }

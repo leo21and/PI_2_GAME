@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackWizardAttack : MonoBehaviour
+public class BlackWizardScript : MonoBehaviour
 {
     private Animator mAnimator;
 
     // Characters
     [Header ("Characters Prefabs")]
     public Transform Player;
-    public Transform BlackWizard;
 
     [Header("Attack Prefabs")]
     public GameObject plant1Prefab;
@@ -35,6 +34,15 @@ public class BlackWizardAttack : MonoBehaviour
     public bool sendPlant3;
     public bool sendThunder3;
 
+    [Header("Health")]
+    public int blackWizardLife;
+    public int currentBlackWizardHealth; 
+    public BlackWizardHealth healthBar;
+
+    [Header("Spell 2 Damage")]
+    public int spell2Damage;
+    Collisions collission;
+
     [Header("Geral")]
     // Spawn Position
     public Vector3 spawnOffset;
@@ -58,6 +66,11 @@ public class BlackWizardAttack : MonoBehaviour
         // Check if player is in the area
         InvokeRepeating("WizardAttack", spawnTime, spawnDelay);
         Thunder.SetActive(false);
+
+        //Health do BlackWizard
+        currentBlackWizardHealth = blackWizardLife;
+        healthBar.SetMaxHealth(blackWizardLife);
+
     }
 
     // Update is called once per frame
@@ -67,10 +80,18 @@ public class BlackWizardAttack : MonoBehaviour
 
     }
 
+    public void BlackWizardSpell2Damage()
+    {
+        Debug.Log("Dano no Black Wizard com Spell 2");
+        currentBlackWizardHealth = (currentBlackWizardHealth - spell2Damage);
+        healthBar.SetHealth(currentBlackWizardHealth);
+
+    }
+
     void WizardAttack()
     {
 
-        float distance = Vector3.Distance(Player.position, BlackWizard.position);
+        float distance = Vector3.Distance(Player.position, transform.position);
         if (distance <= distance1 && distance >= (distance2+1))
         {
             if (sendPlant1)
