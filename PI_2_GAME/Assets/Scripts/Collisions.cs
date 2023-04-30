@@ -34,20 +34,24 @@ public class Collisions : MonoBehaviour
     public float range = 100f;
     public float impactForce = 30f;
     public GameObject impactEffect, impactEffect2, impactEffect3;
-
-    [SerializeField] private Spell spellToCast;
     [SerializeField] private Transform castPoint;
-    public GameObject mira, currentPowerUI;
+    [SerializeField] public Spell[] spellToCast;
 
     //BlackWizard
     public BlackWizardHealth BlackWizard;
 
+    public TrailRenderer SpellTrail, Spell2Trail, Spell3Trail;
+    RaycastHit hit;
+
 
     public void CastSpell()
     {
-        RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
+
+            TrailRenderer trail = Instantiate(SpellTrail, castPoint.transform.position, Quaternion.identity);
+
+            StartCoroutine(SpawnTrail(trail, hit));
 
             if (hit.collider.tag == "Animais" && hit.collider.GetComponent<Animais>().animalSaved == false)
             {
@@ -63,20 +67,20 @@ public class Collisions : MonoBehaviour
         GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impactGO, 2f);
 
-        mira.SetActive(true);
-        currentPowerUI.gameObject.SetActive(true);
-        StartCoroutine(Mira());
-        StartCoroutine(CurrentPowerUI());
+        
     }
 
     public void CastSpell2()
     {
-        RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
-        
-        
-               if (hit.collider.tag == "Silvas" && hit.collider.GetComponent<Silvas>().silvaClean == false)
+
+            TrailRenderer trail = Instantiate(Spell2Trail, castPoint.transform.position, Quaternion.identity);
+
+            StartCoroutine(SpawnTrail(trail, hit));
+
+
+            if (hit.collider.tag == "Silvas" && hit.collider.GetComponent<Silvas>().silvaClean == false)
             {
                 hit.collider.GetComponent<Silvas>().silvaClean = true;
                 
@@ -90,10 +94,8 @@ public class Collisions : MonoBehaviour
             // Ataque ao Black Wizard
             if (hit.collider.tag == "BlackWizard")
             {
-                CurrentLevel();
                 BlackWizard.BlackWizardSpell2Damage();
            
-                isWaitingS = true;
             }
 
 
@@ -102,19 +104,17 @@ public class Collisions : MonoBehaviour
        
         GameObject impactGO = Instantiate(impactEffect2, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impactGO, 2f);
-        mira.SetActive(true);
-        currentPowerUI.gameObject.SetActive(true);
-        StartCoroutine(Mira());
-        StartCoroutine(CurrentPowerUI());
+
     }
 
     public void CastSpell3()
     {
-        RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
 
-            //Instantiate(spellToCast, castPoint.position, castPoint.rotation);
+            TrailRenderer trail = Instantiate(Spell3Trail, castPoint.transform.position, Quaternion.identity);
+
+            StartCoroutine(SpawnTrail(trail, hit));
 
             if (hit.collider.tag == "Toxic" && hit.collider.GetComponent<FlowersToxic>().flowerHeal == false)
             {
@@ -131,13 +131,28 @@ public class Collisions : MonoBehaviour
        
         GameObject impactGO = Instantiate(impactEffect3, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impactGO, 2f);
-        mira.SetActive(true);
-        currentPowerUI.gameObject.SetActive(true);
-        StartCoroutine(Mira());
-        StartCoroutine(CurrentPowerUI());
+
     }
 
- 
+
+    private IEnumerator SpawnTrail(TrailRenderer Trail, RaycastHit Hit)
+    {
+        float time = 0;
+        Vector3 startPosition = Trail.transform.position;
+
+        while (time < 1)
+        {
+            Trail.transform.position = Vector3.Lerp(startPosition, Hit.point, time);
+            time += Time.deltaTime / Trail.time;
+
+            yield return null;
+        }
+
+        Trail.transform.position = Hit.point;
+        Destroy(Trail.gameObject, Trail.time);
+    }
+
+
 
     public void CurrentLevel()
     {
@@ -207,20 +222,6 @@ public class Collisions : MonoBehaviour
         } 
     }
 
-
-    IEnumerator Mira()
-    {
-        yield return new WaitForSeconds(5f);
-        mira.SetActive(false);
-
-    }
-
-    IEnumerator CurrentPowerUI()
-    {
-        yield return new WaitForSeconds(5f);
-        currentPowerUI.SetActive(false);
-
-    }
 
 
 }

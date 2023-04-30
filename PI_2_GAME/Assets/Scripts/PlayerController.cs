@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject text;
 
-    [SerializeField] private Spell[] spellToCast; //Ser
     [SerializeField] private float maxPower = 100f;
     [SerializeField] private float currentPower;
     [SerializeField] private float powerRechargeRate = 2f;
@@ -130,11 +129,11 @@ public class PlayerController : MonoBehaviour
     void Spells()
     {
 
-        for (int i = 0; i < spellToCast.Length; i++)
+        for (int i = 0; i < cas.spellToCast.Length; i++)
         {
             bool isSpellCastHeldDown = playerInput.Powers.CastSpell.ReadValue<float>() > 0.1;
 
-            bool hasEnoughPower = currentPower - spellToCast[i].SpellToCast.PowerCost >= 0f;
+            bool hasEnoughPower = currentPower - cas.spellToCast[i].SpellToCast.PowerCost >= 0f;
 
 
 
@@ -144,23 +143,36 @@ public class PlayerController : MonoBehaviour
                 spellText.gameObject.SetActive(true);
                 StartCoroutine(SpellText());
                 spellText.text = "Spell 1 selected";
+
+                mira.SetActive(true);
+                currentPowerUI.gameObject.SetActive(true);
+                StartCoroutine(Mira());
+                StartCoroutine(CurrentPowerUI());
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 selectedSpell = 1;
                 spellText.gameObject.SetActive(true);
-
                 StartCoroutine(SpellText());
                 spellText.text = "Spell 2 selected";
+
+                mira.SetActive(true);
+                currentPowerUI.gameObject.SetActive(true);
+                StartCoroutine(Mira());
+                StartCoroutine(CurrentPowerUI());
 
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 selectedSpell = 2;
                 spellText.gameObject.SetActive(true);
-
                 StartCoroutine(SpellText());
                 spellText.text = "Spell 3 selected";
+
+                mira.SetActive(true);
+                currentPowerUI.gameObject.SetActive(true);
+                StartCoroutine(Mira());
+                StartCoroutine(CurrentPowerUI());
 
             }
 
@@ -169,7 +181,7 @@ public class PlayerController : MonoBehaviour
             if (!castingMagic && isSpellCastHeldDown && hasEnoughPower)
             {
                 castingMagic = true;
-                currentPower -= spellToCast[i].SpellToCast.PowerCost;
+                currentPower -= cas.spellToCast[i].SpellToCast.PowerCost;
                 currentCastTimer = 0;
                 currentPowerRechargeTimer = 0;
 
@@ -177,7 +189,6 @@ public class PlayerController : MonoBehaviour
                 if (selectedSpell == 0)
                 {
                     cas.CastSpell();
-                    //Instantiate(spellToCast[0], castPoint.position, castPoint.rotation);
 
 
                 }
@@ -335,6 +346,20 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         spellText.gameObject.SetActive(false);
+
+    }
+
+    IEnumerator Mira()
+    {
+        yield return new WaitForSeconds(5f);
+        mira.SetActive(false);
+
+    }
+
+    IEnumerator CurrentPowerUI()
+    {
+        yield return new WaitForSeconds(5f);
+        currentPowerUI.gameObject.SetActive(false);
 
     }
 }

@@ -8,7 +8,7 @@ public class SpellScriptableObject : ScriptableObject
 {
     public float DamageAmount = 10f;
     public float PowerCost = 5f;
-    public float Lifetime = 2f;
-    public float Speed = 15f;
+    public float Lifetime = 1f;
+    public float Speed = 100f;
     public float SpellRadius = 0.5f;
 }

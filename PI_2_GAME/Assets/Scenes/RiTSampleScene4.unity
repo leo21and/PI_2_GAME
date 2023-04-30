@@ -35226,6 +35226,10 @@ PrefabInstance:
       propertyPath: plant3Prefab
       value: 
       objectReference: {fileID: 5260667514423559322, guid: 58a0f11a2e28fe64bb9d4b6c27e3182f, type: 3}
+    - target: {fileID: 1443809950821205345, guid: 3264b146ff2fc8c468e9751c2ebdf56a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1443809951445792606, guid: 3264b146ff2fc8c468e9751c2ebdf56a, type: 3}
       propertyPath: m_Name
       value: Altar
@@ -35272,6 +35276,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1443809951445792607, guid: 3264b146ff2fc8c468e9751c2ebdf56a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443809952162413219, guid: 3264b146ff2fc8c468e9751c2ebdf56a, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2142819190922011687, guid: 3264b146ff2fc8c468e9751c2ebdf56a, type: 3}
@@ -60865,6 +60873,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 585645408}
   m_CullTransparentMesh: 1
+--- !u!1 &595368513 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6023296607900112027, guid: 3264b146ff2fc8c468e9751c2ebdf56a, type: 3}
+  m_PrefabInstance: {fileID: 352655285}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &600621787
 GameObject:
   m_ObjectHideFlags: 0
@@ -157532,12 +157545,26 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2142819190922011687, guid: 3264b146ff2fc8c468e9751c2ebdf56a, type: 3}
   m_PrefabInstance: {fileID: 352655285}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 595368513}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31782b0e9556bab43bdcb16c34440413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &2072428372
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595368513}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.52939826
+  m_Height: 2.27
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.92, z: 0.029398283}
 --- !u!1 &2079372025
 GameObject:
   m_ObjectHideFlags: 0
@@ -167910,6 +167937,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5866666021363180374}
     - target: {fileID: 3979415656903382756, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
+      propertyPath: maxPower
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979415656903382756, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}
       propertyPath: castPoint
       value: 
       objectReference: {fileID: 1382986918}
@@ -168319,11 +168350,15 @@ MonoBehaviour:
   impactEffect: {fileID: 1234997160946522197, guid: c9855331d32ee724eb7672be1e166edb, type: 3}
   impactEffect2: {fileID: 1234997160946522197, guid: 6fed089508b451f41b2fcbbb8fc3d5e5, type: 3}
   impactEffect3: {fileID: 1234997160946522197, guid: d3b57a11a2e2f5643bc134d49202504f, type: 3}
-  spellToCast: {fileID: 763501456788745295, guid: c80b77e8f0c7e2f4e87e8139f5a7eeb9, type: 3}
   castPoint: {fileID: 1382986918}
-  mira: {fileID: 1978466893}
-  currentPowerUI: {fileID: 1799196880}
+  spellToCast:
+  - {fileID: 6945761652251597971, guid: 98b215dd8872f084cae0598dc804fefb, type: 3}
+  - {fileID: 7274682093148485184, guid: e842a9febfec27149b3bd5ff5da20fc1, type: 3}
+  - {fileID: 6769542701984562527, guid: 2abdb3d3a4b0fa14987404b2f28afd43, type: 3}
   BlackWizard: {fileID: 2072428368}
+  SpellTrail: {fileID: 6200499855421138893, guid: 98b215dd8872f084cae0598dc804fefb, type: 3}
+  Spell2Trail: {fileID: 5952642129045146910, guid: e842a9febfec27149b3bd5ff5da20fc1, type: 3}
+  Spell3Trail: {fileID: 7753768716262753793, guid: 2abdb3d3a4b0fa14987404b2f28afd43, type: 3}
 --- !u!143 &5866666021363180382 stripped
 CharacterController:
   m_CorrespondingSourceObject: {fileID: 3979415656903382746, guid: e6d542478e44e924ab51e0a718ceda3c, type: 3}

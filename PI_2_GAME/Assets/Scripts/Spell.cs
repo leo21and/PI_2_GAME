@@ -19,15 +19,5 @@ public class Spell : MonoBehaviour
         Destroy(this.gameObject, SpellToCast.Lifetime);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-        if (SpellToCast.Speed > 0)
-        {
-            transform.Translate(transform.forward * SpellToCast.Speed * Time.deltaTime);
-
-        }
-    }
 
 }

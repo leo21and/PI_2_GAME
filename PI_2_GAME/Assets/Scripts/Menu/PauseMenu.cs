@@ -13,7 +13,7 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
     private PlayerInput _playerInput;
-    public GameObject settings;
+    public GameObject settings, mira, currentPowerUI;
    // public GameObject initial;
     
     // Start is called before the first frame update
@@ -43,6 +43,8 @@ public class PauseMenu : MonoBehaviour
             pauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
             gamePaused = true;
+            mira.SetActive(false);
+            currentPowerUI.SetActive(false);
         }
     }
 
@@ -65,5 +67,8 @@ public class PauseMenu : MonoBehaviour
     {
         settings.SetActive(true);
         pauseMenuUI.SetActive(false);
+        mira.SetActive(false);
+        currentPowerUI.SetActive(false);
+
     }
 }

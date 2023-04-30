@@ -9,6 +9,7 @@ public class BlackWizardHealth : MonoBehaviour
 
     [Header("Spell 2")]
     public int spell2Damage;
+    Collisions collission;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class BlackWizardHealth : MonoBehaviour
     public void BlackWizardSpell2Damage()
     {
         Debug.Log("Dano no Black Wizard com Spell 2");
-        currentBlackWizardHealth = currentBlackWizardHealth - spell2Damage;
+        currentBlackWizardHealth = (currentBlackWizardHealth - spell2Damage);
 
     }
 }
