@@ -35247,6 +35247,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2072428365}
     - target: {fileID: 813632838910049501, guid: 3264b146ff2fc8c468e9751c2ebdf56a, type: 3}
+      propertyPath: gameOverMenu
+      value: 
+      objectReference: {fileID: 281582624}
+    - target: {fileID: 813632838910049501, guid: 3264b146ff2fc8c468e9751c2ebdf56a, type: 3}
       propertyPath: plant1Prefab
       value: 
       objectReference: {fileID: 5260667514423559322, guid: 58a0f11a2e28fe64bb9d4b6c27e3182f, type: 3}

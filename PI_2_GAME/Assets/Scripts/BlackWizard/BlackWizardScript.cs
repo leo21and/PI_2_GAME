@@ -38,10 +38,12 @@ public class BlackWizardScript : MonoBehaviour
     public int blackWizardLife;
     public int currentBlackWizardHealth; 
     public BlackWizardHealth healthBar;
+    public GameObject gameOverMenu;
 
     [Header("Spell 2 Damage")]
     public int spell2Damage;
     Collisions collission;
+    
 
     [Header("Geral")]
     // Spawn Position
@@ -84,7 +86,15 @@ public class BlackWizardScript : MonoBehaviour
     {
         Debug.Log("Dano no Black Wizard com Spell 2");
         currentBlackWizardHealth = (currentBlackWizardHealth - spell2Damage);
-        healthBar.SetHealth(currentBlackWizardHealth);
+        if (currentBlackWizardHealth > 0)
+        {
+            healthBar.SetHealth(currentBlackWizardHealth);
+        } else
+        {
+            healthBar.SetHealth(0);
+            gameOverMenu.SetActive(true);
+        }
+        
 
     }
 
