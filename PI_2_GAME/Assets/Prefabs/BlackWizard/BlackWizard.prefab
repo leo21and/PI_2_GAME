@@ -1068,11 +1068,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31782b0e9556bab43bdcb16c34440413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
+  slider: {fileID: 1714603715615889389}
   gradient:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
+    key0: {r: 0.9811321, g: 0.0509078, b: 0.0509078, a: 1}
+    key1: {r: 0.13280925, g: 0.9433962, b: 0.07564971, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1098,7 +1098,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  fill: {fileID: 0}
+  fill: {fileID: 2969673608531776884}
 --- !u!114 &5338843235736961114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,8 +1129,8 @@ MonoBehaviour:
   plant2Prefab: {fileID: 7992715529498131577, guid: fc8ba734744d356479b052be080ed2d0, type: 3}
   plant3Prefab: {fileID: 4119340359363394084, guid: 96b52f666d28ae74ca465f63c8e3eebc, type: 3}
   Thunder: {fileID: 1592026213529605786, guid: b5154e16aac0915479871d1b4001efba, type: 3}
-  UpBeam: {fileID: 1592026213529605786, guid: 56d330740acd61c4f8b406d9f373bc5e, type: 3}
-  FrontBeam: {fileID: 1592026213529605786, guid: 654c51934623a454c94a5814b017391b, type: 3}
+  UpBeam: {fileID: 7716259040815082756}
+  FrontBeam: {fileID: 1918555805763568933}
   distance1: 75
   sendPlant1: 0
   sendThunder1: 1
@@ -1143,6 +1143,8 @@ MonoBehaviour:
   blackWizardLife: 0
   currentBlackWizardHealth: 0
   healthBar: {fileID: 0}
+  gameOverMenu: {fileID: 0}
+  BWDeath: 0
   spell2Damage: 0
   spawnOffset: {x: 0, y: -1, z: 5}
   spawnTime: 2
@@ -3173,6 +3175,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 654c51934623a454c94a5814b017391b, type: 3}
+--- !u!198 &1918555805763568933 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1592026213529605783, guid: 654c51934623a454c94a5814b017391b, type: 3}
+  m_PrefabInstance: {fileID: 916508084170904498}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1918555805763568935 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1592026213529605781, guid: 654c51934623a454c94a5814b017391b, type: 3}
@@ -3239,6 +3246,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56d330740acd61c4f8b406d9f373bc5e, type: 3}
+--- !u!198 &7716259040815082756 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1592026213529605783, guid: 56d330740acd61c4f8b406d9f373bc5e, type: 3}
+  m_PrefabInstance: {fileID: 9011047403975293843}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7716259040815082758 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1592026213529605781, guid: 56d330740acd61c4f8b406d9f373bc5e, type: 3}
