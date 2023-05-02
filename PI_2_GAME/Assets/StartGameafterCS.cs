@@ -12,6 +12,7 @@ public class StartGameafterCS : MonoBehaviour
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private PlayableDirector director;
     [SerializeField] private GameObject cutscene;
+    [SerializeField] private GameObject skip;
    
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class StartGameafterCS : MonoBehaviour
         
        fpcamera.SetActive(false);
        _characterController.enabled = false;
+       skip.SetActive(true);
     }
 
     // Update is called once per frame
@@ -37,6 +39,7 @@ public class StartGameafterCS : MonoBehaviour
             fpcamera.SetActive(true);
             player.OnEnable();
             _characterController.enabled = true;
+            skip.SetActive(false);
         }
         
     }
