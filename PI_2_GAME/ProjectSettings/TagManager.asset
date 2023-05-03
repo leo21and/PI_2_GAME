@@ -12,6 +12,9 @@ TagManager:
   - Lock3
   - Lock4
   - BlackWizard
+  - Cut1
+  - Cut2
+  - Cut3
   layers:
   - Default
   - TransparentFX
