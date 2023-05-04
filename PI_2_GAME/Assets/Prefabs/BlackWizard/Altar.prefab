@@ -93,7 +93,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1443809950821205351}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 1443809952162413917}
   - component: {fileID: 1443809952162413916}
   - component: {fileID: 1443809952162413219}
+  - component: {fileID: 6768937374689392890}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -265,11 +266,25 @@ CapsuleCollider:
   m_GameObject: {fileID: 1443809952162413217}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
+  m_Enabled: 0
+  m_Radius: 0.5
+  m_Height: 0.5
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!64 &6768937374689392890
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443809952162413217}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1443809950520842741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -773,6 +788,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1443809951445792607}
     m_Modifications:
+    - target: {fileID: 1689504852014996886, guid: 65f98e129ab01f543952cdcf80314c7d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689504852014996886, guid: 65f98e129ab01f543952cdcf80314c7d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395813369357728521, guid: 65f98e129ab01f543952cdcf80314c7d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395813369357728521, guid: 65f98e129ab01f543952cdcf80314c7d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395813369357728521, guid: 65f98e129ab01f543952cdcf80314c7d, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395813369357728521, guid: 65f98e129ab01f543952cdcf80314c7d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395813369357728521, guid: 65f98e129ab01f543952cdcf80314c7d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395813369357728521, guid: 65f98e129ab01f543952cdcf80314c7d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7498521946943949826, guid: 65f98e129ab01f543952cdcf80314c7d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -820,6 +867,10 @@ PrefabInstance:
     - target: {fileID: 7498521946944376866, guid: 65f98e129ab01f543952cdcf80314c7d, type: 3}
       propertyPath: m_Name
       value: BlackWizard
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978820313650152818, guid: 65f98e129ab01f543952cdcf80314c7d, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65f98e129ab01f543952cdcf80314c7d, type: 3}
