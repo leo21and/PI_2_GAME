@@ -30,8 +30,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerDamage pDamage;
     [SerializeField] private Collisions cas;
 
-    [SerializeField] private GameObject text;
 
+    [SerializeField] private GameObject text;
     [SerializeField] private float maxPower = 100f;
     [SerializeField] private float currentPower;
     [SerializeField] private float powerRechargeRate = 2f;
@@ -41,10 +41,26 @@ public class PlayerController : MonoBehaviour
     private float currentCastTimer;
     private bool castingMagic = false;
     int selectedSpell;
-    public TMP_Text spellText;
+  
     public GameObject mira;
     public Slider currentPowerUI;
     [SerializeField] private Transform castPoint;
+
+    [SerializeField] private GameObject spellCircleFlowers;
+    [SerializeField] private GameObject spellCircleSilvas;
+    [SerializeField] private GameObject spellCircleAnimals;
+    [SerializeField] private GameObject spell3;
+    [SerializeField] private GameObject spell2;
+    [SerializeField] private GameObject spell1;
+
+    private bool uiSpellA;
+    private bool uiSpellF;
+    private bool uiSpellS;
+
+   
+
+    
+    
 
 
 
@@ -64,8 +80,14 @@ public class PlayerController : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
         camera = FindObjectOfType<Camera>();
-        
-        
+
+        uiSpellA = false;
+        uiSpellF = false;
+        uiSpellS = false;
+
+       
+
+
     }
     
     public void OnEnable()
@@ -120,7 +142,8 @@ public class PlayerController : MonoBehaviour
         //multiply 2 vectors
         currentVelocity = Vector3.Scale(gameObject.transform.forward, horizontalMovement).magnitude;
         currentPowerUI.value = currentPower;
-
+        
+      
         Move();
         Jump();
         Spells();
@@ -140,39 +163,117 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 selectedSpell = 0;
-                spellText.gameObject.SetActive(true);
-                StartCoroutine(SpellText());
-                spellText.text = "Spell 1 selected";
+               
 
-                mira.SetActive(true);
-                currentPowerUI.gameObject.SetActive(true);
-                StartCoroutine(Mira());
-                StartCoroutine(CurrentPowerUI());
+               if (uiSpellS)
+               {
+                   Debug.Log("stop2");
+                   StopCoroutine("Spell2UI");
+                 
+                   spellCircleSilvas.SetActive(false);
+                   spell2.SetActive(false);
+
+                   uiSpellS = false;
+               }
+               else if(uiSpellF)
+               {
+                   Debug.Log("stop3");
+                   StopCoroutine("Spell3UI");
+                   
+                   spellCircleFlowers.SetActive(false);
+                   spell3.SetActive(false);
+
+                   uiSpellF = false;
+               }
+
+               if (uiSpellA == false)
+               {
+                   Debug.Log("entrou no 1");
+                   StartCoroutine("Spell1UI"); 
+                   
+                   
+                   StopCoroutine("Mira"); 
+                   StopCoroutine("CurrentPowerUI");
+                   
+                   StartCoroutine("Mira");
+                   StartCoroutine("CurrentPowerUI");
+               }
+               
+               
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 selectedSpell = 1;
-                spellText.gameObject.SetActive(true);
-                StartCoroutine(SpellText());
-                spellText.text = "Spell 2 selected";
+                
+               
+                if (uiSpellA)
+                {
+                    StopCoroutine("Spell1UI");
+                    
+                    spellCircleAnimals.SetActive(false);
+                    spell1.SetActive(false);
+                    uiSpellA = false;
+                }
+                else if(uiSpellF)
+                {
+                    StopCoroutine("Spell3UI");
+                    
+                    spellCircleFlowers.SetActive(false);
+                    spell3.SetActive(false);
+                    uiSpellF = false;
+                }
 
-                mira.SetActive(true);
-                currentPowerUI.gameObject.SetActive(true);
-                StartCoroutine(Mira());
-                StartCoroutine(CurrentPowerUI());
+                if (uiSpellS == false)
+                {
+                    Debug.Log("entrou no 2");
+                    StartCoroutine("Spell2UI");
+                    
+                    
+                    StopCoroutine("Mira");
+                    StopCoroutine("CurrentPowerUI");
+                    
+                    StartCoroutine("Mira");
+                    StartCoroutine("CurrentPowerUI");
+                }
 
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 selectedSpell = 2;
-                spellText.gameObject.SetActive(true);
-                StartCoroutine(SpellText());
-                spellText.text = "Spell 3 selected";
+            
 
-                mira.SetActive(true);
-                currentPowerUI.gameObject.SetActive(true);
-                StartCoroutine(Mira());
-                StartCoroutine(CurrentPowerUI());
+              
+              if (uiSpellS)
+              {
+                  StopCoroutine("Spell2UI");
+                  
+                  spellCircleSilvas.SetActive(false);
+                  spell2.SetActive(false);
+                  uiSpellS = false;
+              }
+              else if(uiSpellA)
+              {
+                  StopCoroutine("Spell1UI");
+                  
+                  spellCircleAnimals.SetActive(false);
+                  spell1.SetActive(false);
+                  uiSpellA = false;
+              }
+              
+              if (uiSpellF == false)
+              {
+                  Debug.Log("entrou no 3");
+                  StartCoroutine("Spell3UI");  
+                  
+              
+                  
+                  StopCoroutine("Mira");
+                  StopCoroutine("CurrentPowerUI");
+                  
+                  StartCoroutine("Mira");
+                  StartCoroutine("CurrentPowerUI");
+                  
+              }
 
             }
 
@@ -342,23 +443,76 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    IEnumerator SpellText()
+    
+
+    IEnumerator Spell3UI()
     {
-        yield return new WaitForSeconds(3f);
-        spellText.gameObject.SetActive(false);
+        uiSpellF = true;
+        
+        spellCircleFlowers.SetActive(true);
+    
+        yield return new WaitForSeconds(2);
+        spell3.SetActive(true);
+        
+        yield return new WaitForSeconds(5);
+        spell3.SetActive(false);
+        spellCircleFlowers.SetActive(false);
+
+        uiSpellF = false;
+
+    }  
+    
+    IEnumerator Spell2UI()
+    {
+        
+        uiSpellS = true;
+        
+        spellCircleSilvas.SetActive(true);
+    
+        yield return new WaitForSeconds(2);
+        spell2.SetActive(true);
+        
+        yield return new WaitForSeconds(5);
+        spell2.SetActive(false);
+        spellCircleSilvas.SetActive(false);
+
+        uiSpellS = false;
+
+    }  
+    
+    IEnumerator Spell1UI()
+    {
+      
+        uiSpellA = true;
+
+        spellCircleAnimals.SetActive(true);
+    
+        yield return new WaitForSeconds(2);
+        spell1.SetActive(true);
+        
+        yield return new WaitForSeconds(5);
+        spell1.SetActive(false);
+        spellCircleAnimals.SetActive(false);
+
+        
+
+        uiSpellA = false;
+        
 
     }
 
     IEnumerator Mira()
     {
-        yield return new WaitForSeconds(5f);
+        mira.SetActive(true);
+        yield return new WaitForSeconds(7f);
         mira.SetActive(false);
 
     }
 
     IEnumerator CurrentPowerUI()
     {
-        yield return new WaitForSeconds(5f);
+        currentPowerUI.gameObject.SetActive(true);  
+        yield return new WaitForSeconds(7f);
         currentPowerUI.gameObject.SetActive(false);
 
     }
