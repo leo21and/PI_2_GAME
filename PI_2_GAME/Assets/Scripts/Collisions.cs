@@ -50,18 +50,9 @@ public class Collisions : MonoBehaviour
         {
 
             TrailRenderer trail = Instantiate(SpellTrail, castPoint.transform.position, Quaternion.identity);
+            StartCoroutine(SpawnTrail1(trail, hit));
 
-            StartCoroutine(SpawnTrail(trail, hit));
-
-            if (hit.collider.tag == "Animais" && hit.collider.GetComponent<Animais>().animalSaved == false)
-            {
-                hit.collider.GetComponent<Animais>().animalSaved = true;
-                countAnimais++;
-                CurrentLevel();
-                AnimalCollected.SetActive(true);
-                isWaitingA = true;
-            }
-
+           
         }
 
         GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
@@ -76,20 +67,7 @@ public class Collisions : MonoBehaviour
         {
 
             TrailRenderer trail = Instantiate(Spell2Trail, castPoint.transform.position, Quaternion.identity);
-
-            StartCoroutine(SpawnTrail(trail, hit));
-
-
-            if (hit.collider.tag == "Silvas" && hit.collider.GetComponent<Silvas>().silvaClean == false)
-            {
-                hit.collider.GetComponent<Silvas>().silvaClean = true;
-                
-             
-                countSilvas++;
-                CurrentLevel();
-                SilvaCollected.SetActive(true);
-                isWaitingS = true;
-            }
+            StartCoroutine(SpawnTrail2(trail, hit));
 
             // Ataque ao Black Wizard
             if (hit.collider.tag == "BlackWizard")
@@ -99,10 +77,8 @@ public class Collisions : MonoBehaviour
            
             }
 
-
         }
-
-       
+    
         GameObject impactGO = Instantiate(impactEffect2, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impactGO, 2f);
 
@@ -112,46 +88,131 @@ public class Collisions : MonoBehaviour
     {
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
-
             TrailRenderer trail = Instantiate(Spell3Trail, castPoint.transform.position, Quaternion.identity);
-
-            StartCoroutine(SpawnTrail(trail, hit));
-
-            if (hit.collider.tag == "Toxic" && hit.collider.GetComponent<FlowersToxic>().flowerHeal == false)
-            {
-                hit.collider.GetComponent<FlowersToxic>().flowerHeal = true;
-                countF++;
-                CurrentLevel();
-                FlowerCollected.SetActive(true);
-                isWaitingF = true;
-            }
-
-
+            StartCoroutine(SpawnTrail3(trail, hit));
         }
 
-       
         GameObject impactGO = Instantiate(impactEffect3, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impactGO, 2f);
-
     }
 
-
-    private IEnumerator SpawnTrail(TrailRenderer Trail, RaycastHit Hit)
+    private IEnumerator SpawnTrail1(TrailRenderer trail, RaycastHit hit)
     {
         float time = 0;
-        Vector3 startPosition = Trail.transform.position;
+        Vector3 startPosition = trail.transform.position;
+        bool collidedWithAnimal = false;
 
         while (time < 1)
         {
-            Trail.transform.position = Vector3.Lerp(startPosition, Hit.point, time);
-            time += Time.deltaTime / Trail.time;
+            trail.transform.position = Vector3.Lerp(startPosition, hit.point, time);
+            time += Time.deltaTime;
+
+            // Check if the trail is colliding with an Animal
+            Collider[] colliders = Physics.OverlapSphere(trail.transform.position, trail.startWidth / 2f);
+
+            foreach (Collider collider in colliders)
+            {
+                if (collider.CompareTag("Animais") && collider.GetComponent<Animais>().animalSaved == false)
+                {
+                    collidedWithAnimal = true;
+                    collider.GetComponent<Animais>().animalSaved = true;
+                    countAnimais++;
+                    CurrentLevel();
+                    AnimalCollected.SetActive(true);
+                    isWaitingA = true;
+                }
+            }
+
+            if (collidedWithAnimal)
+            {
+                break;
+            }
 
             yield return null;
         }
 
-        Trail.transform.position = Hit.point;
-        Destroy(Trail.gameObject, Trail.time);
+        trail.transform.position = hit.point;
+        Destroy(trail.gameObject, trail.time);
     }
+
+    private IEnumerator SpawnTrail2(TrailRenderer trail, RaycastHit hit)
+    {
+        float time = 0;
+        Vector3 startPosition = trail.transform.position;
+        bool collidedWithSilva = false;
+
+        while (time < 1)
+        {
+            trail.transform.position = Vector3.Lerp(startPosition, hit.point, time);
+            time += Time.deltaTime;
+
+            // Check if the trail is colliding with a Silva
+            Collider[] colliders = Physics.OverlapSphere(trail.transform.position, trail.startWidth / 2f);
+
+            foreach (Collider collider in colliders)
+            {
+                if (collider.CompareTag("Silvas") && collider.GetComponent<Silvas>().silvaClean == false)
+                {
+                    collidedWithSilva = true;
+                    collider.GetComponent<Silvas>().silvaClean = true;
+                    countSilvas++;
+                    CurrentLevel();
+                    SilvaCollected.SetActive(true);
+                    isWaitingS = true;
+                }
+            }
+
+            if (collidedWithSilva)
+            {
+                break;
+            }
+
+            yield return null;
+        }
+
+        trail.transform.position = hit.point;
+        Destroy(trail.gameObject, trail.time);
+    }
+
+    private IEnumerator SpawnTrail3(TrailRenderer trail, RaycastHit hit)
+    {
+        float time = 0;
+        Vector3 startPosition = trail.transform.position;
+        bool collidedWithFlower = false;
+
+        while (time < 1)
+        {
+            trail.transform.position = Vector3.Lerp(startPosition, hit.point, time);
+            time += Time.deltaTime;
+
+            // Check if the trail is colliding with a FlowersToxic
+            Collider[] colliders = Physics.OverlapSphere(trail.transform.position, trail.startWidth / 2f);
+
+            foreach (Collider collider in colliders)
+            {
+                if (collider.CompareTag("Toxic") && collider.GetComponent<FlowersToxic>().flowerHeal == false)
+                {
+                    collidedWithFlower = true;
+                    collider.GetComponent<FlowersToxic>().flowerHeal = true;
+                    countF++;
+                    CurrentLevel();
+                    FlowerCollected.SetActive(true);
+                    isWaitingF = true;
+                }
+            }
+
+            if (collidedWithFlower)
+            {
+                break;
+            }
+
+            yield return null;
+        }
+
+        trail.transform.position = hit.point;
+        Destroy(trail.gameObject, trail.time);
+    }
+
 
 
 
