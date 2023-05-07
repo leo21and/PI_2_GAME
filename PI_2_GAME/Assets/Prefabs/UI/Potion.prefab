@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fb601560819a6e4ca7220fe1a87c879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  oldImage: {fileID: 7424042747890760182}
   potion_100: {fileID: 2008692145, guid: 357b825882864354ab0c39aef3e5e71b, type: 3}
   potion_80: {fileID: -1129592644, guid: 357b825882864354ab0c39aef3e5e71b, type: 3}
   potion_60: {fileID: -2001823199, guid: 357b825882864354ab0c39aef3e5e71b, type: 3}
