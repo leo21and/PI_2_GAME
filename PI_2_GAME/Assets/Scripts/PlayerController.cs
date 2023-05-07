@@ -57,10 +57,10 @@ public class PlayerController : MonoBehaviour
     private bool uiSpellF;
     private bool uiSpellS;
 
-   
+    // Potion UI Status
+    public PotionScript PotionUI;
 
-    
-    
+
 
 
 
@@ -355,6 +355,8 @@ public class PlayerController : MonoBehaviour
             {
                 currentPowerUI.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.red;
             }
+
+            PotionUI.setPotionValue((int) currentPower);
         }
     }
 
