@@ -44,7 +44,6 @@ public class BlackWizardScript : MonoBehaviour
     [Header("Spell 2 Damage")]
     public int spell2Damage;
     Collisions collission;
-    
 
     [Header("Geral")]
     // Spawn Position
@@ -191,6 +190,7 @@ public class BlackWizardScript : MonoBehaviour
         GameObject raio = Instantiate(Thunder, position, rot);
         raio.SetActive(true);
         Destroy(raio, 1.00f);
+        MusicManager.instance.SendThunderSFX();
     }
 
     void SendFrontBeam()
