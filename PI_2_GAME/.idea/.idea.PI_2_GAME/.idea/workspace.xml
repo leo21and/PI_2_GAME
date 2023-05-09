@@ -8,6 +8,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/FinalCut.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Animais.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Camera2Vignette.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ChangeCloud.cs" root0="FORCE_HIGHLIGHTING" />
@@ -132,6 +133,7 @@
       <workItem from="1683369551380" duration="16630000" />
       <workItem from="1683623471013" duration="58000" />
       <workItem from="1683623573247" duration="6684000" />
+      <workItem from="1683646766549" duration="4270000" />
     </task>
     <servers />
   </component>
