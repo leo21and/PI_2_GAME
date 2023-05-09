@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 2_Disintegrate 1
+  m_Shader: {fileID: 4800000, guid: ecea3bae50341f44e85db1ab13698db1, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DissolveTexture:
+        m_Texture: {fileID: 2800000, guid: d47b27658aeb3d74a9a3489c8300b41c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FlowMap:
+        m_Texture: {fileID: 2800000, guid: fd784601da7dace4f8288a489379bbea, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Shape:
+        m_Texture: {fileID: 2800000, guid: da06921a15399df4caa91d4eda04b946, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BumpStr: 1
+    - _DissolveBorder: 0.05
+    - _Exapnd: 1
+    - _Glow: 1
+    - _R: 0.1
+    - _Weight: 0
+    m_Colors:
+    - _AmbientColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
+    - _Color: {r: 0.46226418, g: 0.34484062, b: 0.06759523, a: 1}
+    - _Direction: {r: 0, g: 0.3, b: 0, a: 0}
+    - _DisintegrationColor: {r: 0.9, g: 0.6, b: 0.2, a: 1}
+    - _DissolveColor: {r: 1, g: 0.57398313, b: 0, a: 1}
+  m_BuildTextureStacks: []

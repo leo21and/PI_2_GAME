@@ -56,6 +56,9 @@ public class BlackWizardScript : MonoBehaviour
     // Number of plants each spawn
     public int numPlants;
 
+    public bool wizardDeath;
+    [SerializeField] private GameObject healthbar;
+
     
 
     // Start is called before the first frame update
@@ -72,6 +75,10 @@ public class BlackWizardScript : MonoBehaviour
         //Health do BlackWizard
         currentBlackWizardHealth = blackWizardLife;
         healthBar.SetMaxHealth(blackWizardLife);
+
+        wizardDeath = false;
+       // wizardDeath = true;
+
 
     }
 
@@ -161,10 +168,17 @@ public class BlackWizardScript : MonoBehaviour
 
     IEnumerator BWDied()
     {
+        healthbar.SetActive(false);
         mAnimator.SetTrigger("IsDeath");
-        healthBar.SetHealth(0);
+        //healthBar.SetHealth(0);
         yield return new WaitForSeconds(4f);
-        gameOverMenu.SetActive(true);
+
+      //  transform.position += new Vector3(0, 2, 0);
+        
+        
+        wizardDeath = true;
+
+        //  gameOverMenu.SetActive(true);
     }
 
     void SpawnPlant()
@@ -196,6 +210,12 @@ public class BlackWizardScript : MonoBehaviour
     void SendFrontBeam()
     {
         FrontBeam.Play(); 
+    }
+
+    IEnumerator test()
+    {
+        yield return new WaitForSeconds(20);
+        wizardDeath = true;
     }
 
 }
