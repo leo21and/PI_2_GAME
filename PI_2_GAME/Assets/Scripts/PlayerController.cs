@@ -16,10 +16,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 horizontalMovement;
     private Animator playerAnimator;
     private float currentVelocity;
-    
-    
-    [SerializeField] private float gravity = -30f; 
-    [SerializeField] private bool isGrounded = true; 
+
+
+    [SerializeField] private float gravity = -30f;
+    [SerializeField] private bool isGrounded = true;
     [SerializeField] private bool jump = false;
     [SerializeField] private float jumpHeight = 1f;
     private Vector3 verticalVelocity = Vector3.zero;
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     private float currentCastTimer;
     private bool castingMagic = false;
     int selectedSpell;
-  
+
     public GameObject mira;
     public Slider currentPowerUI;
     [SerializeField] private Transform castPoint;
@@ -61,17 +61,17 @@ public class PlayerController : MonoBehaviour
     public PotionScript PotionUI;
 
     public bool canCastSpell;
-    
 
 
 
 
 
-    public int zona; 
+
+    public int zona;
 
     private void Awake()
     {
-        playerInput = new PlayerInput(); 
+        playerInput = new PlayerInput();
         playerInput.Player.Jump.performed += OnJumpPressed;
         currentPower = maxPower;
         currentPowerUI.maxValue = maxPower;
@@ -89,22 +89,22 @@ public class PlayerController : MonoBehaviour
         uiSpellS = false;
 
         canCastSpell = true;
-        
+
 
 
     }
-    
+
     public void OnEnable()
     {
-        playerInput.Player.Enable(); 
-        playerInput.Powers.Enable(); 
+        playerInput.Player.Enable();
+        playerInput.Powers.Enable();
         playerInput.PAUSE.Enable();
     }
 
     public void OnDisable()
     {
-        playerInput.Player.Disable(); 
-        playerInput.Powers.Disable(); 
+        playerInput.Player.Disable();
+        playerInput.Powers.Disable();
         playerInput.PAUSE.Disable();
     }
 
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    
+
     public void Jump()
     {
         if (jump && isGrounded)
@@ -131,28 +131,28 @@ public class PlayerController : MonoBehaviour
         verticalVelocity.y += gravity * Time.deltaTime;
         cc.Move(verticalVelocity * Time.deltaTime);
     }
-    
+
     void OnDrawGizmosSelected()
     {
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(new Vector3(transform.position.x, gameObject.transform.position.y, transform.position.z), 0.1f);
     }
-    
-    
+
+
     // Update is called once per frame
     void Update()
     {
         //multiply 2 vectors
         currentVelocity = Vector3.Scale(gameObject.transform.forward, horizontalMovement).magnitude;
         currentPowerUI.value = currentPower;
-        
-      
+
+
         Move();
         Jump();
         Spells();
-        
-        
+
+
     }
 
     void Spells()
@@ -164,65 +164,70 @@ public class PlayerController : MonoBehaviour
 
             bool hasEnoughPower = currentPower - cas.spellToCast[i].SpellToCast.PowerCost >= 0f;
 
+            bool isAiming = playerInput.Powers.Aim.ReadValue<float>() > 0.1;
+
+
 
 
             if (Input.GetKeyDown(KeyCode.Alpha1) && canCastSpell)
             {
                 selectedSpell = 0;
-                
-               if (uiSpellS)
-               {
-                   Debug.Log("stop2");
-                   StopCoroutine("Spell2UI");
-                 
-                   spellCircleSilvas.SetActive(false);
-                   spell2.SetActive(false);
 
-                   uiSpellS = false;
-               }
-               else if(uiSpellF)
-               {
-                   Debug.Log("stop3");
-                   StopCoroutine("Spell3UI");
-                   
-                   spellCircleFlowers.SetActive(false);
-                   spell3.SetActive(false);
+                if (uiSpellS)
+                {
+                    Debug.Log("stop2");
+                    StopCoroutine("Spell2UI");
 
-                   uiSpellF = false;
-               }
+                    spellCircleSilvas.SetActive(false);
+                    spell2.SetActive(false);
 
-               if (uiSpellA == false)
-               {
-                   Debug.Log("entrou no 1");
-                   StartCoroutine("Spell1UI"); 
-                   
-                   mira.SetActive(false);
-                   currentPowerUI.gameObject.SetActive(false); 
-                   StopCoroutine("Mira"); 
-                   StopCoroutine("CurrentPowerUI");
-                   
-                   StartCoroutine("Mira");
-                   StartCoroutine("CurrentPowerUI");
-               }
-               
-               
+                    uiSpellS = false;
+                }
+                else if (uiSpellF)
+                {
+                    Debug.Log("stop3");
+                    StopCoroutine("Spell3UI");
+
+                    spellCircleFlowers.SetActive(false);
+                    spell3.SetActive(false);
+
+                    uiSpellF = false;
+                }
+
+                if (uiSpellA == false)
+                {
+                    Debug.Log("entrou no 1");
+                    StartCoroutine("Spell1UI");
+
+                    mira.SetActive(false);
+                    currentPowerUI.gameObject.SetActive(false);
+                    StopCoroutine("Mira");
+                    StopCoroutine("CurrentPowerUI");
+
+                    StartCoroutine("Mira");
+                    StartCoroutine("CurrentPowerUI");
+
+
+                }
+
+
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2) && canCastSpell)
             {
                 selectedSpell = 1;
-            
+
                 if (uiSpellA)
                 {
                     StopCoroutine("Spell1UI");
-                    
+
                     spellCircleAnimals.SetActive(false);
                     spell1.SetActive(false);
                     uiSpellA = false;
                 }
-                else if(uiSpellF) 
+                else if (uiSpellF)
                 {
                     StopCoroutine("Spell3UI");
-                    
+
                     spellCircleFlowers.SetActive(false);
                     spell3.SetActive(false);
                     uiSpellF = false;
@@ -232,57 +237,72 @@ public class PlayerController : MonoBehaviour
                 {
                     Debug.Log("entrou no 2");
                     StartCoroutine("Spell2UI");
-                    
+
                     mira.SetActive(false);
-                    currentPowerUI.gameObject.SetActive(false); 
+                    currentPowerUI.gameObject.SetActive(false);
                     StopCoroutine("Mira");
                     StopCoroutine("CurrentPowerUI");
-                    
+
                     StartCoroutine("Mira");
                     StartCoroutine("CurrentPowerUI");
+
+
+
                 }
 
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3) && canCastSpell)
             {
                 selectedSpell = 2;
-            
-               
-              if (uiSpellS)
-              {
-                  StopCoroutine("Spell2UI");
-                  
-                  spellCircleSilvas.SetActive(false);
-                  spell2.SetActive(false);
-                  uiSpellS = false;
-              }
-              else if(uiSpellA)
-              {
-                  StopCoroutine("Spell1UI");
-                  
-                  spellCircleAnimals.SetActive(false);
-                  spell1.SetActive(false);
-                  uiSpellA = false;
-              }
-              
-              if (uiSpellF == false)
-              {
 
-                  Debug.Log("entrou no 3");
-                  StartCoroutine("Spell3UI");  
-                  
-              
-                  mira.SetActive(false);
-                  currentPowerUI.gameObject.SetActive(false);
-                  StopCoroutine("Mira");
-                  StopCoroutine("CurrentPowerUI");
-                  
-                  StartCoroutine("Mira");
-                  StartCoroutine("CurrentPowerUI");
-                  
-              }
+
+                if (uiSpellS)
+                {
+                    StopCoroutine("Spell2UI");
+
+                    spellCircleSilvas.SetActive(false);
+                    spell2.SetActive(false);
+                    uiSpellS = false;
+                }
+                else if (uiSpellA)
+                {
+                    StopCoroutine("Spell1UI");
+
+                    spellCircleAnimals.SetActive(false);
+                    spell1.SetActive(false);
+                    uiSpellA = false;
+                }
+
+                if (uiSpellF == false)
+                {
+
+                    Debug.Log("entrou no 3");
+                    StartCoroutine("Spell3UI");
+
+
+                    mira.SetActive(false);
+                    currentPowerUI.gameObject.SetActive(false);
+                    StopCoroutine("Mira");
+                    StopCoroutine("CurrentPowerUI");
+
+                    StartCoroutine("Mira");
+                    StartCoroutine("CurrentPowerUI");
+
+
+                }
+
 
             }
+            Debug.Log(isAiming);
+
+            if (isAiming)
+            {
+
+                StartCoroutine("Mira2");
+                StartCoroutine("CurrentPowerUI2");
+
+            }
+
 
 
 
@@ -326,7 +346,7 @@ public class PlayerController : MonoBehaviour
 
             }
 
-         
+
 
 
             if (castingMagic)
@@ -359,6 +379,9 @@ public class PlayerController : MonoBehaviour
 
             }
 
+
+
+
             if (currentPower > maxPower / 2)
             {
 
@@ -376,31 +399,31 @@ public class PlayerController : MonoBehaviour
                 currentPowerUI.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.red;
             }
 
-            PotionUI.setPotionValue((int) currentPower);
+            PotionUI.setPotionValue((int)currentPower);
         }
     }
 
 
     void Move()
     {
-        
+
         isGrounded = Physics.CheckSphere(new Vector3(transform.position.x, gameObject.transform.position.y, transform.position.z), 0.1f, groundMask);
         if (isGrounded)
         {
             verticalVelocity.y = 0f;
 
         }
-        
+
         move = playerInput.Player.Move.ReadValue<Vector2>();
 
         horizontalMovement = (move.y * transform.forward) + (move.x * transform.right);
-        
-        cc.Move(horizontalMovement * speed * Time.deltaTime); 
-      
+
+        cc.Move(horizontalMovement * speed * Time.deltaTime);
+
         playerAnimator.SetFloat("Velocity", currentVelocity);
-        
+
     }
-    
+
     //UnlockAreas
 
     private void OnCollisionEnter(Collision collision)
@@ -409,9 +432,9 @@ public class PlayerController : MonoBehaviour
         {
             text.SetActive(true);
             StartCoroutine(Text());
-            
 
-            if (cas.countF == 1 && cas.countAnimais == 1 && cas.countSilvas == 1) 
+
+            if (cas.countF == 1 && cas.countAnimais == 1 && cas.countSilvas == 1)
             {
                 text.SetActive(false);
                 zona = 2;
@@ -422,7 +445,7 @@ public class PlayerController : MonoBehaviour
         {
             text.SetActive(true);
             StartCoroutine(Text());
-            
+
             if (cas.countF == 5 && cas.countAnimais == 3 && cas.countSilvas == 3) //1 anterior+ 4 novas
             {
                 text.SetActive(false);
@@ -434,7 +457,7 @@ public class PlayerController : MonoBehaviour
         {
             text.SetActive(true);
             StartCoroutine(Text());
-            
+
             if (cas.countF == 14 && cas.countAnimais == 6 && cas.countSilvas == 6)
             {
                 text.SetActive(false);
@@ -446,7 +469,7 @@ public class PlayerController : MonoBehaviour
         {
             text.SetActive(true);
             StartCoroutine(Text());
-            
+
             if (cas.countF == 20 && cas.countSilvas == 10 && cas.countAnimais == 10) //test
             {
                 text.SetActive(false);
@@ -454,7 +477,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject);
             }
         }
-        
+
     }
 
     IEnumerator Text()
@@ -462,84 +485,104 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(1.2f);
         text.SetActive(false);
-        
+
     }
 
-    
+
 
     IEnumerator Spell3UI()
     {
-        
-        
+
+
         uiSpellF = true;
-        
+
         spellCircleFlowers.SetActive(true);
-    
+
         //yield return new WaitForSeconds(2);
         spell3.SetActive(true);
-        
+
         yield return new WaitForSeconds(5);
         spell3.SetActive(false);
         spellCircleFlowers.SetActive(false);
 
         uiSpellF = false;
 
-    }  
-    
+    }
+
     IEnumerator Spell2UI()
     {
-        
+
         uiSpellS = true;
-        
+
         spellCircleSilvas.SetActive(true);
-    
-       // yield return new WaitForSeconds(2);
+
+        // yield return new WaitForSeconds(2);
         spell2.SetActive(true);
-        
+
         yield return new WaitForSeconds(5);
         spell2.SetActive(false);
         spellCircleSilvas.SetActive(false);
 
         uiSpellS = false;
 
-    }  
-    
+    }
+
     IEnumerator Spell1UI()
     {
-       
+
         uiSpellA = true;
 
         spellCircleAnimals.SetActive(true);
-    
-     //   yield return new WaitForSeconds(2);
+
+        //   yield return new WaitForSeconds(2);
         spell1.SetActive(true);
-        
+
         yield return new WaitForSeconds(5);
         spell1.SetActive(false);
         spellCircleAnimals.SetActive(false);
 
-        
+
 
         uiSpellA = false;
-        
+
 
     }
 
     IEnumerator Mira()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.2f);
         mira.SetActive(true);
         yield return new WaitForSeconds(6f);
         mira.SetActive(false);
 
     }
 
+    IEnumerator Mira2()
+    {
+        yield return new WaitForSeconds(0.2f);
+        mira.SetActive(true);
+        yield return new WaitForSeconds(10f);
+        mira.SetActive(false);
+
+    }
+
     IEnumerator CurrentPowerUI()
     {
-        yield return new WaitForSeconds(1.5f);
-        currentPowerUI.gameObject.SetActive(true);  
+        yield return new WaitForSeconds(0.2f);
+        currentPowerUI.gameObject.SetActive(true);
         yield return new WaitForSeconds(6f);
         currentPowerUI.gameObject.SetActive(false);
 
     }
+    IEnumerator CurrentPowerUI2()
+    {
+        yield return new WaitForSeconds(0.2f);
+        currentPowerUI.gameObject.SetActive(true);
+        yield return new WaitForSeconds(10f);
+        currentPowerUI.gameObject.SetActive(false);
+
+    }
+
 }
+
+

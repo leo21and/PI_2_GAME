@@ -127,6 +127,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""5040a3f5-7739-4d0c-883e-e029d7187f43"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -138,6 +147,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""CastSpell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a213fb20-80d2-4c22-8c04-02d17012d82c"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -181,6 +201,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // Powers
         m_Powers = asset.FindActionMap("Powers", throwIfNotFound: true);
         m_Powers_CastSpell = m_Powers.FindAction("CastSpell", throwIfNotFound: true);
+        m_Powers_Aim = m_Powers.FindAction("Aim", throwIfNotFound: true);
         // PAUSE
         m_PAUSE = asset.FindActionMap("PAUSE", throwIfNotFound: true);
         m_PAUSE_pause = m_PAUSE.FindAction("pause", throwIfNotFound: true);
@@ -300,11 +321,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Powers;
     private List<IPowersActions> m_PowersActionsCallbackInterfaces = new List<IPowersActions>();
     private readonly InputAction m_Powers_CastSpell;
+    private readonly InputAction m_Powers_Aim;
     public struct PowersActions
     {
         private @PlayerInput m_Wrapper;
         public PowersActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @CastSpell => m_Wrapper.m_Powers_CastSpell;
+        public InputAction @Aim => m_Wrapper.m_Powers_Aim;
         public InputActionMap Get() { return m_Wrapper.m_Powers; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -317,6 +340,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @CastSpell.started += instance.OnCastSpell;
             @CastSpell.performed += instance.OnCastSpell;
             @CastSpell.canceled += instance.OnCastSpell;
+            @Aim.started += instance.OnAim;
+            @Aim.performed += instance.OnAim;
+            @Aim.canceled += instance.OnAim;
         }
 
         private void UnregisterCallbacks(IPowersActions instance)
@@ -324,6 +350,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @CastSpell.started -= instance.OnCastSpell;
             @CastSpell.performed -= instance.OnCastSpell;
             @CastSpell.canceled -= instance.OnCastSpell;
+            @Aim.started -= instance.OnAim;
+            @Aim.performed -= instance.OnAim;
+            @Aim.canceled -= instance.OnAim;
         }
 
         public void RemoveCallbacks(IPowersActions instance)
@@ -395,6 +424,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface IPowersActions
     {
         void OnCastSpell(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
     }
     public interface IPAUSEActions
     {
