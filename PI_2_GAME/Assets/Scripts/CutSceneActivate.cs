@@ -12,6 +12,7 @@ public class CutSceneActivate : MonoBehaviour
 
     public bool disable ;
     
+    
 
     
     
@@ -33,14 +34,17 @@ public class CutSceneActivate : MonoBehaviour
         if (other.tag == "Cut1")
         {
             disable = true;
+            
             cut1.SetActive(true);
             
+
         }
         
         else if (other.tag == "Cut2")
         {
             disable = true;
             cut2.SetActive(true);
+            
         }
         
         else if (other.tag == "Cut3")
@@ -48,6 +52,7 @@ public class CutSceneActivate : MonoBehaviour
 
             disable = true;
             cut3.SetActive(true);
+            
         }
 
     }

@@ -58,15 +58,10 @@ public class BlackWizardScript : MonoBehaviour
 
     public bool wizardDeath;
     [SerializeField] private GameObject healthbar;
-    public bool startCutFinal;
     
-    [SerializeField] private CharacterController cc;
-
-    [SerializeField] private GameObject cutFinal;
-    [SerializeField] private PlayerController pc;
-    [SerializeField] private PlayableDirector director;
-    [SerializeField] private GameObject fpcamera;
+    
     public bool isDeath;
+    [SerializeField] private GameObject cutfinal;
 
 
     
@@ -87,11 +82,7 @@ public class BlackWizardScript : MonoBehaviour
         healthBar.SetMaxHealth(blackWizardLife);
 
         wizardDeath = false;
-       // wizardDeath = true;
-     //  StartCoroutine(BWDied());
-
-       startCutFinal = false;
-       isDeath = false;
+        isDeath = false;
 
 
 
@@ -100,28 +91,11 @@ public class BlackWizardScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         if (currentBlackWizardHealth <= 0 && !isDeath)
         {
             BWDeath = true;
-            pc.OnDisable();
-        
-            fpcamera.SetActive(false);
-            cc.enabled = false;
-            
-            cutFinal.SetActive(true);
-
-            if (director.state != PlayState.Playing)
-            {
-                gameOverMenu.SetActive(true);
-            }
-
-           
             StartCoroutine(BWDied());  
         }
-        
-      
     }
 
     public void BlackWizardSpell2Damage()
@@ -132,15 +106,7 @@ public class BlackWizardScript : MonoBehaviour
         if (currentBlackWizardHealth > 0)
         {
             healthBar.SetHealth(currentBlackWizardHealth);
-        } 
-        // else if(currentBlackWizardHealth <= 0 && !isDeath)
-        // {
-        //    
-        //     
-        //    
-        // }
-
-
+        }
     }
 
     void WizardAttack()
@@ -206,23 +172,16 @@ public class BlackWizardScript : MonoBehaviour
 
     IEnumerator BWDied()
     {
-       // startCutFinal = true;
-
-       isDeath = true;
-        
+        isDeath = true;
+       
+        cutfinal.SetActive(true);
         
         healthbar.SetActive(false);
         mAnimator.SetTrigger("IsDeath");
-        //healthBar.SetHealth(0);
+
         yield return new WaitForSeconds(4f);
-
-       // transform.position += new Vector3(0, 2, 0);
-        
-        
+    
         wizardDeath = true;
-
-        //  gameOverMenu.SetActive(true);
-        
     }
 
     void SpawnPlant()

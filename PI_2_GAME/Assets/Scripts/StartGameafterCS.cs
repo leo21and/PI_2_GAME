@@ -23,11 +23,13 @@ public class StartGameafterCS : MonoBehaviour
        fpcamera.SetActive(false);
        _characterController.enabled = false;
        skip.SetActive(true);
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        player.canCastSpell = false;
         OnEndCutScene();
     }
 
@@ -40,6 +42,8 @@ public class StartGameafterCS : MonoBehaviour
             player.OnEnable();
             _characterController.enabled = true;
             skip.SetActive(false);
+            player.canCastSpell = true;
+            this.gameObject.SetActive(false);
         }
         
     }

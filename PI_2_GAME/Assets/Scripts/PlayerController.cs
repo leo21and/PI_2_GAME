@@ -60,6 +60,9 @@ public class PlayerController : MonoBehaviour
     // Potion UI Status
     public PotionScript PotionUI;
 
+    public bool canCastSpell;
+    
+
 
 
 
@@ -85,7 +88,8 @@ public class PlayerController : MonoBehaviour
         uiSpellF = false;
         uiSpellS = false;
 
-       
+        canCastSpell = true;
+        
 
 
     }
@@ -147,6 +151,8 @@ public class PlayerController : MonoBehaviour
         Move();
         Jump();
         Spells();
+        
+        
     }
 
     void Spells()
@@ -160,11 +166,10 @@ public class PlayerController : MonoBehaviour
 
 
 
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.Alpha1) && canCastSpell)
             {
                 selectedSpell = 0;
-               
-
+                
                if (uiSpellS)
                {
                    Debug.Log("stop2");
@@ -191,7 +196,8 @@ public class PlayerController : MonoBehaviour
                    Debug.Log("entrou no 1");
                    StartCoroutine("Spell1UI"); 
                    
-                   
+                   mira.SetActive(false);
+                   currentPowerUI.gameObject.SetActive(false); 
                    StopCoroutine("Mira"); 
                    StopCoroutine("CurrentPowerUI");
                    
@@ -201,11 +207,10 @@ public class PlayerController : MonoBehaviour
                
                
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            else if (Input.GetKeyDown(KeyCode.Alpha2) && canCastSpell)
             {
                 selectedSpell = 1;
-                
-               
+            
                 if (uiSpellA)
                 {
                     StopCoroutine("Spell1UI");
@@ -214,7 +219,7 @@ public class PlayerController : MonoBehaviour
                     spell1.SetActive(false);
                     uiSpellA = false;
                 }
-                else if(uiSpellF)
+                else if(uiSpellF) 
                 {
                     StopCoroutine("Spell3UI");
                     
@@ -228,7 +233,8 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("entrou no 2");
                     StartCoroutine("Spell2UI");
                     
-                    
+                    mira.SetActive(false);
+                    currentPowerUI.gameObject.SetActive(false); 
                     StopCoroutine("Mira");
                     StopCoroutine("CurrentPowerUI");
                     
@@ -237,12 +243,11 @@ public class PlayerController : MonoBehaviour
                 }
 
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            else if (Input.GetKeyDown(KeyCode.Alpha3) && canCastSpell)
             {
                 selectedSpell = 2;
             
-
-              
+               
               if (uiSpellS)
               {
                   StopCoroutine("Spell2UI");
@@ -262,11 +267,13 @@ public class PlayerController : MonoBehaviour
               
               if (uiSpellF == false)
               {
+
                   Debug.Log("entrou no 3");
                   StartCoroutine("Spell3UI");  
                   
               
-                  
+                  mira.SetActive(false);
+                  currentPowerUI.gameObject.SetActive(false);
                   StopCoroutine("Mira");
                   StopCoroutine("CurrentPowerUI");
                   
@@ -290,17 +297,30 @@ public class PlayerController : MonoBehaviour
                 if (selectedSpell == 0)
                 {
                     cas.CastSpell();
-
+                    StopCoroutine("Spell1UI");
+                    spellCircleAnimals.SetActive(false);
+                    spell1.SetActive(false);
+                    uiSpellA = false;
 
                 }
                 else if (selectedSpell == 1)
                 {
                     cas.CastSpell2();
+                    StopCoroutine("Spell2UI");
+                    spellCircleSilvas.SetActive(false);
+                    spell2.SetActive(false);
+                    uiSpellS = false;
+
 
                 }
                 else if (selectedSpell == 2)
                 {
                     cas.CastSpell3();
+                    StopCoroutine("Spell3UI");
+                    spellCircleFlowers.SetActive(false);
+                    spell3.SetActive(false);
+                    uiSpellF = false;
+
 
                 }
 
@@ -449,11 +469,13 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Spell3UI()
     {
+        
+        
         uiSpellF = true;
         
         spellCircleFlowers.SetActive(true);
     
-        yield return new WaitForSeconds(2);
+        //yield return new WaitForSeconds(2);
         spell3.SetActive(true);
         
         yield return new WaitForSeconds(5);
@@ -471,7 +493,7 @@ public class PlayerController : MonoBehaviour
         
         spellCircleSilvas.SetActive(true);
     
-        yield return new WaitForSeconds(2);
+       // yield return new WaitForSeconds(2);
         spell2.SetActive(true);
         
         yield return new WaitForSeconds(5);
@@ -484,12 +506,12 @@ public class PlayerController : MonoBehaviour
     
     IEnumerator Spell1UI()
     {
-      
+       
         uiSpellA = true;
 
         spellCircleAnimals.SetActive(true);
     
-        yield return new WaitForSeconds(2);
+     //   yield return new WaitForSeconds(2);
         spell1.SetActive(true);
         
         yield return new WaitForSeconds(5);
@@ -505,16 +527,18 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Mira()
     {
+        yield return new WaitForSeconds(1.5f);
         mira.SetActive(true);
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(6f);
         mira.SetActive(false);
 
     }
 
     IEnumerator CurrentPowerUI()
     {
+        yield return new WaitForSeconds(1.5f);
         currentPowerUI.gameObject.SetActive(true);  
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(6f);
         currentPowerUI.gameObject.SetActive(false);
 
     }

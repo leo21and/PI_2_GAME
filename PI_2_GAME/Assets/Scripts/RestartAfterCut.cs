@@ -14,6 +14,7 @@ public class RestartAfterCut : MonoBehaviour
     [SerializeField] private GameObject trigger;
 
     [SerializeField] private CutSceneActivate csa;
+    
    
 
     // Start is called before the first frame update
@@ -27,6 +28,8 @@ public class RestartAfterCut : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+        
         OnEndCutScene();
 
         if (csa.disable)
@@ -34,7 +37,11 @@ public class RestartAfterCut : MonoBehaviour
             player.OnDisable();
         
             fpcamera.SetActive(false);
-            _characterController.enabled = false; 
+            _characterController.enabled = false;
+            
+            player.canCastSpell = false;
+            
+
         }
     }
 
@@ -50,7 +57,10 @@ public class RestartAfterCut : MonoBehaviour
             _characterController.enabled = true;
             
             
-            trigger.SetActive(false);
+            trigger.SetActive(false); 
+            player.canCastSpell = true;
+            Debug.Log(player.canCastSpell);
+
         }
         
     }
