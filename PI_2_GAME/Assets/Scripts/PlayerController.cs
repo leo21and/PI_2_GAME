@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour
 
             bool hasEnoughPower = currentPower - cas.spellToCast[i].SpellToCast.PowerCost >= 0f;
 
-            bool isAiming = playerInput.Powers.Aim.ReadValue<float>() > 0.1;
+           // bool isAiming = playerInput.Powers.Aim.ReadValue<float>() > 0.1;
 
 
 
@@ -293,15 +293,15 @@ public class PlayerController : MonoBehaviour
 
 
             }
-            Debug.Log(isAiming);
-
-            if (isAiming)
-            {
-
-                StartCoroutine("Mira2");
-                StartCoroutine("CurrentPowerUI2");
-
-            }
+            // Debug.Log(isAiming);
+            //
+            // if (isAiming)
+            // {
+            //
+            //     StartCoroutine("Mira2");
+            //     StartCoroutine("CurrentPowerUI2");
+            //
+            // }
 
 
 
@@ -477,6 +477,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject);
             }
         }
+        
 
     }
 
@@ -557,14 +558,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    IEnumerator Mira2()
-    {
-        yield return new WaitForSeconds(0.2f);
-        mira.SetActive(true);
-        yield return new WaitForSeconds(10f);
-        mira.SetActive(false);
-
-    }
+    // IEnumerator Mira2()
+    // {
+    //     yield return new WaitForSeconds(0.2f);
+    //     mira.SetActive(true);
+    //     yield return new WaitForSeconds(10f);
+    //     mira.SetActive(false);
+    //
+    // }
 
     IEnumerator CurrentPowerUI()
     {

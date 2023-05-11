@@ -13,6 +13,7 @@ public class ChangeCloud : MonoBehaviour
     private ParticleSystem.MainModule main;
     private Material cloudmat;
 
+    [SerializeField] private BlackWizardScript bw;
     
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,11 @@ public class ChangeCloud : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (bw.currentBlackWizardHealth <= 0)
+        {
+            cloudmat.SetColor("_TintColor", new Color32(203, 139, 212, 0));
+        }
+        
         if (!startchange && pc.zona != 0)
         {
             StartCoroutine(changeCloud());
@@ -41,7 +47,7 @@ public class ChangeCloud : MonoBehaviour
     {
         startchange = true;
         
-        
+       
         switch (pc.zona)
         {
             case 2:
@@ -60,6 +66,8 @@ public class ChangeCloud : MonoBehaviour
                 Debug.Log("none");
                 break;
         }
+
+      
 
         yield return new WaitForSeconds(2);
         startchange = false;

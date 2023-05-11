@@ -5,6 +5,7 @@ using UnityEngine;
 public class ChangeFog : MonoBehaviour
 {
     [SerializeField] private PlayerController pc;
+    [SerializeField] private BlackWizardScript bw;
 
     private bool startchange;
 
@@ -30,6 +31,12 @@ public class ChangeFog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (bw.currentBlackWizardHealth <= 0)
+        {
+            Debug.Log("entra no fim");
+            fogmat.SetColor("_TintColor", new Color32(217, 156, 212, 0)); 
+        }
+        
         if (!startchange && pc.zona != 0)
         {
             StartCoroutine(changeFog());
@@ -59,6 +66,8 @@ public class ChangeFog : MonoBehaviour
                 Debug.Log("none");
                 break;
         }
+
+      
 
         yield return new WaitForSeconds(2);
         startchange = false;

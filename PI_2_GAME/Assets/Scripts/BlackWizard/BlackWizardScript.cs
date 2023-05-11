@@ -63,6 +63,8 @@ public class BlackWizardScript : MonoBehaviour
     public bool isDeath;
     [SerializeField] private GameObject cutfinal;
 
+    public Material skyMaterial;
+
 
     
 
@@ -173,6 +175,8 @@ public class BlackWizardScript : MonoBehaviour
     IEnumerator BWDied()
     {
         isDeath = true;
+
+        RenderSettings.skybox = skyMaterial;
        
         cutfinal.SetActive(true);
         
