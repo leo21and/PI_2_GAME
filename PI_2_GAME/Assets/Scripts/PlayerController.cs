@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     public PotionScript PotionUI;
 
     public bool canCastSpell;
+    public bool ismoving;
 
 
 
@@ -421,6 +422,15 @@ public class PlayerController : MonoBehaviour
         cc.Move(horizontalMovement * speed * Time.deltaTime);
 
         playerAnimator.SetFloat("Velocity", currentVelocity);
+
+        if (horizontalMovement != Vector3.zero)
+        {
+            ismoving = true;
+        }
+        else
+        {
+            ismoving = false;
+        }
 
     }
 
