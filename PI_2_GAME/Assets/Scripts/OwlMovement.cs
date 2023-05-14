@@ -13,6 +13,8 @@ public class OwlMovement : MonoBehaviour
     [SerializeField] private PlayerController pc;
     private Vector3 lastPos;
     Vector3 currentVelocity = Vector3.zero;
+
+    private Rigidbody rb;
     
      
 
@@ -21,6 +23,7 @@ public class OwlMovement : MonoBehaviour
     { 
         
         lastPos = transform.position;
+        rb = GetComponent<Rigidbody>();
 
     }
 
@@ -30,10 +33,36 @@ public class OwlMovement : MonoBehaviour
         
             
         // transform.position = Vector3.Lerp(transform.position,  player.transform.position + new Vector3(x,y,z) , 5 * Time.deltaTime);
-        transform.position = Vector3.MoveTowards(transform.position,  player.transform.position + new Vector3(x,y,z) , 5 * Time.deltaTime);
+       // transform.position = Vector3.MoveTowards(transform.position,  player.transform.position + new Vector3(x,y,z) , 5 * Time.deltaTime);
+       Vector3 targetPosition = player.transform.position + new Vector3(x, y, z);
+       Vector3 target2Position = player.transform.position + new Vector3(0, y, z);
+       Vector3 direction = targetPosition - transform.position;
+       float distance = direction.magnitude;
+       direction.Normalize();
 
+       RaycastHit hit;
+       
+      
+       if (Physics.SphereCast(transform.position, 0.5f, direction, out hit, distance ))
+       {
+       
+           if (hit.collider.gameObject.CompareTag("Terrain"))
+           {
+               Vector3 newPos = hit.point + hit.normal;
+               transform.position = newPos;
 
-
+           }
+       }
+       else
+       {
+           transform.position = Vector3.MoveTowards(transform.position, targetPosition, 5 * Time.deltaTime); 
+       }
+       
+       
+      
+       Debug.DrawLine(transform.position, transform.position + direction * distance, Color.red);
+       Debug.DrawRay(hit.point, hit.normal, Color.green);
+       Debug.DrawRay(hit.point, direction * hit.distance, Color.blue);
     }
     
     
