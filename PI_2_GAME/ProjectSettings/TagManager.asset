@@ -15,6 +15,7 @@ TagManager:
   - Cut1
   - Cut2
   - Cut3
+  - Terrain
   layers:
   - Default
   - TransparentFX
