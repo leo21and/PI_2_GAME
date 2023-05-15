@@ -42,7 +42,9 @@ public class Collisions : MonoBehaviour
 
     public TrailRenderer SpellTrail, Spell2Trail, Spell3Trail;
     RaycastHit hit;
+    public FlyingEnemy[] flyingEnemy;
 
+   
 
     public void CastSpell()
     {
@@ -52,13 +54,27 @@ public class Collisions : MonoBehaviour
             TrailRenderer trail = Instantiate(SpellTrail, castPoint.transform.position, Quaternion.identity);
             StartCoroutine(SpawnTrail1(trail, hit));
 
-           
+            //Dano no Inimigo voador
+            //Precisa de correçao porque o raio do collider é muito grande
+            if (hit.collider.tag == "FlyingEnemy")
+            {
+                for(int i = 0; i < flyingEnemy.Length; i++)
+                {
+                    flyingEnemy[i].Damage();
+
+                }
+
+
+            }
+
         }
 
         GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impactGO, 2f);
 
-        
+
+
+
     }
 
     public void CastSpell2()

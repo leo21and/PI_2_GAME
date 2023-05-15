@@ -16,6 +16,7 @@ TagManager:
   - Cut2
   - Cut3
   - Terrain
+  - FlyingEnemy
   layers:
   - Default
   - TransparentFX

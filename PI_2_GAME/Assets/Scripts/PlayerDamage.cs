@@ -102,6 +102,16 @@ public class PlayerDamage : MonoBehaviour
        // Debug.Log(flowerNumInRange + "flowers");
     }
 
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        if(currentHealth < 0)
+        {
+            death = true;
+        }
+    }
+
     IEnumerator TakeLife()
     {
         startTakingLife = true;
