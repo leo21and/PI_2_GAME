@@ -51,16 +51,16 @@ public class ChangeFog : MonoBehaviour
         switch (pc.zona)
         {
             case 2:
-                fogmat.SetColor("_TintColor", new Color32(217, 156, 212, 15));
+                fogmat.SetColor("_TintColor", new Color32(217, 156, 212, 35));
                 break;
             case 3:
-                fogmat.SetColor("_TintColor", new Color32(217, 156, 212, 12));
+                fogmat.SetColor("_TintColor", new Color32(217, 156, 212, 30));
                 break;
             case 4:
-                fogmat.SetColor("_TintColor", new Color32(217, 156, 212, 10));
+                fogmat.SetColor("_TintColor", new Color32(217, 156, 212, 25));
                 break;
             case 5:
-                fogmat.SetColor("_TintColor", new Color32(217, 156, 212, 5));
+                fogmat.SetColor("_TintColor", new Color32(217, 156, 212, 20));
                 break;
             default:
                 Debug.Log("none");

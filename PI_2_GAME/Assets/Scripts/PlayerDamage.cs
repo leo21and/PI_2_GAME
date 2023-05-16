@@ -174,7 +174,7 @@ public class PlayerDamage : MonoBehaviour
         }
         else if (GameObject.Find("ThirdLock") == null)
         {
-            gameObject.transform.position = new Vector3(0.79f, 0f, 207f);
+            gameObject.transform.position = new Vector3(-30f, 0f, 207f); 
         }
         else if (GameObject.Find("SecondLock") == null)
         {
@@ -203,7 +203,7 @@ public class PlayerDamage : MonoBehaviour
 
         cam.transform.Rotate(50,0,0 );
      
-        cam.transform.position = player.transform.position + new Vector3(0,13,-9);
+        cam.transform.position = player.transform.position + new Vector3(0,10,0); //z-9 /7inspector xrotate 40
         
         maincam.SetActive(false);
         cam.SetActive(true);

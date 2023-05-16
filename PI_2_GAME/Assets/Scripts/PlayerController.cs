@@ -431,6 +431,8 @@ public class PlayerController : MonoBehaviour
         {
             ismoving = false;
         }
+        
+        Debug.Log("ismoving");
 
     }
 
