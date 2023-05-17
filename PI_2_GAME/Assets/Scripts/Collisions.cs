@@ -56,16 +56,16 @@ public class Collisions : MonoBehaviour
 
             //Dano no Inimigo voador
             //Precisa de correçao porque o raio do collider é muito grande
-            if (hit.collider.tag == "FlyingEnemy")
-            {
-                for(int i = 0; i < flyingEnemy.Length; i++)
-                {
-                    flyingEnemy[i].Damage();
+            //if (hit.collider.tag == "FlyingEnemy")
+            //{
+            //    for(int i = 0; i < flyingEnemy.Length; i++)
+            //    {
+            //        flyingEnemy[i].Damage();
 
-                }
+            //    }
 
 
-            }
+            //}
 
         }
 

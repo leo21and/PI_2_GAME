@@ -67,12 +67,10 @@ public class FlyingEnemy : MonoBehaviour
                     Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
                     transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
 
-                    // Move towards the player
                     Vector3 movementDirection = directionToPlayer.normalized;
                     float distance = Mathf.Min(directionToPlayer.magnitude - stopDistance, speed * Time.deltaTime);
                     Vector3 newPosition = transform.position + movementDirection * distance;
 
-                    // Check if the new position exceeds the stop distance
                     float newDistanceToPlayer = Vector3.Distance(newPosition, player.transform.position);
                     if (newDistanceToPlayer > stopDistance)
                     {
@@ -81,7 +79,6 @@ public class FlyingEnemy : MonoBehaviour
                     }
                     else
                     {
-                        // Stop moving towards the player
                         GetComponent<Rigidbody>().velocity = Vector3.zero;
                     }
 
