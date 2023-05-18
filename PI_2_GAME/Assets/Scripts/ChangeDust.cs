@@ -12,6 +12,11 @@ public class ChangeDust : MonoBehaviour
     private Material dustmat;
 
     private bool startChange;
+
+    [SerializeField] private GameObject FlowerToxic;
+    [SerializeField] private GameObject FlowerHeal;
+    [SerializeField] private Animator FT;
+    [SerializeField] private Animator FH;
     
     // Start is called before the first frame update
     void Start()
@@ -45,11 +50,18 @@ public class ChangeDust : MonoBehaviour
        colorOverTime.enabled = false; 
 
         dustmat.SetColor("_TintColor", new Color32 (0, 255, 142, 50));
-  
-
+        FT.SetTrigger("Scale");
         yield return new WaitForSeconds(1f);
+      
+        FlowerHeal.SetActive(true);
+        FH.SetTrigger("Heal");
         
+        yield return new WaitForSeconds(1f);
         dust.Stop();
         startChange = false;
+        
+       // yield return new WaitForSeconds(1f);
+        FlowerToxic.SetActive(false);
+        
     }
 }
