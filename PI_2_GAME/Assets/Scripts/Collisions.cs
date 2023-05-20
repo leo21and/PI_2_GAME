@@ -55,7 +55,7 @@ public class Collisions : MonoBehaviour
             StartCoroutine(SpawnTrail1(trail, hit));
 
             //Dano no Inimigo voador
-            //Precisa de correçao porque o raio do collider é muito grande
+            //Precisa de correÃ§ao porque o raio do collider Ã© muito grande
             //if (hit.collider.tag == "FlyingEnemy")
             //{
             //    for(int i = 0; i < flyingEnemy.Length; i++)

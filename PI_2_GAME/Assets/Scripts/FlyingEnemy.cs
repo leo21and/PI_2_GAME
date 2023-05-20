@@ -40,7 +40,7 @@ public class FlyingEnemy : MonoBehaviour
             {
                 Vector3 directionToPlayer = player.transform.position - transform.position;
 
-                //Para nao ficar coladinho ao jogador quando chega à posiçao do mesmo
+                //Para nao ficar coladinho ao jogador quando chega Ã  posiÃ§ao do mesmo
                 directionToPlayer.x += 0f;
                 directionToPlayer.y += 6f;
                 directionToPlayer.z += 0f;
@@ -55,7 +55,7 @@ public class FlyingEnemy : MonoBehaviour
 
 
 
-                // Se o player parar no raio do inimigo, o inimigo para à beira dele e continua o ataque
+                // Se o player parar no raio do inimigo, o inimigo para Ã  beira dele e continua o ataque
                 if (directionToPlayer.magnitude > stopDistance)
                 {
 
@@ -89,7 +89,7 @@ public class FlyingEnemy : MonoBehaviour
         }
         else
         {
-            // Seguir em direçao a cada waypoint, caso o jogador nao esteja no raio
+            // Seguir em direÃ§ao a cada waypoint, caso o jogador nao esteja no raio
             Vector3 directionToWaypoint = waypoints[currentWaypoint].transform.position - transform.position;
             transform.position += directionToWaypoint.normalized * speed * Time.deltaTime;
 
@@ -127,7 +127,7 @@ public class FlyingEnemy : MonoBehaviour
     }
 
 
-    // Dispara um feitiço contra o player
+    // Dispara um feitiÃ§o contra o player
     void ShootSpell()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");

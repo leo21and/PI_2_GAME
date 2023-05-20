@@ -5,7 +5,7 @@ using UnityEngine;
 public class DissolveController : MonoBehaviour
 {
 
-    public MeshRenderer meshRenderer; //substituir possivelmente por skinnedMesh
+    public SkinnedMeshRenderer meshRenderer; //substituir possivelmente por skinnedMesh
 
     private Material material;
 
@@ -13,7 +13,7 @@ public class DissolveController : MonoBehaviour
 
     public float refreshRate = 0.025f; //0.025
 
-    private Silvas silvas;
+    [SerializeField] private Silvas silvas;
 
     public bool dissolve;
     // Start is called before the first frame update
@@ -25,7 +25,7 @@ public class DissolveController : MonoBehaviour
         }
 
         dissolve = false;
-        silvas = GetComponentInChildren<Silvas>();
+       // silvas = GetComponentInChildren<Silvas>();
 
     }
 
