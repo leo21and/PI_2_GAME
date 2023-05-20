@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
 
 
 
+
     public int zona;
 
     private void Awake()

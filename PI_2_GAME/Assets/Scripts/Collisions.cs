@@ -44,7 +44,8 @@ public class Collisions : MonoBehaviour
     RaycastHit hit;
     public FlyingEnemy[] flyingEnemy;
 
-   
+    public AudioClip spells1, spells2, spells3;
+    public AudioSource audio;
 
     public void CastSpell()
     {
@@ -66,6 +67,8 @@ public class Collisions : MonoBehaviour
 
 
             //}
+            audio.clip = spells1;
+            audio.Play();
 
         }
 
@@ -92,9 +95,10 @@ public class Collisions : MonoBehaviour
                BlackWizard.BlackWizardSpell2Damage();
            
             }
-
+            audio.clip = spells2;
+            audio.Play();
         }
-    
+
         GameObject impactGO = Instantiate(impactEffect2, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impactGO, 2f);
 
@@ -106,6 +110,9 @@ public class Collisions : MonoBehaviour
         {
             TrailRenderer trail = Instantiate(Spell3Trail, castPoint.transform.position, Quaternion.identity);
             StartCoroutine(SpawnTrail3(trail, hit));
+
+            audio.clip = spells3;
+            audio.Play();
         }
 
         GameObject impactGO = Instantiate(impactEffect3, hit.point, Quaternion.LookRotation(hit.normal));
