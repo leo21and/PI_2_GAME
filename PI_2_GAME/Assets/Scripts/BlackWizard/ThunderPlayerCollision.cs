@@ -10,7 +10,7 @@ public class ThunderPlayerCollision : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-
+    
         Electric_Beams.SetActive(true);
         Debug.Log("Thunder Collider");
         playerDamage.currentHealth = playerDamage.currentHealth - thunderDamage;

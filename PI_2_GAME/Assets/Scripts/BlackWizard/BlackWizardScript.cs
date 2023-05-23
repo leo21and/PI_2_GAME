@@ -129,6 +129,8 @@ public class BlackWizardScript : MonoBehaviour
                 mAnimator.SetTrigger("TrThunder");
                 Invoke("SendUpBeam", 0.75f);
                 Invoke("SendThunder",2);
+                
+                Debug.Log("isattacking");
 
             }
             
