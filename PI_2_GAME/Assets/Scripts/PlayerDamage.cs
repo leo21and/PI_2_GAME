@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class PlayerDamage : MonoBehaviour
@@ -29,6 +30,9 @@ public class PlayerDamage : MonoBehaviour
     [SerializeField] private GameObject cam;
     [SerializeField] private GameObject maincam;
     private PlayerController pc;
+
+    [SerializeField] private AudioSource hit;
+    private bool playHit = false;
 
     
 
@@ -60,10 +64,8 @@ public class PlayerDamage : MonoBehaviour
     void Update()
     {
         
-        
         Damage();
-        
-        
+        PlayHit();
     }
     
 
@@ -232,6 +234,27 @@ public class PlayerDamage : MonoBehaviour
 
         death = false;
         
+    }
+
+    private void PlayHit()
+    {
+        if (currentHealth == 990 || currentHealth == 970 || currentHealth == 940)
+        {
+
+            if (!playHit)
+            {
+                playHit = true;
+                hit.Play();
+                Debug.Log("esta a tocar");
+            }
+
+        }
+        else
+        {
+            playHit = false;
+            //hit.Stop();
+        }
+
     }
 
     

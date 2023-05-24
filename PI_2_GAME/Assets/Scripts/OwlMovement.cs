@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
@@ -15,7 +16,13 @@ public class OwlMovement : MonoBehaviour
     Vector3 currentVelocity = Vector3.zero;
 
     private Rigidbody rb;
-    [SerializeField] private GameObject cutInicial;
+    [SerializeField] private GameObject cutInicial, cutFinal;
+
+    [Header("OwlSound")]
+    private AudioSource owl;
+    public float minWaitTime = 1f;
+    public float maxWaitTime = 5f;
+    public float waitCountdown = -1f;
     
     
      
@@ -26,6 +33,7 @@ public class OwlMovement : MonoBehaviour
         
         lastPos = transform.position;
         rb = GetComponent<Rigidbody>();
+        owl = GetComponent<AudioSource>();
 
     }
 
@@ -52,14 +60,8 @@ public class OwlMovement : MonoBehaviour
          {
              transform.rotation = Quaternion.Euler(0,25,0);  
          }
-       
 
-
-             
-
-
-
-             // transform.position = Vector3.Lerp(transform.position,  player.transform.position + new Vector3(x,y,z) , 5 * Time.deltaTime);
+         // transform.position = Vector3.Lerp(transform.position,  player.transform.position + new Vector3(x,y,z) , 5 * Time.deltaTime);
              // transform.position = Vector3.MoveTowards(transform.position,  player.transform.position + new Vector3(x,y,z) , 5 * Time.deltaTime);
              Vector3 targetPosition = player.transform.position + new Vector3(x, y, z);
              Vector3 target2Position = player.transform.position + new Vector3(0, y, z);
@@ -89,9 +91,22 @@ public class OwlMovement : MonoBehaviour
              Debug.DrawRay(hit.point, hit.normal, Color.green);
              Debug.DrawRay(hit.point, direction * hit.distance, Color.blue);
 
-         }
+             }
 
-      
+
+             //OWL RANDOM SOUND 
+             if (!owl.isPlaying && !cutInicial.activeSelf && !cutFinal.activeSelf)
+             {
+                 if (waitCountdown < 0f)
+                 {
+                     owl.Play();
+                     waitCountdown = Random.Range(minWaitTime, maxWaitTime);
+                 }
+                 else
+                 {
+                     waitCountdown -= Time.deltaTime;
+                 }
+             }
     }
     
     

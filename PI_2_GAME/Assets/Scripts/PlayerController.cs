@@ -62,14 +62,19 @@ public class PlayerController : MonoBehaviour
 
     public bool canCastSpell;
     public bool ismoving;
-
-
-
-
-
-
-
     public int zona;
+    private bool isPlayingRun = false;
+
+    [Header("AudioSources_P")] [SerializeField]
+    private AudioSource playerRun;
+
+
+
+
+
+
+
+   
 
     private void Awake()
     {
@@ -153,6 +158,17 @@ public class PlayerController : MonoBehaviour
         Move();
         Jump();
         Spells();
+        
+        if (!isPlayingRun && ismoving)
+        {
+            isPlayingRun = true;
+            playerRun.Play();
+        }
+        else if(isPlayingRun && !ismoving)
+        {
+            isPlayingRun = false;
+            playerRun.Stop();
+        }
 
 
     }
@@ -426,16 +442,42 @@ public class PlayerController : MonoBehaviour
 
         if (horizontalMovement != Vector3.zero)
         {
-            ismoving = true;
+            if (!ismoving)
+            {
+                ismoving = true;
+
+                // if (!isPlayingRun && ismoving)
+                // {
+                //     isPlayingRun = true;
+                //     playerRun.Play();
+                // }
+                
+                
+            }
+            
+            
         }
         else
         {
-            ismoving = false;
+            if (ismoving)
+            {
+                ismoving = false; 
+            }
+
+            // if (isPlayingRun && !ismoving)
+            // {
+            //     isPlayingRun = false;
+            //     playerRun.Stop();
+            // }
+            
+            
         }
         
         Debug.Log("ismoving");
 
     }
+
+ 
 
     //UnlockAreas
 
