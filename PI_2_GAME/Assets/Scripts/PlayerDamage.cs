@@ -34,6 +34,8 @@ public class PlayerDamage : MonoBehaviour
     [SerializeField] private AudioSource hit;
     private bool playHit = false;
 
+    public bool takedamage = false;
+
     
 
   
@@ -42,6 +44,8 @@ public class PlayerDamage : MonoBehaviour
     void Start()
     {
         startTakingLife = false;
+        takedamage = false;
+        
         death = false;
 
         currentHealth = playerLife;
@@ -106,12 +110,19 @@ public class PlayerDamage : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        Debug.Log(takedamage);
 
+        
+       // takedamage = true;
+        currentHealth -= damage;
+         
+        
         if(currentHealth < 0)
         {
             death = true;
         }
+
+      //  takedamage = false;
     }
 
     IEnumerator TakeLife()
@@ -238,7 +249,7 @@ public class PlayerDamage : MonoBehaviour
 
     private void PlayHit()
     {
-        if (currentHealth == 990 || currentHealth == 970 || currentHealth == 940)
+        if ((currentHealth == 990 || currentHealth == 970 || currentHealth == 940) && (startTakingLife || takedamage))
         {
 
             if (!playHit)
@@ -246,14 +257,11 @@ public class PlayerDamage : MonoBehaviour
                 playHit = true;
                 hit.Play();
                 Debug.Log("esta a tocar");
+                playHit = false;
             }
 
         }
-        else
-        {
-            playHit = false;
-            //hit.Stop();
-        }
+    
 
     }
 

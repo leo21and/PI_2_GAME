@@ -116,7 +116,7 @@ public class Vignette : ImageEffectShaderBase
 
    public void StartShake()
    {
-      if (!startShake && playerDamage.startTakingLife)
+      if (!startShake && (playerDamage.startTakingLife|| playerDamage.takedamage))
       {
          if (playerDamage.currentHealth == playerDamage.playerLife - 10 ||
              playerDamage.currentHealth == playerDamage.playerLife - 30 ||

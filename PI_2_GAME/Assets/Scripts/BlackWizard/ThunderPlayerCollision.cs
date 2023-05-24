@@ -13,7 +13,7 @@ public class ThunderPlayerCollision : MonoBehaviour
     
         Electric_Beams.SetActive(true);
         Debug.Log("Thunder Collider");
-        playerDamage.currentHealth = playerDamage.currentHealth - thunderDamage;
+        playerDamage.TakeDamage(thunderDamage);
         Invoke("Disable_Electric_Beams", 1);
         
     }

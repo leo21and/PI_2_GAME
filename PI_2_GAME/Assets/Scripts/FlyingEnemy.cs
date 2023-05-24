@@ -25,6 +25,8 @@ public class FlyingEnemy : MonoBehaviour
     public Material enemySpell;
     public float stopDistance = 5f;
 
+    public PlayerDamage playerDamage;
+
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -50,6 +52,7 @@ public class FlyingEnemy : MonoBehaviour
                     Debug.Log("Pode Disparar");
                     lastAttackTime = Time.time;
                     ShootSpell();
+                   
                 }
 
 
@@ -105,6 +108,8 @@ public class FlyingEnemy : MonoBehaviour
                     currentWaypoint = 0;
                 }
             }
+
+            
         }
     }
 
@@ -144,7 +149,10 @@ public class FlyingEnemy : MonoBehaviour
                 if (hit.collider.CompareTag("Player"))
                 {
                     Debug.Log("Dispara");
-                    player.GetComponent<PlayerDamage>().TakeDamage(attackDamage);
+                    
+                    
+                    playerDamage.TakeDamage(attackDamage);
+                   
 
                     GameObject spell = new GameObject("EnemySpell");
                     spell.transform.position = spawnPoint.position;
