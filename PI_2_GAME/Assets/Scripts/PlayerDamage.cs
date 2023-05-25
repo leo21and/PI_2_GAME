@@ -112,12 +112,11 @@ public class PlayerDamage : MonoBehaviour
     {
         Debug.Log(takedamage);
 
-        
-       // takedamage = true;
+      
+        takedamage = true;
         currentHealth -= damage;
-         
-        
-        if(currentHealth < 0)
+
+        if (currentHealth <= 0)
         {
             death = true;
         }

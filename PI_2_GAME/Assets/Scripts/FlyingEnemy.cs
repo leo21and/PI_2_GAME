@@ -9,7 +9,7 @@ public class FlyingEnemy : MonoBehaviour
 {
     public float speed = 5.0f;
     public float attackRange = 10f;
-    public float attackInterval = 2f;
+    public float attackInterval = 5f;
     public int attackDamage = 5;
     public GameObject[] waypoints;
     private int currentWaypoint = 0;
@@ -27,6 +27,13 @@ public class FlyingEnemy : MonoBehaviour
 
     public PlayerDamage playerDamage;
 
+    public AudioClip wings, attack, scream;
+    public AudioSource audio, audioFly;
+    [SerializeField] private GameObject cutInicial, cutFinal;
+    public float minWaitTime = 1f;
+    public float maxWaitTime = 5f;
+    public float waitCountdown = -1f;
+    [SerializeField] private PauseMenu pause;
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -52,9 +59,8 @@ public class FlyingEnemy : MonoBehaviour
                     Debug.Log("Pode Disparar");
                     lastAttackTime = Time.time;
                     ShootSpell();
-                   
-                }
 
+                }
 
 
 
@@ -109,7 +115,24 @@ public class FlyingEnemy : MonoBehaviour
                 }
             }
 
-            
+
+        }
+
+        if (!audioFly.isPlaying && !cutInicial.activeSelf && !cutFinal.activeSelf)
+        {
+
+
+            audioFly.clip = wings;
+            audioFly.Play();
+
+
+
+        }
+
+        if (pause.gamePaused)
+        {
+            audio.Pause();
+            audioFly.Pause();
         }
     }
 
@@ -120,6 +143,9 @@ public class FlyingEnemy : MonoBehaviour
         {
             playerInRange = true;
             lastPlayerPosition = other.transform.position;
+            audio.clip = scream;
+            audio.volume = 0.2f;
+            audio.Play();
         }
     }
 
@@ -149,10 +175,15 @@ public class FlyingEnemy : MonoBehaviour
                 if (hit.collider.CompareTag("Player"))
                 {
                     Debug.Log("Dispara");
-                    
-                    
+
+
                     playerDamage.TakeDamage(attackDamage);
-                   
+                    playerDamage.takedamage = true;
+
+                    audio.clip = attack;
+                    audio.volume = 0.1f;
+                    audio.Play();
+
 
                     GameObject spell = new GameObject("EnemySpell");
                     spell.transform.position = spawnPoint.position;
