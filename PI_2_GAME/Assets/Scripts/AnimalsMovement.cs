@@ -18,6 +18,9 @@ public class AnimalsMovement : MonoBehaviour
     private Rigidbody rb;
     public float avoidDistance = 0.5f;
     public float raycastDistance = 1f;
+
+    [SerializeField] private Animator rabbit;
+    [SerializeField] private StarBehsviour s;
     
     // Start is called before the first frame update
     void Start()
@@ -34,7 +37,7 @@ public class AnimalsMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (animais.animalSaved)
+        if (animais.animalSaved && s.trigou)
         {
             if (!iswandering)
             {
@@ -73,6 +76,7 @@ public class AnimalsMovement : MonoBehaviour
                 else
                 {
                     rb.transform.position += transform.forward * speed; 
+                    
                 }
                
                 //animation aqui de andar
@@ -82,6 +86,8 @@ public class AnimalsMovement : MonoBehaviour
             // {
             //     //parar a animation de andar -> bool 
             // }
+            
+            rabbit.SetTrigger("Walk");
 
         }
     }

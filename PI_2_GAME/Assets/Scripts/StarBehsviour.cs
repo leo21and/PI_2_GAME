@@ -15,6 +15,10 @@ public class StarBehsviour : MonoBehaviour
 
     private Material starmat;
 
+    [SerializeField] private Animator rabbit;
+
+    public bool trigou;
+
     
     // Start is called before the first frame update
     void Start()
@@ -22,7 +26,8 @@ public class StarBehsviour : MonoBehaviour
         _animais = GetComponent<Animais>();
         starsStart = false;
         starmat = GetComponentInChildren<ParticleSystemRenderer>().material;
-        
+        trigou = false;
+
     }
 
     // Update is called once per frame
@@ -32,6 +37,13 @@ public class StarBehsviour : MonoBehaviour
         {
             
             StartCoroutine(FadeOut());
+
+            if (!trigou)
+            {
+
+                StartCoroutine(Anim());
+            }
+          
         }
     }
     
@@ -51,6 +63,14 @@ public class StarBehsviour : MonoBehaviour
         _particleSystem.Stop();
         starsStart = false;
 
+    }
+
+    IEnumerator Anim()
+    {
+        rabbit.SetTrigger("heal");
+
+        yield return new WaitForSeconds(3);
+        trigou = true;
     }
     
     
