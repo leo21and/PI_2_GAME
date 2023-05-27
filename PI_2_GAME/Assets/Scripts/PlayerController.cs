@@ -68,6 +68,8 @@ public class PlayerController : MonoBehaviour
     [Header("AudioSources_P")] [SerializeField]
     private AudioSource playerRun;
 
+    [SerializeField] private List<RestartAfterCut> restart = new List<RestartAfterCut>();
+
 
 
 
@@ -169,6 +171,27 @@ public class PlayerController : MonoBehaviour
             isPlayingRun = false;
             playerRun.Stop();
         }
+
+        foreach (var restar in restart)
+        {
+            if (restar.stopall)
+            {
+                spell1.SetActive(false);
+                spell2.SetActive(false);
+                spell3.SetActive(false);
+                mira.SetActive(false);
+                currentPowerUI.gameObject.SetActive(false);
+                spellCircleAnimals.SetActive(false);
+                spellCircleFlowers.SetActive(false);
+                spellCircleSilvas.SetActive(false);
+                StopCoroutine(Mira());
+                StopCoroutine(CurrentPowerUI());
+                StopCoroutine(Spell3UI());
+                StopCoroutine(Spell2UI());
+                StopCoroutine(Spell1UI());
+            } 
+        }
+        
 
 
     }
