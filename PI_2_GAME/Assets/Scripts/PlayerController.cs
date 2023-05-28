@@ -65,18 +65,23 @@ public class PlayerController : MonoBehaviour
     public int zona;
     private bool isPlayingRun = false;
 
-    [Header("AudioSources_P")] [SerializeField]
-    private AudioSource playerRun;
+    [Header("AudioSources_P")]
+    [SerializeField]
+    private AudioSource playerRun, bossMusic, mainTheme;
 
     [SerializeField] private List<RestartAfterCut> restart = new List<RestartAfterCut>();
 
+    [SerializeField] private PauseMenu pause;
+
+    public GameObject cutsceneFinal;
 
 
 
 
 
 
-   
+
+
 
     private void Awake()
     {
@@ -160,13 +165,13 @@ public class PlayerController : MonoBehaviour
         Move();
         Jump();
         Spells();
-        
+
         if (!isPlayingRun && ismoving)
         {
             isPlayingRun = true;
             playerRun.Play();
         }
-        else if(isPlayingRun && !ismoving)
+        else if (isPlayingRun && !ismoving)
         {
             isPlayingRun = false;
             playerRun.Stop();
@@ -189,9 +194,28 @@ public class PlayerController : MonoBehaviour
                 StopCoroutine(Spell3UI());
                 StopCoroutine(Spell2UI());
                 StopCoroutine(Spell1UI());
-            } 
+            }
         }
-        
+
+
+
+
+        if (cutsceneFinal.activeSelf)
+        {
+            bossMusic.Stop();
+            mainTheme.Stop();
+
+        }
+
+        //if(pause.gamePaused)
+        //{
+        //    mainTheme.Pause();
+        //} else
+        //{
+        //    mainTheme.Play();
+        //}
+
+
 
 
     }
@@ -205,7 +229,7 @@ public class PlayerController : MonoBehaviour
 
             bool hasEnoughPower = currentPower - cas.spellToCast[i].SpellToCast.PowerCost >= 0f;
 
-           // bool isAiming = playerInput.Powers.Aim.ReadValue<float>() > 0.1;
+            // bool isAiming = playerInput.Powers.Aim.ReadValue<float>() > 0.1;
 
 
 
@@ -474,17 +498,17 @@ public class PlayerController : MonoBehaviour
                 //     isPlayingRun = true;
                 //     playerRun.Play();
                 // }
-                
-                
+
+
             }
-            
-            
+
+
         }
         else
         {
             if (ismoving)
             {
-                ismoving = false; 
+                ismoving = false;
             }
 
             // if (isPlayingRun && !ismoving)
@@ -492,15 +516,15 @@ public class PlayerController : MonoBehaviour
             //     isPlayingRun = false;
             //     playerRun.Stop();
             // }
-            
-            
+
+
         }
-        
+
         Debug.Log("ismoving");
 
     }
 
- 
+
 
     //UnlockAreas
 
@@ -553,10 +577,18 @@ public class PlayerController : MonoBehaviour
                 text.SetActive(false);
                 zona = 5;
                 Destroy(collision.gameObject);
+
+                mainTheme.Stop();
+
+                if (!pause.gamePaused)
+                {
+                    bossMusic.Play();
+                }
+
             }
         }
 
-   
+
 
 
     }
