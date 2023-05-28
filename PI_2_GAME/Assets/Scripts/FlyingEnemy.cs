@@ -143,8 +143,11 @@ public class FlyingEnemy : MonoBehaviour
         {
             playerInRange = true;
             lastPlayerPosition = other.transform.position;
+
+
             audio.clip = scream;
             audio.volume = 0.2f;
+            audio.pitch = Random.Range(0.5f, 1.0f);
             audio.Play();
         }
     }
@@ -180,6 +183,11 @@ public class FlyingEnemy : MonoBehaviour
                     playerDamage.TakeDamage(attackDamage);
                     playerDamage.takedamage = true;
 
+                    if (playerDamage.currentHealth <= 0)
+                    {
+                        playerDamage.death = true;
+                    }
+
                     audio.clip = attack;
                     audio.volume = 0.1f;
                     audio.Play();
@@ -195,6 +203,10 @@ public class FlyingEnemy : MonoBehaviour
                     Rigidbody spellRigidbody = spell.AddComponent<Rigidbody>();
                     spellRigidbody.velocity = directionToPlayer.normalized * 10;
                     Destroy(spell, 2f);
+                } else
+                {
+                    playerDamage.takedamage = false;
+
                 }
             }
         }

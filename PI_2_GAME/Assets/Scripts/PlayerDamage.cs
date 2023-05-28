@@ -116,9 +116,9 @@ public class PlayerDamage : MonoBehaviour
         takedamage = true;
         currentHealth -= damage;
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 908 && !death)
         {
-            death = true;
+            StartCoroutine(PrefomerAnim());
         }
 
       //  takedamage = false;
