@@ -14,6 +14,7 @@ public class DissolveController : MonoBehaviour
     public float refreshRate = 0.025f; //0.025
 
     [SerializeField] private Silvas silvas;
+    [SerializeField] private AudioSource AudioSilvas;
 
     public bool dissolve;
     // Start is called before the first frame update
@@ -25,7 +26,9 @@ public class DissolveController : MonoBehaviour
         }
 
         dissolve = false;
-       // silvas = GetComponentInChildren<Silvas>();
+        // silvas = GetComponentInChildren<Silvas>();
+        // Identificar o Audio Source da Silva
+        AudioSilvas = silvas.GetComponent<AudioSource>();
 
     }
 
@@ -34,8 +37,7 @@ public class DissolveController : MonoBehaviour
     {
         //Quando se desfazer
         if (!dissolve && silvas.silvaClean)
-        {
-            
+        { 
             StartCoroutine(Dissolve());
         }
     }
@@ -43,7 +45,10 @@ public class DissolveController : MonoBehaviour
     IEnumerator Dissolve()
     {
         dissolve = true;
-        
+
+        // Desligar o som da Silva
+        AudioSilvas.loop = false;
+
         float counter = 0;
         while (material.GetFloat("_DissolveAmount") < 1)
         {
@@ -53,8 +58,8 @@ public class DissolveController : MonoBehaviour
                     
             yield return new WaitForSeconds(refreshRate);
         }
+        
 
-        Object.Destroy(silvas);
         dissolve = false;
     }
 
