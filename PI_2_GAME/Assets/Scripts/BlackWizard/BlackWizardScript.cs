@@ -47,6 +47,10 @@ public class BlackWizardScript : MonoBehaviour
     [SerializeField] AudioClip HurtClip;
     Collisions collission;
 
+    [Header("Death")]
+    public bool wizardDeath;
+    [SerializeField] AudioClip DeathClip;
+
     [Header("Geral")]
     // Spawn Position
     public Vector3 spawnOffset;
@@ -58,10 +62,10 @@ public class BlackWizardScript : MonoBehaviour
     // Number of plants each spawn
     public int numPlants;
 
-    public bool wizardDeath;
+    
     [SerializeField] private GameObject healthbar;
-    
-    
+
+    [Header("CutSceneFinal")]
     public bool isDeath;
     [SerializeField] private GameObject cutfinal;
 
@@ -181,6 +185,8 @@ public class BlackWizardScript : MonoBehaviour
     IEnumerator BWDied()
     {
         isDeath = true;
+
+        AudioSourceBW.PlayOneShot(DeathClip);
 
         RenderSettings.skybox = skyMaterial;
        
