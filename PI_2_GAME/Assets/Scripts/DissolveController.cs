@@ -54,6 +54,7 @@ public class DissolveController : MonoBehaviour
             yield return new WaitForSeconds(refreshRate);
         }
 
+        Object.Destroy(silvas);
         dissolve = false;
     }
 

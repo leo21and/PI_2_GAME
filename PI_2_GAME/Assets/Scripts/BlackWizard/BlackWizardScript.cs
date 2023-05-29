@@ -43,6 +43,8 @@ public class BlackWizardScript : MonoBehaviour
 
     [Header("Spell 2 Damage")]
     public int spell2Damage;
+    [SerializeField] AudioSource AudioSourceBW;
+    [SerializeField] AudioClip HurtClip;
     Collisions collission;
 
     [Header("Geral")]
@@ -66,7 +68,7 @@ public class BlackWizardScript : MonoBehaviour
     public Material skyMaterial;
 
 
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -107,8 +109,10 @@ public class BlackWizardScript : MonoBehaviour
         currentBlackWizardHealth = (currentBlackWizardHealth - spell2Damage);
         if (currentBlackWizardHealth > 0)
         {
+            AudioSourceBW.PlayOneShot(HurtClip);
             healthBar.SetHealth(currentBlackWizardHealth);
         }
+
     }
 
     void WizardAttack()
