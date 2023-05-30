@@ -21,10 +21,14 @@ public class AnimalsMovement : MonoBehaviour
 
     [SerializeField] private Animator rabbit;
     [SerializeField] private StarBehsviour s;
+    [SerializeField] private AudioSource aHappy;
+    private bool startsound;
     
     // Start is called before the first frame update
     void Start()
     {
+
+        startsound = false;
         rotleft = false;
         rotright = false;
         iswalking = false;
@@ -37,6 +41,13 @@ public class AnimalsMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      
+        if (!startsound && animais.animalSaved)
+        {
+            StartCoroutine(playWalkHappy()); 
+            Debug.Log("O áudio está sendo reproduzido!");
+        }
+
         if (animais.animalSaved && s.trigou)
         {
             if (!iswandering)
@@ -87,7 +98,10 @@ public class AnimalsMovement : MonoBehaviour
             //     //parar a animation de andar -> bool 
             // }
             
-            rabbit.SetTrigger("Walk");
+            rabbit.SetBool("Walk", true);
+            
+            
+           
 
         }
     }
@@ -124,5 +138,14 @@ public class AnimalsMovement : MonoBehaviour
 
         iswandering = false;
 
+    }
+
+    private IEnumerator playWalkHappy()
+    {
+        startsound = true;
+        yield return new WaitForSeconds(6);
+        aHappy.Play();
+        yield return new WaitForSeconds(14); //if is not playing, mas isto e para cortar o final do audio que e de 15qualquer coisa
+        startsound = false;
     }
 }

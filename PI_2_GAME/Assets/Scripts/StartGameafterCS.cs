@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
+using UnityEngine.Audio;
 
 
 public class StartGameafterCS : MonoBehaviour
@@ -13,6 +15,9 @@ public class StartGameafterCS : MonoBehaviour
     [SerializeField] private PlayableDirector director;
     [SerializeField] private GameObject cutscene;
     [SerializeField] private GameObject skip;
+    public AudioMixerGroup effects;
+    public AudioSource mainTheme;
+   
    
 
     // Start is called before the first frame update
@@ -29,6 +34,7 @@ public class StartGameafterCS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Stopall();
         player.canCastSpell = false;
         OnEndCutScene();
     }
@@ -44,7 +50,15 @@ public class StartGameafterCS : MonoBehaviour
             skip.SetActive(false);
             player.canCastSpell = true;
             this.gameObject.SetActive(false);
+            effects.audioMixer.SetFloat("VolumeEffects", 0);
+            mainTheme.volume = 0.05f; //mudar se necessário 
         }
         
+    }
+
+    void Stopall()
+    {
+        mainTheme.volume = 0.5f;
+        effects.audioMixer.SetFloat("VolumeEffects",-80f);
     }
 }

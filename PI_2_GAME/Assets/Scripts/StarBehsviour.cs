@@ -19,6 +19,9 @@ public class StarBehsviour : MonoBehaviour
 
     public bool trigou;
 
+    [SerializeField] public AudioSource aSaved;
+    [SerializeField] private AudioSource aHurt;
+
     
     // Start is called before the first frame update
     void Start()
@@ -68,6 +71,9 @@ public class StarBehsviour : MonoBehaviour
     IEnumerator Anim()
     {
         rabbit.SetTrigger("heal");
+        yield return new WaitForSeconds(1);
+        aSaved.Play();
+        aHurt.Stop();
 
         yield return new WaitForSeconds(3);
         trigou = true;
