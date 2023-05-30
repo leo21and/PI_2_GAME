@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Schema;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Playables;
 
 public class FinalCut : MonoBehaviour
@@ -15,6 +16,7 @@ public class FinalCut : MonoBehaviour
     [SerializeField] private PlayableDirector director;
     [SerializeField] private GameObject fpcamera;
     [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private AudioMixerGroup effects;
 
     // Start is called before the first frame update
     void Start()
@@ -45,9 +47,14 @@ public class FinalCut : MonoBehaviour
     {
         if (director.state != PlayState.Playing)
         {
-            cutFinal.SetActive(false);
+           
             gameOverMenu.SetActive(true);
+            cutFinal.SetActive(false);
           
+        }
+        else if (director.state == PlayState.Playing)
+        {
+            effects.audioMixer.SetFloat("VolumeEffects", -80f);
         }
     }
 }
