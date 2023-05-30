@@ -12,6 +12,9 @@ public class MusicManager : MonoBehaviour
     [Header("Black Wizard Attacks")]
     [SerializeField] AudioSource Thunder;
 
+    [Header("Black Wizard Sounds")]
+    [SerializeField] AudioSource Hurt;
+    [SerializeField] AudioSource Death;
 
     public void SendThunderSFX()
     {
@@ -19,6 +22,17 @@ public class MusicManager : MonoBehaviour
 
     }
 
+    public void BWHurt()
+    {
+        Hurt.Play();
+
+    }
+
+    public void BWDeath()
+    {
+        Death.Play();
+
+    }
 
     private void Awake()
     {

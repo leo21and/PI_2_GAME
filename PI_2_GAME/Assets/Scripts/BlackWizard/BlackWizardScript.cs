@@ -43,13 +43,11 @@ public class BlackWizardScript : MonoBehaviour
 
     [Header("Spell 2 Damage")]
     public int spell2Damage;
-    [SerializeField] AudioSource AudioSourceBW;
-    [SerializeField] AudioClip HurtClip;
     Collisions collission;
 
     [Header("Death")]
     public bool wizardDeath;
-    [SerializeField] AudioClip DeathClip;
+
 
     [Header("Geral")]
     // Spawn Position
@@ -113,7 +111,7 @@ public class BlackWizardScript : MonoBehaviour
         currentBlackWizardHealth = (currentBlackWizardHealth - spell2Damage);
         if (currentBlackWizardHealth > 0)
         {
-            AudioSourceBW.PlayOneShot(HurtClip);
+            MusicManager.instance.BWHurt();
             healthBar.SetHealth(currentBlackWizardHealth);
         }
 
@@ -186,7 +184,7 @@ public class BlackWizardScript : MonoBehaviour
     {
         isDeath = true;
 
-        AudioSourceBW.PlayOneShot(DeathClip);
+        MusicManager.instance.BWDeath();
 
         RenderSettings.skybox = skyMaterial;
        
