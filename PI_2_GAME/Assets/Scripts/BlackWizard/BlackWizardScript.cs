@@ -210,7 +210,9 @@ public class BlackWizardScript : MonoBehaviour
     }
     void SendUpBeam()
     {
+        MusicManager.instance.BWLaser();
         UpBeam.Play();
+
     }
 
     void SendThunder()
@@ -226,6 +228,7 @@ public class BlackWizardScript : MonoBehaviour
 
     void SendFrontBeam()
     {
+        MusicManager.instance.BWSerpentSpell();
         FrontBeam.Play(); 
     }
 

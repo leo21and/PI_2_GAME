@@ -1,5 +1,38 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!243 &-8327191439116651116
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Laser
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: b5ce268a82ab21f4c89b1984374537c0
+  m_Children: []
+  m_Volume: d641afde7dd6fa5418fbd45debe2b63a
+  m_Pitch: 35419946a15d3d947843be0bfa6d8a6c
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -3103593448769402938}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &-3103593448769402938
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: f43ca67d8e118ba43a47a1c2612f3c44
+  m_EffectName: Attenuation
+  m_MixLevel: ecc84bc3c978212438036dea11a1d3f4
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-2743480222339542726
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -76,6 +109,8 @@ AudioMixerController:
     - 20511bc632f640945a3958fb669966a2
     - a984efb4c0019e244922045f8096f720
     - 0b2e89ba5e2be034fbbcc6aa1f9ac604
+    - b5ce268a82ab21f4c89b1984374537c0
+    - 8f66376eb6897884f8661ed8a9e28403
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -92,6 +127,8 @@ AudioMixerGroupController:
   - {fileID: 1181112945833522692}
   - {fileID: -2743480222339542726}
   - {fileID: -2409451052634424724}
+  - {fileID: -8327191439116651116}
+  - {fileID: 9067548501543060601}
   m_Volume: 28f36fb076031b645a0a595bad71ee97
   m_Pitch: a7e8b84050183c344901ef38cec3fac6
   m_Send: 00000000000000000000000000000000
@@ -147,6 +184,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &2395281295057000463
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 49ef9c983c1d52843a77053f054d0c8f
+  m_EffectName: Attenuation
+  m_MixLevel: f9e3b172b175c904791572a24d8b8f1f
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &4087658649344601327
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -175,3 +226,22 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &9067548501543060601
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SerpentSpell
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 8f66376eb6897884f8661ed8a9e28403
+  m_Children: []
+  m_Volume: a853bc705945ae6418d30da3db879f0d
+  m_Pitch: 8cf6d335e80b6cc44afbe78c96b986ff
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 2395281295057000463}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
