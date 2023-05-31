@@ -157,6 +157,7 @@ public class FlyingEnemy : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            playerDamage.takedamage= false;
         }
     }
 
@@ -203,13 +204,11 @@ public class FlyingEnemy : MonoBehaviour
                     Rigidbody spellRigidbody = spell.AddComponent<Rigidbody>();
                     spellRigidbody.velocity = directionToPlayer.normalized * 10;
                     Destroy(spell, 2f);
-                } else
-                {
-                    playerDamage.takedamage = false;
-
-                }
+                } 
             }
+           
         }
+        
     }
 
 

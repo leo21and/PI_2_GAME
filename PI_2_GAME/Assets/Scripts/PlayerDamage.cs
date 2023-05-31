@@ -112,7 +112,7 @@ public class PlayerDamage : MonoBehaviour
     {
 
 
-        takedamage = true;
+        //takedamage = true;
         currentHealth -= damage;
 
         if (currentHealth <= 908 && !death)
