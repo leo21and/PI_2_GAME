@@ -10,7 +10,7 @@ public class ChangeCloud : MonoBehaviour
     private bool startchange;
 
     private ParticleSystem ps;
-    private ParticleSystem.MainModule main;
+    //private ParticleSystem.MainModule main;
     private Material cloudmat;
 
     [SerializeField] private BlackWizardScript bw;
@@ -21,11 +21,12 @@ public class ChangeCloud : MonoBehaviour
         //ps = GetComponent<ParticleSystem>();
         startchange = false;
         
-       // ps = GetComponent<ParticleSystem>();
+        ps = GetComponent<ParticleSystem>();
        // main = ps.main;
         cloudmat = GetComponent<ParticleSystemRenderer>().material;
-       
-            
+      //  var emission = ps.emission;
+     //   emission.rateOverTime = float.MaxValue;
+
 
     }
 
@@ -35,6 +36,7 @@ public class ChangeCloud : MonoBehaviour
         if (bw.currentBlackWizardHealth <= 0)
         {
             cloudmat.SetColor("_TintColor", new Color32(203, 139, 212, 0));
+            this.gameObject.SetActive(false);
         }
         
         if (!startchange && pc.zona != 0)

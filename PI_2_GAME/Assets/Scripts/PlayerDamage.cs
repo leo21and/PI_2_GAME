@@ -110,9 +110,8 @@ public class PlayerDamage : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        Debug.Log(takedamage);
 
-      
+
         takedamage = true;
         currentHealth -= damage;
 
@@ -258,6 +257,8 @@ public class PlayerDamage : MonoBehaviour
                 Debug.Log("esta a tocar");
                 playHit = false;
             }
+            
+            Debug.Log(takedamage);
 
         }
     
