@@ -111,7 +111,7 @@ public class BlackWizardScript : MonoBehaviour
         currentBlackWizardHealth = (currentBlackWizardHealth - spell2Damage);
         if (currentBlackWizardHealth > 0)
         {
-            MusicManager.instance.BWHurt();
+          //  MusicManager.instance.BWHurt();
             healthBar.SetHealth(currentBlackWizardHealth);
         }
 

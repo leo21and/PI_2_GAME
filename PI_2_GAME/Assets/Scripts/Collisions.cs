@@ -183,7 +183,14 @@ public class Collisions : MonoBehaviour
                     SilvaCollected.SetActive(true);
                     isWaitingS = true;
                 }
+
+                if (collider.CompareTag("BlackWizard"))
+                {
+                    //audio de dano no BlackWizard
+                    MusicManager.instance.BWHurt();
+                }
             }
+
 
             if (collidedWithSilva)
             {
