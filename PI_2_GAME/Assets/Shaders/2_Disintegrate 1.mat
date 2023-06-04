@@ -50,7 +50,7 @@ Material:
     - _Weight: 0
     m_Colors:
     - _AmbientColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
-    - _Color: {r: 0.46226418, g: 0.34484062, b: 0.06759523, a: 1}
+    - _Color: {r: 0.30588236, g: 0.25882354, b: 0.53333336, a: 0.23529412}
     - _Direction: {r: 0, g: 0.3, b: 0, a: 0}
     - _DisintegrationColor: {r: 0.9, g: 0.6, b: 0.2, a: 1}
     - _DissolveColor: {r: 1, g: 0.57398313, b: 0, a: 1}
