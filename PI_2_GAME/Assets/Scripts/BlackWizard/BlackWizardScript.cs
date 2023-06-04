@@ -47,6 +47,8 @@ public class BlackWizardScript : MonoBehaviour
 
     [Header("Death")]
     public bool wizardDeath;
+    public GameObject respawnPrefab;
+    public GameObject[] respawns;
 
 
     [Header("Geral")]
@@ -183,6 +185,14 @@ public class BlackWizardScript : MonoBehaviour
     IEnumerator BWDied()
     {
         isDeath = true;
+
+        //Eliminar todas as plantas (podemos trocar por desintoxicar as plantas
+            respawns = GameObject.FindGameObjectsWithTag("Flower");
+
+            foreach (GameObject respawn in respawns)
+            {
+                Destroy(respawn);
+            }
 
         MusicManager.instance.BWDeath();
 

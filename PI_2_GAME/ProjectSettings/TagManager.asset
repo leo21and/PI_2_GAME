@@ -18,6 +18,7 @@ TagManager:
   - Terrain
   - FlyingEnemy
   - fonte
+  - Flower
   layers:
   - Default
   - TransparentFX
