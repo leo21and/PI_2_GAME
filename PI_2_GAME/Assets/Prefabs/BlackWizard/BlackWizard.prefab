@@ -1443,12 +1443,12 @@ MonoBehaviour:
   sendThunder3: 0
   blackWizardLife: 1000
   currentBlackWizardHealth: 0
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 4163242283516000556}
   gameOverMenu: {fileID: 0}
   BWDeath: 0
   spell2Damage: 50
   wizardDeath: 0
-  respawnPrefab: {fileID: 0}
+  respawnFlower1: {fileID: 5771164534928033751, guid: b8fb7ff12c88d024497c36c6cc738ef3, type: 3}
   BWParticles1: {fileID: 236932358628587049}
   BWParticles2: {fileID: 7306147915485433637}
   BWParticles3: {fileID: 5409581282458971866}
@@ -1457,7 +1457,7 @@ MonoBehaviour:
   spawnTime: 2
   spawnDelay: 5
   numPlants: 2
-  healthbar: {fileID: 0}
+  healthbar: {fileID: 3576321640067219891}
   isDeath: 0
   cutfinal: {fileID: 0}
   skyMaterial: {fileID: 0}

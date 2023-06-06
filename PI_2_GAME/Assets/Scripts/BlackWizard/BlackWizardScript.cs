@@ -47,7 +47,7 @@ public class BlackWizardScript : MonoBehaviour
 
     [Header("Death")]
     public bool wizardDeath;
-    public GameObject respawnPrefab;
+    public GameObject respawnFlower1;
     [SerializeField] ParticleSystem BWParticles1;
     [SerializeField] ParticleSystem BWParticles2;
     [SerializeField] ParticleSystem BWParticles3;
