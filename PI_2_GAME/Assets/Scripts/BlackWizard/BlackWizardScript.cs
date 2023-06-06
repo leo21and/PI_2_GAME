@@ -48,7 +48,11 @@ public class BlackWizardScript : MonoBehaviour
     [Header("Death")]
     public bool wizardDeath;
     public GameObject respawnPrefab;
+    [SerializeField] ParticleSystem BWParticles1;
+    [SerializeField] ParticleSystem BWParticles2;
+    [SerializeField] ParticleSystem BWParticles3;
     public GameObject[] respawns;
+
 
 
     [Header("Geral")]
@@ -201,10 +205,17 @@ public class BlackWizardScript : MonoBehaviour
         cutfinal.SetActive(true);
         
         healthbar.SetActive(false);
+
         mAnimator.SetTrigger("IsDeath");
 
-        yield return new WaitForSeconds(4f);
-    
+        yield return new WaitForSeconds(2f);
+
+        //Remover o Mesh do Feiticeiro
+        BWParticles1.Stop();
+        BWParticles2.Stop();
+        BWParticles3.Stop();
+
+        yield return new WaitForSeconds(2f);
         wizardDeath = true;
     }
 
