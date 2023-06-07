@@ -127,7 +127,7 @@ public class BlackWizardScript : MonoBehaviour
     {
 
         float distance = Vector3.Distance(Player.position, transform.position);
-        if (distance <= distance1 && distance >= (distance2+1) && BWDeath == false)
+        if (distance <= distance1 && distance >= (distance2+1) && BWDeath == false && isDeath == false)
         {
             if (sendPlant1)
             {
@@ -147,7 +147,7 @@ public class BlackWizardScript : MonoBehaviour
             }
             
         }
-        else if (distance <= distance2 && distance >= (distance3+1) && BWDeath == false)
+        else if (distance <= distance2 && distance >= (distance3+1) && BWDeath == false && isDeath == false)
         {
             if (sendPlant2)
             {
@@ -166,7 +166,7 @@ public class BlackWizardScript : MonoBehaviour
             }
 
         }
-        else if (distance <= distance3 && BWDeath == false)
+        else if (distance <= distance3 && BWDeath == false && isDeath == false)
         {
             if (sendPlant3)
             {
