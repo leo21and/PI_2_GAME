@@ -44,8 +44,7 @@ public class AnimalsMovement : MonoBehaviour
       
         if (!startsound && animais.animalSaved)
         {
-            StartCoroutine(playWalkHappy()); 
-            Debug.Log("O áudio está sendo reproduzido!");
+            StartCoroutine(playWalkHappy());
         }
 
         if (animais.animalSaved && s.trigou)
