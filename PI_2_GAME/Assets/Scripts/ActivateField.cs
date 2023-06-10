@@ -56,7 +56,7 @@ public class ActivateField : MonoBehaviour
 
         yield return new WaitForSeconds(3.5f);
         field.SetActive(false); 
-        _audioSource2.Play();
+        _audioSource2.Stop();
         oneplay = true;
     }
 }

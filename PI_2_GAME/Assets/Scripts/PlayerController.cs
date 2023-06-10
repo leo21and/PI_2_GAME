@@ -493,15 +493,7 @@ public class PlayerController : MonoBehaviour
             {
                 ismoving = true;
 
-                // if (!isPlayingRun && ismoving)
-                // {
-                //     isPlayingRun = true;
-                //     playerRun.Play();
-                // }
-
-
             }
-
 
         }
         else
@@ -510,13 +502,6 @@ public class PlayerController : MonoBehaviour
             {
                 ismoving = false;
             }
-
-            // if (isPlayingRun && !ismoving)
-            // {
-            //     isPlayingRun = false;
-            //     playerRun.Stop();
-            // }
-
 
         }
 
