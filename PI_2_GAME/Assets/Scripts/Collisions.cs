@@ -23,7 +23,7 @@ public class Collisions : MonoBehaviour
     private bool isWaitingA;
     private bool isWaitingS;
     
-    private float timer = 0.7f;
+    private float timer = 1.5f;
     
     
     [SerializeField] private TMP_Text flower_text;
@@ -287,7 +287,7 @@ public class Collisions : MonoBehaviour
             {
                 AnimalCollected.SetActive(false);
                 isWaitingA = false;
-                timer = 0.7f;
+                timer = 1.5f;
             }
         }
         else if (isWaitingF)
@@ -298,7 +298,7 @@ public class Collisions : MonoBehaviour
             {
                 FlowerCollected.SetActive(false);
                 isWaitingF = false;
-                timer = 0.7f;
+                timer = 1.5f;
             }
         } 
         else if (isWaitingS)
@@ -309,7 +309,7 @@ public class Collisions : MonoBehaviour
             {
                 SilvaCollected.SetActive(false);
                 isWaitingS = false;
-                timer = 0.7f;
+                timer = 1.5f;
             }
         } 
 
