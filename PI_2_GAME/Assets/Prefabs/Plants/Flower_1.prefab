@@ -2353,6 +2353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2381974907824795781}
+  - component: {fileID: 7809250201828644143}
   m_Layer: 0
   m_Name: Flower_1
   m_TagString: Flower
@@ -2377,6 +2378,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 188.651, z: 0}
+--- !u!114 &7809250201828644143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5771164534928033751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58aff6dbea7c7314b84a194bafa4c418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7845109488611820348
 GameObject:
   m_ObjectHideFlags: 0

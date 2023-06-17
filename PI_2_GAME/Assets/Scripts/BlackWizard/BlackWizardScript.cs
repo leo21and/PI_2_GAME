@@ -206,6 +206,11 @@ public class BlackWizardScript : MonoBehaviour
 
         MusicManager.instance.BWDeath();
 
+        //Remover o Mesh do Feiticeiro
+        BWParticles1.Stop();
+        BWParticles2.Stop();
+        BWParticles3.Stop();
+
         RenderSettings.skybox = skyMaterial;
        
         cutfinal.SetActive(true);
@@ -216,10 +221,7 @@ public class BlackWizardScript : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        //Remover o Mesh do Feiticeiro
-        BWParticles1.Stop();
-        BWParticles2.Stop();
-        BWParticles3.Stop();
+
 
         yield return new WaitForSeconds(2f);
         wizardDeath = true;
@@ -229,8 +231,9 @@ public class BlackWizardScript : MonoBehaviour
     {
         Vector3 newPosition = Player.transform.position + spawnOffset;
         for (int i = 1; i <= numPlants; i++) {
-      
-            Instantiate(plant, newPosition, Quaternion.identity);
+            
+                Instantiate(plant, newPosition, Quaternion.identity);
+            
         }
 
 
