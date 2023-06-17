@@ -127,7 +127,7 @@ public class BlackWizardScript : MonoBehaviour
     {
 
         float distance = Vector3.Distance(Player.position, transform.position);
-        if (distance <= distance1 && distance >= (distance2+1) && BWDeath == false && isDeath == false)
+        if (distance <= distance1 && distance >= (distance2 + 1) && BWDeath == false && isDeath == false)
         {
             if (sendPlant1)
             {
@@ -140,14 +140,14 @@ public class BlackWizardScript : MonoBehaviour
             {
                 mAnimator.SetTrigger("TrThunder");
                 Invoke("SendUpBeam", 0.75f);
-                Invoke("SendThunder",2);
-                
+                Invoke("SendThunder", 2);
+
                 Debug.Log("isattacking");
 
             }
-            
+
         }
-        else if (distance <= distance2 && distance >= (distance3+1) && BWDeath == false && isDeath == false)
+        else if (distance <= distance2 && distance >= (distance3 + 1) && BWDeath == false && isDeath == false)
         {
             if (sendPlant2)
             {
@@ -184,6 +184,12 @@ public class BlackWizardScript : MonoBehaviour
             }
 
         }
+        else if (distance <= 150 && BWDeath == false && isDeath == false)
+        {
+            healthbar.SetActive(true);
+         
+        }
+
     }
 
     IEnumerator BWDied()
