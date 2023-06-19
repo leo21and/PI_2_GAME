@@ -70,6 +70,7 @@ public class PlayerDamage : MonoBehaviour
         
         Damage();
         PlayHit();
+     
     }
     
 
@@ -108,20 +109,22 @@ public class PlayerDamage : MonoBehaviour
        // Debug.Log(flowerNumInRange + "flowers");
     }
 
+   
     public void TakeDamage(int damage)
     {
-
 
         //takedamage = true;
         currentHealth -= damage;
 
-        if (currentHealth <= 908 && !death)
+        if (currentHealth <= 0 && !death)
         {
             StartCoroutine(PrefomerAnim());
         }
 
       //  takedamage = false;
     }
+
+
 
     IEnumerator TakeLife()
     {

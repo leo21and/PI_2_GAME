@@ -1184,6 +1184,7 @@ GameObject:
   - component: {fileID: 3398347178197115733}
   - component: {fileID: 5996820590226014070}
   - component: {fileID: 2035958302373160092}
+  - component: {fileID: 5496530863181487010}
   m_Layer: 0
   m_Name: _FlowerToxic
   m_TagString: Toxic
@@ -1218,10 +1219,10 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4867322934680055868}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.3493009
-  m_Height: 4.7103167
+  m_Radius: 4.63
+  m_Height: 5.17
   m_Direction: 1
   m_Center: {x: -0.06689167, y: 1.8551583, z: 0.18317366}
 --- !u!95 &2113870319539831843
@@ -1421,6 +1422,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5496530863181487010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4867322934680055868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62055b90a17f58f498babd9458f6cc92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDamage: {fileID: 0}
+  PlantDamage: 25
+  damageInterval: 5
 --- !u!1 &4867322934709704860
 GameObject:
   m_ObjectHideFlags: 0
