@@ -581,7 +581,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator Text()
     {
 
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(3f);
         text.SetActive(false);
 
     }
