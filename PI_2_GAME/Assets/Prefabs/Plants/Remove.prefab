@@ -4827,7 +4827,7 @@ GameObject:
   - component: {fileID: 5260667514423559313}
   - component: {fileID: 5260667514423559312}
   m_Layer: 0
-  m_Name: Flower
+  m_Name: Remove
   m_TagString: Toxic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

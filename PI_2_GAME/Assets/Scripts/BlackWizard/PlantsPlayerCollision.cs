@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlantsPlayerCollision : MonoBehaviour
 {
     public PlayerDamage playerDamage;
-    public int PlantDamage = 25;
-    public float damageInterval = 5f;
+    public int PlantDamage = 10;
+    public float damageInterval = 1f;
     private float timer = 0f;
 
     private void Start()
@@ -14,18 +14,19 @@ public class PlantsPlayerCollision : MonoBehaviour
         playerDamage = FindAnyObjectByType<PlayerDamage>();
     }
 
-    void OnTriggerEnter(Collider other)
-    {
+  //  void OnTriggerEnter(Collider other)
+//    {
 
-        if (other.CompareTag("Player"))
-        {
+  //      if (other.CompareTag("Player"))
+  //      {
             
                 // Apply damage
-                playerDamage.TakeDamage(PlantDamage);
+ 
+  //             playerDamage.TakeDamage(PlantDamage);
 
  
-        }
-    }
+ //       }
+   // }
 
     void OnTriggerStay(Collider other)
     {
