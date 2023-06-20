@@ -5,7 +5,7 @@ using UnityEngine;
 public class ThunderPlayerCollision : MonoBehaviour
 {
     public PlayerDamage playerDamage;
-    public int thunderDamage = 50;
+    public int thunderDamage = 200;
     public GameObject Electric_Beams;
 
     private void OnParticleCollision(GameObject other)
