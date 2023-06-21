@@ -8,21 +8,26 @@ public class DetectOtherPlants : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        newPlant = true;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        newPlant = false;
+        
     }
     private void OnTriggerEnter(Collider other)
     {
       
-        Debug.Log(other.gameObject.name);
-        if (other.gameObject.name == "_FlowerToxic" && newPlant == true)
+        Debug.Log(other.gameObject.GetInstanceID());
+        
+        if (other.gameObject.name == "_FlowerToxic")
         {
-            //Destroy(this.gameObject);
+            if (other.gameObject.GetInstanceID() > this.gameObject.GetInstanceID())
+            {
+                Destroy(this.gameObject);
+            }
+            
         }
     }
 

@@ -1426,21 +1426,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  plant1Prefab: {fileID: 5771164534928033751, guid: b8fb7ff12c88d024497c36c6cc738ef3, type: 3}
-  plant2Prefab: {fileID: 5771164534928033751, guid: b8fb7ff12c88d024497c36c6cc738ef3, type: 3}
-  plant3Prefab: {fileID: 5771164534928033751, guid: b8fb7ff12c88d024497c36c6cc738ef3, type: 3}
+  flowerPrefab: {fileID: 0}
   Thunder: {fileID: 1592026213529605786, guid: b5154e16aac0915479871d1b4001efba, type: 3}
   UpBeam: {fileID: 7716259040815082756}
   FrontBeam: {fileID: 1918555805763568933}
-  distance1: 75
-  sendPlant1: 0
-  sendThunder1: 1
-  distance2: 55
-  sendPlant2: 1
-  sendThunder2: 0
-  distance3: 35
-  sendPlant3: 1
-  sendThunder3: 0
+  attackDistance: 0
   blackWizardLife: 1000
   currentBlackWizardHealth: 0
   healthBar: {fileID: 4163242283516000556}
@@ -1456,7 +1446,7 @@ MonoBehaviour:
   spawnOffset: {x: 0, y: -1, z: 5}
   spawnTime: 2
   spawnDelay: 5
-  numPlants: 2
+  numPlants: 1
   healthbar: {fileID: 3576321640067219891}
   isDeath: 0
   cutfinal: {fileID: 0}
