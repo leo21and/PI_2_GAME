@@ -41,6 +41,7 @@ public class AnimalsMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
       
         if (!startsound && animais.animalSaved)
         {
@@ -49,6 +50,7 @@ public class AnimalsMovement : MonoBehaviour
 
         if (animais.animalSaved && s.trigou)
         {
+          
             if (!iswandering)
             {
                 StartCoroutine(Wander()); 

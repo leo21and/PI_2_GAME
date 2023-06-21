@@ -56,6 +56,14 @@
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/OneDrive/Ambiente de Trabalho/Build\PI_2_GAME.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\joana\OneDrive\Ambiente de Trabalho\Build" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.22f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Projeto\PI_2_GAME\PI_2_GAME -debugCodeOptimization" />
@@ -172,7 +180,7 @@
       <workItem from="1687169380218" duration="1761000" />
       <workItem from="1687270029584" duration="66000" />
       <workItem from="1687340677255" duration="2873000" />
-      <workItem from="1687346845538" duration="606000" />
+      <workItem from="1687346845538" duration="1295000" />
     </task>
     <servers />
   </component>
