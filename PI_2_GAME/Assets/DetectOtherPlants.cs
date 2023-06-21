@@ -31,7 +31,7 @@ public class DetectOtherPlants : MonoBehaviour
         Debug.Log(other.gameObject.name);
         if (other.gameObject.name == "_FlowerToxic")
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
     }
 }
