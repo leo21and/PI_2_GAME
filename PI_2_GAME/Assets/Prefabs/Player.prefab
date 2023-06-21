@@ -1164,6 +1164,8 @@ MonoBehaviour:
   death: 0
   cam: {fileID: 0}
   maincam: {fileID: 0}
+  hit: {fileID: 0}
+  takedamage: 0
 --- !u!114 &3979415656903382756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1206,6 +1208,12 @@ MonoBehaviour:
   canCastSpell: 0
   ismoving: 0
   zona: 0
+  playerRun: {fileID: 0}
+  bossMusic: {fileID: 0}
+  mainTheme: {fileID: 0}
+  restart: []
+  pause: {fileID: 0}
+  cutsceneFinal: {fileID: 0}
 --- !u!114 &7129458955675477668
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -75,6 +75,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject cutsceneFinal;
 
+    
+
 
 
 
@@ -377,7 +379,7 @@ public class PlayerController : MonoBehaviour
                 currentPower -= cas.spellToCast[i].SpellToCast.PowerCost;
                 currentCastTimer = 0;
                 currentPowerRechargeTimer = 0;
-
+              
 
                 if (selectedSpell == 0)
                 {

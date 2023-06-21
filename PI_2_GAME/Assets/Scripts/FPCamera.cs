@@ -9,19 +9,24 @@ public class FPCamera : MonoBehaviour
     
     private float xRotation = 0f;
     [SerializeField] Transform player;
+    private Vector3 offset;
+    
 
 
     private void Awake()
     {
     
         Cursor.lockState = CursorLockMode.Locked;
- 
+       
+
     }
 
     // Update is called once per frame
     void Update()
     {
         Look();
+
+      
     }
 
     private void Look()
@@ -36,6 +41,8 @@ public class FPCamera : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         
         player.Rotate(Vector3.up * mouseX);
+        
+        
     }
 
     
