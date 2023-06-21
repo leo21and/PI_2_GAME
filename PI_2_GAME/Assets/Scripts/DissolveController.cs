@@ -57,9 +57,11 @@ public class DissolveController : MonoBehaviour
             material.SetFloat("_DissolveAmount", counter);
                     
             yield return new WaitForSeconds(refreshRate);
+           
         }
+        this.gameObject.SetActive(false); 
+       
         
-
         dissolve = false;
     }
 
