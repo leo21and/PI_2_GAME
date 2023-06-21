@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class DetectOtherPlants : MonoBehaviour
 {
+    private bool newPlant;
     // Start is called before the first frame update
     void Start()
     {
-        
+        newPlant = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        newPlant = false;
     }
-    void OnCollisionEnter(Collider col)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (col.name == "Flower_1")
+        Debug.Log(collision.gameObject.name);
+        if (collision.gameObject.name == "Flower" && newPlant == true)
         {
             Destroy(this);
         }
     }
+ 
 }
