@@ -16,13 +16,22 @@ public class DetectOtherPlants : MonoBehaviour
     {
         newPlant = false;
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.name == "Flower" && newPlant == true)
+      
+        Debug.Log(other.gameObject.name);
+        if (other.gameObject.name == "_FlowerToxic" && newPlant == true)
         {
-            Destroy(this);
+            //Destroy(this.gameObject);
         }
     }
- 
+
+    void OnTriggerStay(Collider other)
+    {
+        Debug.Log(other.gameObject.name);
+        if (other.gameObject.name == "_FlowerToxic")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

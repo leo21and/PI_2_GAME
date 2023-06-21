@@ -48,8 +48,5 @@ public class PlantsPlayerCollision : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        int i = 0;
-    }
+
  }
